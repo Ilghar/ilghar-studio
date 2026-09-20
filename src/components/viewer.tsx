@@ -56,6 +56,7 @@ function DocumentOverlay({
   lang: Lang;
   onClose: () => void;
 }) {
+  const pages = collection.pages ?? [];
   const total = pages.length;
   const seamless = Boolean(collection.seamless);
   const spread = Boolean(collection.spread);
@@ -287,18 +288,13 @@ function StripOverlay({
   indexRef.current = index;
   const titleId = useId();
 
-  const pageWidth = () => {
-    const el = scroller.current;
-    if (!el) return 1;
-    return el.scrollWidth / count;
-  };
-
   const go = useCallback(
     (next: number) => {
       const el = scroller.current;
       if (!el) return;
       const clamped = ((next % count) + count) % count;
-      el.scrollTo({ left: clamped * pageWidth(), behavior: "smooth" });
+      const width = el.scrollWidth / count || 1;
+      el.scrollTo({ left: clamped * width, behavior: "smooth" });
       setIndex(clamped);
     },
     [count],
@@ -326,7 +322,7 @@ function StripOverlay({
   function onScroll() {
     const el = scroller.current;
     if (!el) return;
-    const w = pageWidth();
+    const w = el.scrollWidth / count || 1;
     const next = Math.min(count - 1, Math.max(0, Math.round(el.scrollLeft / w)));
     if (next !== indexRef.current) setIndex(next);
   }
