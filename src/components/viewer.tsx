@@ -44,7 +44,18 @@ export function Viewer({
     );
   }
 
-  const pages = collection.pages ?? [];
+  return <DocumentOverlay collection={collection} lang={lang} onClose={onClose} />;
+}
+
+function DocumentOverlay({
+  collection,
+  lang,
+  onClose,
+}: {
+  collection: Collection;
+  lang: Lang;
+  onClose: () => void;
+}) {
   const total = pages.length;
   const seamless = Boolean(collection.seamless);
   const spread = Boolean(collection.spread);
