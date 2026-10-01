@@ -1,6 +1,6 @@
 # ilghar.studio
 
-Personal landing for [Ilghar Dadgostari](https://ilghar.studio) — bilingual (EN/DE), light/dark, in-app readers for studio notes and documents.
+Personal landing (https://ilghar.studio)  —  bilingual (EN/DE), light/dark, in-app readers for studio notes and documents.
 
 Source: [github.com/Ilghar/ilghar-studio](https://github.com/Ilghar/ilghar-studio)
 
