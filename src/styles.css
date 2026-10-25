@@ -7,11 +7,9 @@
   --canvas: #f3f1f6;
   --surface: #fffcfe;
   --ink: #4a3a5c;
-  --muted: #75638a;
+  --muted: #7a688c;
   --subtle: #a394ae;
   --accent: #c97a98;
-  /* Darker shade of --accent for small text on the light canvas (WCAG AA). */
-  --accent-ink: #9e4f72;
   --accent-fg: #fffafc;
   --line: #e4dde8;
   --ring: #c97a98;
@@ -43,7 +41,6 @@
   --muted: #cbbdce;
   --subtle: #9a8a9c;
   --accent: #e8a8bc;
-  --accent-ink: #e8a8bc;
   --accent-fg: #2c262f;
   --line: #4a424c;
   --ring: #e8a8bc;
@@ -72,7 +69,6 @@
   --color-muted: var(--muted);
   --color-subtle: var(--subtle);
   --color-accent: var(--accent);
-  --color-accent-ink: var(--accent-ink);
   --color-accent-fg: var(--accent-fg);
   --color-line: var(--line);
   --color-ring: var(--ring);

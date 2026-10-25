@@ -120,20 +120,20 @@ function Identity({
         height={1000}
         className="size-28 rounded-full object-cover object-[center_28%] ring-4 ring-canvas sm:size-32 md:size-36"
       />
-      <p className="mt-6 text-[0.68rem] font-medium tracking-[0.32em] text-accent-ink uppercase md:text-[0.75rem]">
+      <p className="mt-6 text-[0.68rem] font-medium tracking-[0.32em] text-ink uppercase dark:text-accent md:text-[0.75rem]">
         {profile.handle}
       </p>
       <h1 className="mt-2 font-display text-[1.75rem] font-semibold tracking-[0.01em] text-ink sm:text-[1.95rem] md:text-[2.25rem]">
         {profile.name}
       </h1>
-      <p className="mt-1 text-[0.9rem] font-light tracking-wide text-muted md:text-[1.02rem]">
+      <p className="mt-1 text-[0.9rem] font-light tracking-wide text-ink dark:text-muted md:text-[1.02rem]">
         {t(lang, "location")}
         <span className="mx-2 text-subtle/70" aria-hidden="true">
           ·
         </span>
         {t(lang, "roles")}
       </p>
-      <p className="mt-6 max-w-[34ch] text-[0.92rem] font-light leading-relaxed text-muted md:max-w-[42ch] md:text-[1.05rem]">
+      <p className="mt-6 max-w-[34ch] text-[0.92rem] font-light leading-relaxed text-ink dark:text-muted md:max-w-[42ch] md:text-[1.05rem]">
         {t(lang, "bio")}
       </p>
       <div className="mt-6 flex w-full items-center justify-between">
@@ -169,7 +169,7 @@ function Footer({ lang }: { lang: ReturnType<typeof useLang>["lang"] }) {
             href={social.href}
             target="_blank"
             rel="me noopener noreferrer"
-            className="text-[0.7rem] font-medium tracking-[0.2em] text-muted uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.78rem]"
+            className="text-[0.7rem] font-medium tracking-[0.2em] text-ink uppercase dark:text-muted transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.78rem]"
           >
             {social.label}
           </a>
@@ -179,7 +179,7 @@ function Footer({ lang }: { lang: ReturnType<typeof useLang>["lang"] }) {
         type="button"
         onClick={copyEmail}
         className={cn(
-          "inline-flex min-h-10 items-center gap-2 text-[0.75rem] font-light tracking-wide text-muted md:text-[0.85rem]",
+          "inline-flex min-h-10 items-center gap-2 text-[0.75rem] font-light tracking-wide text-ink md:text-[0.85rem]",
           "transition-colors hover:text-ink",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         )}
