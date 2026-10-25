@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 export function FrameCard({
   cover,
   coverHi,
+  coverAlt = "",
   title,
   kicker,
   featured = false,
@@ -15,6 +16,7 @@ export function FrameCard({
 }: {
   cover: string;
   coverHi?: string;
+  coverAlt?: string;
   title: string;
   kicker: string;
   featured?: boolean;
@@ -43,7 +45,7 @@ export function FrameCard({
             src={cover}
             srcSet={coverHi ? `${cover} ${featured ? 1280 : 640}w, ${coverHi} 1400w` : undefined}
             sizes={featured ? "(min-width: 1024px) 640px, (min-width: 768px) 512px, 92vw" : "(min-width: 1024px) 310px, (min-width: 768px) 250px, 45vw"}
-            alt=""
+            alt={coverAlt}
             width={640}
             height={640}
             loading={eager ? "eager" : "lazy"}

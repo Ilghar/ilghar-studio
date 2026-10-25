@@ -40,6 +40,8 @@ export type Collection = {
   cover: string;
   /** Full-resolution original, offered to high-DPI screens via srcset. */
   coverHi?: string;
+  /** Alt text for the card image. */
+  coverAlt?: string;
   title: CopyKey;
   kicker: CopyKey;
   pages?: ViewerPage[];
@@ -62,6 +64,7 @@ export const collections: Collection[] = [
     id: "studio-notes",
     cover: `/viewers/notes/cover.webp?v=${V}`,
     coverHi: `/viewers/notes/cover.jpg?v=${V}`,
+    coverAlt: "Two people in sun hats beside a large carved white stone head in a snowy landscape.",
     title: "notesTitle",
     kicker: "notesKicker",
     strip: `/n16-cover-left.jpg?v=${V}`,
@@ -75,6 +78,7 @@ export const collections: Collection[] = [
     lang: "de",
     cover: `/viewers/cards/cv.webp?v=${V}`,
     coverHi: `/viewers/cards/cv.jpg?v=${V}`,
+    coverAlt: "First page of Ilghar Dadgostari's German CV.",
     title: "cvDe",
     kicker: "cvDeHint",
     pages: numbered("/viewers/cv", 1, "Lebenslauf", "Lebenslauf"),
@@ -87,6 +91,7 @@ export const collections: Collection[] = [
     lang: "en",
     cover: `/viewers/cards/cv.webp?v=${V}`,
     coverHi: `/viewers/cards/cv.jpg?v=${V}`,
+    coverAlt: "First page of Ilghar Dadgostari's German CV.",
     title: "cvEn",
     kicker: "cvEnHint",
     pages: numbered("/viewers/cv", 1, "Curriculum vitae", "Curriculum vitae"),
@@ -98,6 +103,7 @@ export const collections: Collection[] = [
     id: "werk",
     cover: `/viewers/cards/werk.webp?v=${V}`,
     coverHi: `/viewers/cards/werk.jpg?v=${V}`,
+    coverAlt: '"Werk-Dok" with a pale pink wireframe geometric form on light blue.',
     title: "werk",
     kicker: "werkHint",
     pages: numbered("/viewers/werk", 14, "Work documentation", "Werk-Dokumentation"),
@@ -110,6 +116,7 @@ export const collections: Collection[] = [
     lang: "de",
     cover: `/viewers/cards/portfolio.webp?v=${V}`,
     coverHi: `/viewers/cards/portfolio.jpg?v=${V}`,
+    coverAlt: '"ilghar dadgostari portfolio" above a dark faceted geometric form on violet.',
     title: "portfolio",
     kicker: "portfolioDeHint",
     pages: numbered("/viewers/portfolio", 7, "Portfolio 2023", "Portfolio 2023"),
@@ -121,6 +128,7 @@ export const collections: Collection[] = [
     lang: "en",
     cover: `/viewers/cards/portfolio-en.webp?v=${V}`,
     coverHi: `/viewers/cards/portfolio-en.jpg?v=${V}`,
+    coverAlt: '"portfolio" above a dark faceted geometric form on blue.',
     title: "portfolio",
     kicker: "portfolioEnHint",
     pages: numbered("/viewers/portfolio-en", 9, "Portfolio", "Portfolio"),
@@ -131,6 +139,7 @@ export const collections: Collection[] = [
     id: "arbeits",
     cover: `/viewers/cards/arbeits.webp?v=${V}`,
     coverHi: `/viewers/cards/arbeits.jpg?v=${V}`,
+    coverAlt: '"Arbeits-Zeugnisse" over a symmetrical grey faceted geometric form on white.',
     title: "workCerts",
     kicker: "workCertsHint",
     pages: numbered("/viewers/arbeits", 9, "Employment records", "Arbeitszeugnisse"),
@@ -142,6 +151,7 @@ export const collections: Collection[] = [
     id: "abschluss",
     cover: `/viewers/cards/abschluss.webp?v=${V}`,
     coverHi: `/viewers/cards/abschluss.jpg?v=${V}`,
+    coverAlt: '"Abschluss-Zeugnisse" over a symmetrical white faceted geometric form on deep blue.',
     title: "diplomas",
     kicker: "diplomasHint",
     pages: numbered("/viewers/abschluss", 7, "Diplomas", "Abschlusszeugnisse"),
@@ -153,6 +163,7 @@ export const collections: Collection[] = [
     id: "fach",
     cover: `/viewers/cards/fach.webp?v=${V}`,
     coverHi: `/viewers/cards/fach.jpg?v=${V}`,
+    coverAlt: '"Sprach- & Fach-Zeugnisse" over a symmetrical blue faceted geometric form on white.',
     title: "langCerts",
     kicker: "langCertsHint",
     pages: numbered("/viewers/fach", 4, "Language & professional certificates", "Sprach- & Fachzeugnisse"),
@@ -164,6 +175,7 @@ export const collections: Collection[] = [
     id: "studio",
     cover: `/viewers/studio/cover.webp?v=${V}`,
     coverHi: `/viewers/studio/cover.png?v=${V}`,
+    coverAlt: 'Lilac render of the spiked geodesic pavilion with "ilghar.studio" across it.',
     title: "studio",
     kicker: "studioHint",
     href: "https://ilghar.studio",
@@ -173,6 +185,7 @@ export const collections: Collection[] = [
     id: "blade",
     cover: `/viewers/cards/blade.webp?v=${V}`,
     coverHi: `/viewers/cards/blade.jpg?v=${V}`,
+    coverAlt: "BLADE Festival logo over glossy violet and green 3D ribbons.",
     title: "blade",
     kicker: "bladeHint",
     video: "/media/blade.mp4",

@@ -41,6 +41,7 @@ export function LinkInBio({ initialLang }: { initialLang?: Lang } = {}) {
               <FrameCard
                 cover={featured.cover}
                 coverHi={featured.coverHi}
+                coverAlt={featured.coverAlt}
                 title={t(lang, featured.title)}
                 kicker={t(lang, featured.kicker)}
                 featured
@@ -56,6 +57,7 @@ export function LinkInBio({ initialLang }: { initialLang?: Lang } = {}) {
                 key={item.id}
                 cover={item.cover}
                 coverHi={item.coverHi}
+                coverAlt={item.coverAlt}
                 title={t(lang, item.title)}
                 kicker={t(lang, item.kicker)}
                 contain={item.contain}
