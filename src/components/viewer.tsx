@@ -198,8 +198,7 @@ function DocumentOverlay({
       <div
         ref={scroller}
         dir="ltr"
-        className="flex h-[calc(100dvh-8.25rem)] snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-x-contain"
-        style={{ direction: "ltr" }}
+        className="flex h-[calc(100dvh-8.25rem)] snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-x-contain dir-ltr"
       >
         {pages.map((page, i) => {
           const active = i === index;
@@ -375,8 +374,7 @@ function StripOverlay({
         ref={scroller}
         dir="ltr"
         onScroll={onScroll}
-        className="h-[calc(100dvh-8.25rem)] overflow-x-auto overflow-y-hidden overscroll-x-contain"
-        style={{ direction: "ltr" }}
+        className="h-[calc(100dvh-8.25rem)] overflow-x-auto overflow-y-hidden overscroll-x-contain dir-ltr"
       >
         <img
           src={src}
@@ -388,8 +386,7 @@ function StripOverlay({
             const el = scroller.current;
             if (el) el.scrollLeft = 0;
           }}
-          className="block h-full max-w-none select-none"
-          style={{ maxWidth: "none", width: "auto", height: "100%" }}
+          className="img-strip block h-full max-w-none select-none"
         />
       </div>
 

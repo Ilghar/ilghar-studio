@@ -39,10 +39,10 @@
   --surface: #5a535c;
   --ink: #f4eef3;
   --muted: #cbbdce;
-  --subtle: #9a8a9c;
+  --subtle: #cbbdce;
   --accent: #e8a8bc;
-  --accent-fg: #2c262f;
-  --line: #4a424c;
+  --accent-fg: #4a434c;
+  --line: #a394ae;
   --ring: #e8a8bc;
   --shadow-frame:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
@@ -151,6 +151,18 @@
 .group:focus-visible .frame-raise {
   box-shadow: var(--shadow-frame-hover);
   transform: translateY(-3px);
+}
+
+.dir-ltr {
+  direction: ltr;
+}
+.img-strip {
+  max-width: none;
+  width: auto;
+  height: 100%;
+}
+.origin-sun {
+  transform-origin: 12px 12px;
 }
 
 .caption-plate {

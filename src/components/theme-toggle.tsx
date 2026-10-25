@@ -31,10 +31,9 @@ export function ThemeToggle({
       >
         <g
           className={cn(
-            "origin-center transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+            "origin-sun transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
             isDark ? "scale-50 opacity-0" : "scale-100 opacity-100",
           )}
-          style={{ transformOrigin: "12px 12px" }}
         >
           {Array.from({ length: 8 }, (_, i) => (
             <line
