@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { useLang } from "@/hooks/use-lang";
-import { t } from "@/lib/i18n";
+import { type Lang, t } from "@/lib/i18n";
 import {
   collections,
   profile,
@@ -14,8 +14,8 @@ import { LangToggle } from "@/components/lang-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Viewer } from "@/components/viewer";
 
-export function LinkInBio() {
-  const { lang, set } = useLang();
+export function LinkInBio({ initialLang }: { initialLang?: Lang } = {}) {
+  const { lang, set } = useLang(initialLang);
   const [open, setOpen] = useState<Collection | null>(null);
 
   const visible = useMemo(
@@ -27,7 +27,7 @@ export function LinkInBio() {
   const live = open ? collections.find((c) => c.id === open.id) ?? open : null;
 
   return (
-    <div className="relative min-h-dvh overflow-x-hidden bg-canvas text-ink">
+    <main className="relative min-h-dvh overflow-x-hidden bg-canvas text-ink">
       <div className="mx-auto w-full max-w-md md:max-w-xl lg:max-w-2xl">
         <div className="md:px-8">
           <Cover />
@@ -40,9 +40,11 @@ export function LinkInBio() {
             <div className="mt-10">
               <FrameCard
                 cover={featured.cover}
+                coverHi={featured.coverHi}
                 title={t(lang, featured.title)}
                 kicker={t(lang, featured.kicker)}
                 featured
+                eager
                 onClick={() => setOpen(featured)}
               />
             </div>
@@ -53,6 +55,7 @@ export function LinkInBio() {
               <FrameCard
                 key={item.id}
                 cover={item.cover}
+                coverHi={item.coverHi}
                 title={t(lang, item.title)}
                 kicker={t(lang, item.kicker)}
                 contain={item.contain}
@@ -72,7 +75,7 @@ export function LinkInBio() {
       {live?.pages || live?.video || live?.strip ? (
         <Viewer collection={live} lang={lang} onClose={() => setOpen(null)} />
       ) : null}
-    </div>
+    </main>
   );
 }
 
@@ -117,7 +120,7 @@ function Identity({
         height={1000}
         className="size-28 rounded-full object-cover object-[center_28%] ring-4 ring-canvas sm:size-32 md:size-36"
       />
-      <p className="mt-6 text-[0.68rem] font-medium tracking-[0.32em] text-accent uppercase md:text-[0.75rem]">
+      <p className="mt-6 text-[0.68rem] font-medium tracking-[0.32em] text-accent-ink uppercase md:text-[0.75rem]">
         {profile.handle}
       </p>
       <h1 className="mt-2 font-display text-[1.75rem] font-semibold tracking-[0.01em] text-ink sm:text-[1.95rem] md:text-[2.25rem]">
@@ -176,7 +179,7 @@ function Footer({ lang }: { lang: ReturnType<typeof useLang>["lang"] }) {
         type="button"
         onClick={copyEmail}
         className={cn(
-          "inline-flex min-h-10 items-center gap-2 text-[0.75rem] font-light tracking-wide text-subtle md:text-[0.85rem]",
+          "inline-flex min-h-10 items-center gap-2 text-[0.75rem] font-light tracking-wide text-muted md:text-[0.85rem]",
           "transition-colors hover:text-ink",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         )}

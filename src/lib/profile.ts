@@ -38,6 +38,8 @@ export type Collection = {
   id: string;
   lang?: "en" | "de";
   cover: string;
+  /** Full-resolution original, offered to high-DPI screens via srcset. */
+  coverHi?: string;
   title: CopyKey;
   kicker: CopyKey;
   pages?: ViewerPage[];
@@ -49,6 +51,8 @@ export type Collection = {
   spread?: boolean;
   contain?: boolean;
   video?: string;
+  /** Still frame shown before the video plays. Falls back to `cover`. */
+  poster?: string;
   strip?: string;
   stripPages?: number;
 };
@@ -56,7 +60,8 @@ export type Collection = {
 export const collections: Collection[] = [
   {
     id: "studio-notes",
-    cover: `/viewers/notes/cover.jpg?v=${V}`,
+    cover: `/viewers/notes/cover.webp?v=${V}`,
+    coverHi: `/viewers/notes/cover.jpg?v=${V}`,
     title: "notesTitle",
     kicker: "notesKicker",
     strip: `/n16-cover-left.jpg?v=${V}`,
@@ -68,7 +73,8 @@ export const collections: Collection[] = [
   {
     id: "cv-de",
     lang: "de",
-    cover: `/viewers/cards/cv.jpg?v=${V}`,
+    cover: `/viewers/cards/cv.webp?v=${V}`,
+    coverHi: `/viewers/cards/cv.jpg?v=${V}`,
     title: "cvDe",
     kicker: "cvDeHint",
     pages: numbered("/viewers/cv", 1, "Lebenslauf", "Lebenslauf"),
@@ -79,7 +85,8 @@ export const collections: Collection[] = [
   {
     id: "cv-en",
     lang: "en",
-    cover: `/viewers/cards/cv.jpg?v=${V}`,
+    cover: `/viewers/cards/cv.webp?v=${V}`,
+    coverHi: `/viewers/cards/cv.jpg?v=${V}`,
     title: "cvEn",
     kicker: "cvEnHint",
     pages: numbered("/viewers/cv", 1, "Curriculum vitae", "Curriculum vitae"),
@@ -89,7 +96,8 @@ export const collections: Collection[] = [
   },
   {
     id: "werk",
-    cover: `/viewers/cards/werk.jpg?v=${V}`,
+    cover: `/viewers/cards/werk.webp?v=${V}`,
+    coverHi: `/viewers/cards/werk.jpg?v=${V}`,
     title: "werk",
     kicker: "werkHint",
     pages: numbered("/viewers/werk", 14, "Work documentation", "Werk-Dokumentation"),
@@ -100,7 +108,8 @@ export const collections: Collection[] = [
   {
     id: "portfolio-de",
     lang: "de",
-    cover: `/viewers/cards/portfolio.jpg?v=${V}`,
+    cover: `/viewers/cards/portfolio.webp?v=${V}`,
+    coverHi: `/viewers/cards/portfolio.jpg?v=${V}`,
     title: "portfolio",
     kicker: "portfolioDeHint",
     pages: numbered("/viewers/portfolio", 7, "Portfolio 2023", "Portfolio 2023"),
@@ -110,7 +119,8 @@ export const collections: Collection[] = [
   {
     id: "portfolio-en",
     lang: "en",
-    cover: `/viewers/cards/portfolio-en.jpg?v=${V}`,
+    cover: `/viewers/cards/portfolio-en.webp?v=${V}`,
+    coverHi: `/viewers/cards/portfolio-en.jpg?v=${V}`,
     title: "portfolio",
     kicker: "portfolioEnHint",
     pages: numbered("/viewers/portfolio-en", 9, "Portfolio", "Portfolio"),
@@ -119,7 +129,8 @@ export const collections: Collection[] = [
   },
   {
     id: "arbeits",
-    cover: `/viewers/cards/arbeits.jpg?v=${V}`,
+    cover: `/viewers/cards/arbeits.webp?v=${V}`,
+    coverHi: `/viewers/cards/arbeits.jpg?v=${V}`,
     title: "workCerts",
     kicker: "workCertsHint",
     pages: numbered("/viewers/arbeits", 9, "Employment records", "Arbeitszeugnisse"),
@@ -129,7 +140,8 @@ export const collections: Collection[] = [
   },
   {
     id: "abschluss",
-    cover: `/viewers/cards/abschluss.jpg?v=${V}`,
+    cover: `/viewers/cards/abschluss.webp?v=${V}`,
+    coverHi: `/viewers/cards/abschluss.jpg?v=${V}`,
     title: "diplomas",
     kicker: "diplomasHint",
     pages: numbered("/viewers/abschluss", 7, "Diplomas", "Abschlusszeugnisse"),
@@ -139,7 +151,8 @@ export const collections: Collection[] = [
   },
   {
     id: "fach",
-    cover: `/viewers/cards/fach.jpg?v=${V}`,
+    cover: `/viewers/cards/fach.webp?v=${V}`,
+    coverHi: `/viewers/cards/fach.jpg?v=${V}`,
     title: "langCerts",
     kicker: "langCertsHint",
     pages: numbered("/viewers/fach", 4, "Language & professional certificates", "Sprach- & Fachzeugnisse"),
@@ -149,7 +162,8 @@ export const collections: Collection[] = [
   },
   {
     id: "studio",
-    cover: `/viewers/studio/cover.png?v=${V}`,
+    cover: `/viewers/studio/cover.webp?v=${V}`,
+    coverHi: `/viewers/studio/cover.png?v=${V}`,
     title: "studio",
     kicker: "studioHint",
     href: "https://ilghar.studio",
@@ -157,10 +171,12 @@ export const collections: Collection[] = [
   },
   {
     id: "blade",
-    cover: `/viewers/cards/blade.jpg?v=${V}`,
+    cover: `/viewers/cards/blade.webp?v=${V}`,
+    coverHi: `/viewers/cards/blade.jpg?v=${V}`,
     title: "blade",
     kicker: "bladeHint",
     video: "/media/blade.mp4",
+    poster: "/media/blade-poster.jpg",
     href: "https://blade-festival.de/en/",
   },
 ];

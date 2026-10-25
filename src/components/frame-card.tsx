@@ -3,18 +3,22 @@ import { cn } from "@/lib/utils";
 
 export function FrameCard({
   cover,
+  coverHi,
   title,
   kicker,
   featured = false,
+  eager = false,
   external = false,
   contain = false,
   onClick,
   href,
 }: {
   cover: string;
+  coverHi?: string;
   title: string;
   kicker: string;
   featured?: boolean;
+  eager?: boolean;
   external?: boolean;
   contain?: boolean;
   onClick?: () => void;
@@ -37,7 +41,12 @@ export function FrameCard({
         >
           <img
             src={cover}
+            srcSet={coverHi ? `${cover} ${featured ? 1280 : 640}w, ${coverHi} 1400w` : undefined}
+            sizes={featured ? "(min-width: 1024px) 640px, (min-width: 768px) 512px, 92vw" : "(min-width: 1024px) 310px, (min-width: 768px) 250px, 45vw"}
             alt=""
+            width={640}
+            height={640}
+            loading={eager ? "eager" : "lazy"}
             decoding="async"
             className={cn(
               "transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04] group-focus-visible:scale-[1.04]",

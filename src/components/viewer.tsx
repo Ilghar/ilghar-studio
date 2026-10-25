@@ -21,7 +21,7 @@ export function Viewer({
     return (
       <VideoOverlay
         src={collection.video}
-        poster={collection.cover}
+        poster={collection.poster ?? collection.cover}
         href={collection.href}
         title={t(lang, collection.title)}
         lang={lang}
