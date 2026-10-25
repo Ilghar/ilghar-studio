@@ -43,9 +43,9 @@ function htmlFiles(dir) {
   });
 }
 
-// 'unsafe-inline' stays for styles only: React renders style="" attributes
-// (carousel transforms, image aspect ratios) that CSP hashes cannot cover.
-const STYLE_SRC = "style-src 'self' 'unsafe-inline'";
+// style-src is 'self' only: no static style="" attributes are rendered; dynamic
+// React styles are set through CSSOM, which CSP does not block.
+const STYLE_SRC = "style-src 'self'";
 const FONT_SRC = "font-src 'self'";
 
 function csp(html) {

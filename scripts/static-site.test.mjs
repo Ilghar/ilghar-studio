@@ -67,3 +67,13 @@ test("404 page is noindex and has no canonical", { skip: !existsSync("dist/clien
   assert.match(html, /<meta name="robots" content="noindex"\/>/);
   assert.doesNotMatch(html, /rel="canonical"/);
 });
+
+test("built pages allow no inline styles", { skip: !existsSync("dist/client/index.html") }, () => {
+  for (const f of ["dist/client/index.html", "dist/client/de/index.html", "dist/client/404.html"]) {
+    const html = read(f);
+    const csp = html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/)?.[1];
+    const styleSrc = csp.split(";").find((d) => d.trim().startsWith("style-src"));
+    assert.doesNotMatch(styleSrc, /unsafe-inline/, f);
+    assert.doesNotMatch(html, /\sstyle="/, `${f}: static style attribute would be blocked by CSP`);
+  }
+});
