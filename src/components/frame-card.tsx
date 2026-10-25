@@ -77,7 +77,7 @@ export function FrameCard({
               <span className="mb-1 flex items-center justify-center gap-1">
                 <span
                   className={cn(
-                    "line-clamp-1 font-medium text-accent uppercase",
+                    "line-clamp-1 font-medium text-ink uppercase dark:text-accent",
                     featured
                       ? "text-[0.7rem] tracking-[0.14em] md:text-[0.78rem]"
                       : "text-[0.58rem] tracking-[0.1em] md:text-[0.66rem]",
@@ -95,7 +95,7 @@ export function FrameCard({
               </span>
               <span
                 className={cn(
-                  "block line-clamp-1 font-light tracking-wide text-muted",
+                  "block line-clamp-1 font-light tracking-wide text-muted dark:text-ink",
                   featured ? "text-[0.82rem] md:text-[0.92rem]" : "text-[0.68rem] md:text-[0.76rem]",
                 )}
               >

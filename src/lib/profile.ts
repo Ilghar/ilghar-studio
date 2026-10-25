@@ -55,6 +55,8 @@ export type Collection = {
   video?: string;
   /** Still frame shown before the video plays. Falls back to `cover`. */
   poster?: string;
+  /** Accessible name for the video player. */
+  videoLabel?: string;
   strip?: string;
   stripPages?: number;
 };
@@ -190,6 +192,7 @@ export const collections: Collection[] = [
     kicker: "bladeHint",
     video: "/media/blade.mp4",
     poster: "/media/blade-poster.jpg",
+    videoLabel: "BLADE Festival animation: glossy violet and green 3D ribbons around the BLADE logo.",
     href: "https://blade-festival.de/en/",
   },
 ];

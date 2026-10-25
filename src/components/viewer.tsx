@@ -22,6 +22,7 @@ export function Viewer({
       <VideoOverlay
         src={collection.video}
         poster={collection.poster ?? collection.cover}
+        label={collection.videoLabel}
         href={collection.href}
         title={t(lang, collection.title)}
         lang={lang}
@@ -418,6 +419,7 @@ function StripOverlay({
 function VideoOverlay({
   src,
   poster,
+  label,
   href,
   title,
   lang,
@@ -425,6 +427,7 @@ function VideoOverlay({
 }: {
   src: string;
   poster?: string;
+  label?: string;
   href?: string;
   title: string;
   lang: Lang;
@@ -497,6 +500,7 @@ function VideoOverlay({
           ref={videoRef}
           src={src}
           poster={poster}
+          aria-label={label}
           controls
           playsInline
           autoPlay
