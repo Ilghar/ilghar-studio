@@ -70,8 +70,8 @@ export function FrameCard({
           <span className="absolute inset-x-0 bottom-2 flex justify-center px-2">
             <span
               className={cn(
-                "caption-plate w-full rounded-xl bg-surface text-center",
-                featured ? "px-3 py-2" : "px-2 py-1.5",
+                "caption-plate caption-halo w-full rounded-xl text-center backdrop-blur-md",
+                featured ? "bg-canvas/80 px-3 py-2" : "bg-canvas/72 px-2 py-1.5",
               )}
             >
               <span className="mb-1 flex items-center justify-center gap-1">

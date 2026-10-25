@@ -165,6 +165,14 @@
   transform-origin: 12px 12px;
 }
 
+/* Soft halo in the plate colour keeps label text legible over busy photos
+   while the plate itself stays translucent. */
+.caption-halo {
+  text-shadow:
+    0 0 2px var(--canvas),
+    0 0 6px var(--canvas);
+}
+
 .caption-plate {
   box-shadow: var(--shadow-plate);
 }
