@@ -84,20 +84,10 @@ export function LinkInBio({ initialLang }: { initialLang?: Lang } = {}) {
 function Cover() {
   return (
     <div className="relative aspect-[16/9] w-full overflow-hidden md:rounded-b-sm">
-      <img
-        src={profile.coverDay}
-        alt=""
-        width={1600}
-        height={900}
-        className="cover-swap absolute inset-0 h-full w-full object-cover object-center opacity-100 dark:opacity-0"
-      />
-      <img
-        src={profile.coverNight}
-        alt=""
-        width={1600}
-        height={900}
-        className="cover-swap absolute inset-0 h-full w-full object-cover object-center opacity-0 dark:opacity-100"
-      />
+      {/* Day and night covers are CSS backgrounds keyed to the theme class, so
+          the browser only downloads the one that is showing. */}
+      <div aria-hidden="true" className="cover-img cover-day absolute inset-0" />
+      <div aria-hidden="true" className="cover-img cover-night absolute inset-0" />
       <div
         aria-hidden="true"
         className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-canvas to-transparent"

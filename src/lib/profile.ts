@@ -8,8 +8,6 @@ export const profile = {
   url: "https://ilghar.studio",
   email: "contact@ilghar.studio",
   avatar: `/avatar.jpg?v=${V}`,
-  coverDay: `/cover-day.jpg?v=${V}`,
-  coverNight: `/cover-night.jpg?v=${V}`,
 } as const;
 
 export type ViewerPage = {
@@ -69,7 +67,7 @@ export const collections: Collection[] = [
     coverAlt: "Two people in sun hats beside a large carved white stone head in a snowy landscape.",
     title: "notesTitle",
     kicker: "notesKicker",
-    strip: `/n16-cover-left.jpg?v=${V}`,
+    strip: `/n16-cover-left.webp?v=${V}`,
     stripPages: 11,
     downloadHref: "/docs/studio-notes.pdf",
     downloadName: "Dadgostari_Studio-Notes.pdf",

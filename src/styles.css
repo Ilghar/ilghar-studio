@@ -124,6 +124,19 @@
   transition: opacity var(--motion-slow) var(--ease-out);
 }
 
+/* Only the active theme's cover matches a rule with a background, so only that
+   file is fetched. Bump ?v= with V in profile.ts. */
+.cover-img {
+  background-position: center;
+  background-size: cover;
+}
+:root:not(.dark) .cover-day {
+  background-image: url("/cover-day.jpg?v=16");
+}
+.dark .cover-night {
+  background-image: url("/cover-night.jpg?v=16");
+}
+
 .viewer-strip {
   transition: transform var(--motion-fast) var(--ease-out);
 }
