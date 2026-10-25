@@ -12,7 +12,7 @@
  * as the equivalent "\u0000" escape before hashing.
  */
 import { createHash } from "node:crypto";
-import { copyFileSync, existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const OUT = "dist/client";
@@ -24,7 +24,15 @@ for (const page of ["index.html", "de/index.html"]) {
     process.exit(1);
   }
 }
-copyFileSync(`${OUT}/index.html`, `${OUT}/404.html`);
+// The 404 copy must not compete with the home page in search: no canonical,
+// and noindex.
+writeFileSync(
+  `${OUT}/404.html`,
+  readFileSync(`${OUT}/index.html`, "utf8")
+    .replace(/<link rel="canonical"[^>]*>/g, "")
+    .replace(/<link rel="alternate" hreflang[^>]*>/g, "")
+    .replace(/<head([^>]*)>/, '<head$1><meta name="robots" content="noindex"/>'),
+);
 console.log("postbuild: wrote 404.html");
 
 function htmlFiles(dir) {

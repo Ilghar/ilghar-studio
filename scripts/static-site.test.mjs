@@ -61,3 +61,9 @@ test("built pages allow inline scripts only by hash", { skip: !existsSync("dist/
     }
   }
 });
+
+test("404 page is noindex and has no canonical", { skip: !existsSync("dist/client/404.html") }, () => {
+  const html = read("dist/client/404.html");
+  assert.match(html, /<meta name="robots" content="noindex"\/>/);
+  assert.doesNotMatch(html, /rel="canonical"/);
+});

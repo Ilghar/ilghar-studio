@@ -34,7 +34,7 @@ export const copy = {
   diplomas: { en: "Diplomas", de: "Abschlüsse" },
   diplomasHint: { en: "Degrees", de: "Studium" },
   werk: { en: "Work", de: "Werk" },
-  werkHint: { en: "SĀBĀT · BLADE", de: "SĀBĀT · BLADE" },
+  werkHint: { en: "SÁBÁT · BLADE", de: "SÁBÁT · BLADE" },
   portfolio: { en: "Portfolio", de: "Portfolio" },
   portfolioDeHint: { en: "2023", de: "2023" },
   portfolioEnHint: { en: "Selected", de: "Auswahl" },
