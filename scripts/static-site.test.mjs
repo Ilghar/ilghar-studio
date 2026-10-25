@@ -45,3 +45,19 @@ test("both pages declare canonical and hreflang", () => {
   assert.match(read("src/routes/de/index.tsx"), /pageHead\("de"\)/);
   assert.match(read("src/routes/index.tsx"), /pageHead\("en"\)/);
 });
+
+test("built pages allow inline scripts only by hash", { skip: !existsSync("dist/client/index.html") }, async () => {
+  const { createHash } = await import("node:crypto");
+  for (const f of ["dist/client/index.html", "dist/client/de/index.html", "dist/client/404.html"]) {
+    const html = read(f);
+    const csp = html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/)?.[1];
+    assert.ok(csp, `${f} has no CSP meta`);
+    const scriptSrc = csp.split(";").find((d) => d.trim().startsWith("script-src"));
+    assert.doesNotMatch(scriptSrc, /unsafe-inline/, f);
+    for (const m of html.matchAll(/<script(?![^>]*\ssrc=)[^>]*>([\s\S]*?)<\/script>/g)) {
+      if (!m[1]) continue;
+      const h = `'sha256-${createHash("sha256").update(m[1]).digest("base64")}'`;
+      assert.ok(scriptSrc.includes(h), `${f}: inline script not hashed`);
+    }
+  }
+});

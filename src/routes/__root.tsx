@@ -18,11 +18,6 @@ export const Route = createRootRoute({
       { name: "theme-color", content: "#4A434C" },
       { name: "color-scheme", content: "dark light" },
       { name: "referrer", content: "strict-origin-when-cross-origin" },
-      {
-        httpEquiv: "Content-Security-Policy",
-        content:
-          "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'",
-      },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
