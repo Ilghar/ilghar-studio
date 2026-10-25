@@ -22,14 +22,9 @@ export const Route = createRootRoute({
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       { rel: "stylesheet", href: appCss },
+      { rel: "preload", href: "/fonts/jost-latin-400-normal.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
       { rel: "manifest", href: "/site.webmanifest" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossOrigin: "anonymous",
-      },
     ],
   }),
   component: RootDocument,
