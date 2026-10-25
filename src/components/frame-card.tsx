@@ -70,14 +70,14 @@ export function FrameCard({
           <span className="absolute inset-x-0 bottom-2 flex justify-center px-2">
             <span
               className={cn(
-                "caption-plate w-full rounded-xl text-center backdrop-blur-md",
-                featured ? "bg-canvas/64 px-3 py-2" : "bg-canvas/40 px-2 py-1.5",
+                "caption-plate w-full rounded-xl bg-surface text-center",
+                featured ? "px-3 py-2" : "px-2 py-1.5",
               )}
             >
               <span className="mb-1 flex items-center justify-center gap-1">
                 <span
                   className={cn(
-                    "line-clamp-1 font-medium text-ink uppercase dark:text-accent",
+                    "line-clamp-1 font-medium text-ink uppercase",
                     featured
                       ? "text-[0.7rem] tracking-[0.14em] md:text-[0.78rem]"
                       : "text-[0.58rem] tracking-[0.1em] md:text-[0.66rem]",
@@ -95,7 +95,7 @@ export function FrameCard({
               </span>
               <span
                 className={cn(
-                  "block line-clamp-1 font-light tracking-wide text-muted dark:text-ink",
+                  "block line-clamp-1 font-light tracking-wide text-ink",
                   featured ? "text-[0.82rem] md:text-[0.92rem]" : "text-[0.68rem] md:text-[0.76rem]",
                 )}
               >
