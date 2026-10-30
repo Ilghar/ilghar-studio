@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Nunito+Sans:wght@600;700&display=swap");
+@import "./fonts.css";
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -39,10 +39,10 @@
   --surface: #5a535c;
   --ink: #f4eef3;
   --muted: #cbbdce;
-  --subtle: #9a8a9c;
+  --subtle: #cbbdce;
   --accent: #e8a8bc;
-  --accent-fg: #2c262f;
-  --line: #4a424c;
+  --accent-fg: #4a434c;
+  --line: #a394ae;
   --ring: #e8a8bc;
   --shadow-frame:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
@@ -124,6 +124,19 @@
   transition: opacity var(--motion-slow) var(--ease-out);
 }
 
+/* Only the active theme's cover matches a rule with a background, so only that
+   file is fetched. Bump ?v= with V in profile.ts. */
+.cover-img {
+  background-position: center;
+  background-size: cover;
+}
+:root:not(.dark) .cover-day {
+  background-image: url("/cover-day.jpg?v=16");
+}
+.dark .cover-night {
+  background-image: url("/cover-night.jpg?v=16");
+}
+
 .viewer-strip {
   transition: transform var(--motion-fast) var(--ease-out);
 }
@@ -138,6 +151,26 @@
 .group:focus-visible .frame-raise {
   box-shadow: var(--shadow-frame-hover);
   transform: translateY(-3px);
+}
+
+.dir-ltr {
+  direction: ltr;
+}
+.img-strip {
+  max-width: none;
+  width: auto;
+  height: 100%;
+}
+.origin-sun {
+  transform-origin: 12px 12px;
+}
+
+/* Soft halo in the plate colour keeps label text legible over busy photos
+   while the plate itself stays translucent. */
+.caption-halo {
+  text-shadow:
+    0 0 2px var(--canvas),
+    0 0 6px var(--canvas);
 }
 
 .caption-plate {
