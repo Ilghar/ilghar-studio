@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { useLang } from "@/hooks/use-lang";
-import { t } from "@/lib/i18n";
+import { type Lang, t } from "@/lib/i18n";
 import {
   collections,
   profile,
@@ -14,8 +14,8 @@ import { LangToggle } from "@/components/lang-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Viewer } from "@/components/viewer";
 
-export function LinkInBio() {
-  const { lang, set } = useLang();
+export function LinkInBio({ initialLang }: { initialLang?: Lang } = {}) {
+  const { lang, set } = useLang(initialLang);
   const [open, setOpen] = useState<Collection | null>(null);
 
   const visible = useMemo(
@@ -27,7 +27,7 @@ export function LinkInBio() {
   const live = open ? collections.find((c) => c.id === open.id) ?? open : null;
 
   return (
-    <div className="relative min-h-dvh overflow-x-hidden bg-canvas text-ink">
+    <main className="relative min-h-dvh overflow-x-hidden bg-canvas text-ink">
       <div className="mx-auto w-full max-w-md md:max-w-xl lg:max-w-2xl">
         <div className="md:px-8">
           <Cover />
@@ -40,9 +40,12 @@ export function LinkInBio() {
             <div className="mt-10">
               <FrameCard
                 cover={featured.cover}
+                coverHi={featured.coverHi}
+                coverAlt={featured.coverAlt}
                 title={t(lang, featured.title)}
                 kicker={t(lang, featured.kicker)}
                 featured
+                eager
                 onClick={() => setOpen(featured)}
               />
             </div>
@@ -53,6 +56,8 @@ export function LinkInBio() {
               <FrameCard
                 key={item.id}
                 cover={item.cover}
+                coverHi={item.coverHi}
+                coverAlt={item.coverAlt}
                 title={t(lang, item.title)}
                 kicker={t(lang, item.kicker)}
                 contain={item.contain}
@@ -72,27 +77,17 @@ export function LinkInBio() {
       {live?.pages || live?.video || live?.strip ? (
         <Viewer collection={live} lang={lang} onClose={() => setOpen(null)} />
       ) : null}
-    </div>
+    </main>
   );
 }
 
 function Cover() {
   return (
     <div className="relative aspect-[16/9] w-full overflow-hidden md:rounded-b-sm">
-      <img
-        src={profile.coverDay}
-        alt=""
-        width={1600}
-        height={900}
-        className="cover-swap absolute inset-0 h-full w-full object-cover object-center opacity-100 dark:opacity-0"
-      />
-      <img
-        src={profile.coverNight}
-        alt=""
-        width={1600}
-        height={900}
-        className="cover-swap absolute inset-0 h-full w-full object-cover object-center opacity-0 dark:opacity-100"
-      />
+      {/* Day and night covers are CSS backgrounds keyed to the theme class, so
+          the browser only downloads the one that is showing. */}
+      <div aria-hidden="true" className="cover-img cover-day absolute inset-0" />
+      <div aria-hidden="true" className="cover-img cover-night absolute inset-0" />
       <div
         aria-hidden="true"
         className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-canvas to-transparent"
@@ -117,20 +112,20 @@ function Identity({
         height={1000}
         className="size-28 rounded-full object-cover object-[center_28%] ring-4 ring-canvas sm:size-32 md:size-36"
       />
-      <p className="mt-6 text-[0.68rem] font-medium tracking-[0.32em] text-accent uppercase md:text-[0.75rem]">
+      <p className="mt-6 text-[0.68rem] font-medium tracking-[0.32em] text-ink uppercase md:text-[0.75rem]">
         {profile.handle}
       </p>
       <h1 className="mt-2 font-display text-[1.75rem] font-semibold tracking-[0.01em] text-ink sm:text-[1.95rem] md:text-[2.25rem]">
         {profile.name}
       </h1>
-      <p className="mt-1 text-[0.9rem] font-light tracking-wide text-muted md:text-[1.02rem]">
+      <p className="mt-1 text-[0.9rem] font-light tracking-wide text-ink md:text-[1.02rem]">
         {t(lang, "location")}
         <span className="mx-2 text-subtle/70" aria-hidden="true">
           ·
         </span>
         {t(lang, "roles")}
       </p>
-      <p className="mt-6 max-w-[34ch] text-[0.92rem] font-light leading-relaxed text-muted md:max-w-[42ch] md:text-[1.05rem]">
+      <p className="mt-6 max-w-[34ch] text-[0.92rem] font-light leading-relaxed text-ink md:max-w-[42ch] md:text-[1.05rem]">
         {t(lang, "bio")}
       </p>
       <div className="mt-6 flex w-full items-center justify-between">
@@ -166,7 +161,7 @@ function Footer({ lang }: { lang: ReturnType<typeof useLang>["lang"] }) {
             href={social.href}
             target="_blank"
             rel="me noopener noreferrer"
-            className="text-[0.7rem] font-medium tracking-[0.2em] text-muted uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.78rem]"
+            className="text-[0.7rem] font-medium tracking-[0.2em] text-ink uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.78rem]"
           >
             {social.label}
           </a>
@@ -176,7 +171,7 @@ function Footer({ lang }: { lang: ReturnType<typeof useLang>["lang"] }) {
         type="button"
         onClick={copyEmail}
         className={cn(
-          "inline-flex min-h-10 items-center gap-2 text-[0.75rem] font-light tracking-wide text-subtle md:text-[0.85rem]",
+          "inline-flex min-h-10 items-center gap-2 text-[0.75rem] font-light tracking-wide text-ink md:text-[0.85rem]",
           "transition-colors hover:text-ink",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         )}

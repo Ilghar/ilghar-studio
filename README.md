@@ -31,3 +31,9 @@ npm run preview
 | Photos, PDFs, card crops | `public/` |
 
 Images live in `public/` (cover, avatar, `viewers/`, `docs/`). After replacing a file, bump the `?v=` query on its path in `profile.ts` so the browser does not keep the old one.
+
+## Hosting (GitHub Pages)
+
+`npm run build` prerenders `/` (English) and `/de/` (German) to static HTML in `dist/client`. There is no server, database or sign-in. `npm run preview` serves that folder on port 8081.
+
+`.github/workflows/pages.yml` builds and publishes `dist/client` to GitHub Pages on every push to `main`. `public/CNAME` holds the custom domain `ilghar.studio`.

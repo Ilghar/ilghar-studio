@@ -3,18 +3,24 @@ import { cn } from "@/lib/utils";
 
 export function FrameCard({
   cover,
+  coverHi,
+  coverAlt = "",
   title,
   kicker,
   featured = false,
+  eager = false,
   external = false,
   contain = false,
   onClick,
   href,
 }: {
   cover: string;
+  coverHi?: string;
+  coverAlt?: string;
   title: string;
   kicker: string;
   featured?: boolean;
+  eager?: boolean;
   external?: boolean;
   contain?: boolean;
   onClick?: () => void;
@@ -37,7 +43,12 @@ export function FrameCard({
         >
           <img
             src={cover}
-            alt=""
+            srcSet={coverHi ? `${cover} ${featured ? 1280 : 640}w, ${coverHi} 1400w` : undefined}
+            sizes={featured ? "(min-width: 1024px) 640px, (min-width: 768px) 512px, 92vw" : "(min-width: 1024px) 310px, (min-width: 768px) 250px, 45vw"}
+            alt={coverAlt}
+            width={640}
+            height={640}
+            loading={eager ? "eager" : "lazy"}
             decoding="async"
             className={cn(
               "transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04] group-focus-visible:scale-[1.04]",
@@ -59,14 +70,14 @@ export function FrameCard({
           <span className="absolute inset-x-0 bottom-2 flex justify-center px-2">
             <span
               className={cn(
-                "caption-plate w-full rounded-xl text-center backdrop-blur-md",
-                featured ? "bg-canvas/64 px-3 py-2" : "bg-canvas/40 px-2 py-1.5",
+                "caption-plate caption-halo w-full rounded-xl text-center backdrop-blur-md",
+                featured ? "bg-canvas/80 px-3 py-2" : "bg-canvas/72 px-2 py-1.5",
               )}
             >
               <span className="mb-1 flex items-center justify-center gap-1">
                 <span
                   className={cn(
-                    "line-clamp-1 font-medium text-accent uppercase",
+                    "line-clamp-1 font-medium text-ink uppercase",
                     featured
                       ? "text-[0.7rem] tracking-[0.14em] md:text-[0.78rem]"
                       : "text-[0.58rem] tracking-[0.1em] md:text-[0.66rem]",
@@ -84,7 +95,7 @@ export function FrameCard({
               </span>
               <span
                 className={cn(
-                  "block line-clamp-1 font-light tracking-wide text-muted",
+                  "block line-clamp-1 font-light tracking-wide text-ink",
                   featured ? "text-[0.82rem] md:text-[0.92rem]" : "text-[0.68rem] md:text-[0.76rem]",
                 )}
               >

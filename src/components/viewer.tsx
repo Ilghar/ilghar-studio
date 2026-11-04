@@ -21,7 +21,8 @@ export function Viewer({
     return (
       <VideoOverlay
         src={collection.video}
-        poster={collection.cover}
+        poster={collection.poster ?? collection.cover}
+        label={collection.videoLabel}
         href={collection.href}
         title={t(lang, collection.title)}
         lang={lang}
@@ -173,11 +174,11 @@ function DocumentOverlay({
         <div className="min-w-0 text-center">
           <h2
             id={titleId}
-            className="truncate text-[0.68rem] font-medium tracking-[0.22em] text-accent uppercase md:text-[0.75rem]"
+            className="truncate text-[0.68rem] font-medium tracking-[0.22em] text-ink uppercase md:text-[0.75rem]"
           >
             {t(lang, collection.title)}
           </h2>
-          <p className="text-xs font-light tabular-nums tracking-[0.16em] text-subtle md:text-sm">
+          <p className="text-xs font-light tabular-nums tracking-[0.16em] text-ink md:text-sm">
             {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
           </p>
         </div>
@@ -185,7 +186,7 @@ function DocumentOverlay({
           <a
             href={collection.downloadHref}
             download={collection.downloadName}
-            className="px-2 text-[0.68rem] font-medium tracking-[0.18em] text-muted uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.75rem]"
+            className="px-2 text-[0.68rem] font-medium tracking-[0.18em] text-ink uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.75rem]"
           >
             {t(lang, "download")}
           </a>
@@ -197,8 +198,7 @@ function DocumentOverlay({
       <div
         ref={scroller}
         dir="ltr"
-        className="flex h-[calc(100dvh-8.25rem)] snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-x-contain"
-        style={{ direction: "ltr" }}
+        className="flex h-[calc(100dvh-8.25rem)] snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-x-contain dir-ltr"
       >
         {pages.map((page, i) => {
           const active = i === index;
@@ -232,7 +232,7 @@ function DocumentOverlay({
                 draggable={false}
               />
               {spread && active ? (
-                <p className="pointer-events-none absolute bottom-3 left-0 right-0 text-center text-[0.68rem] font-light tracking-[0.16em] text-subtle uppercase">
+                <p className="pointer-events-none absolute bottom-3 left-0 right-0 text-center text-[0.68rem] font-light tracking-[0.16em] text-ink uppercase">
                   {z === "full" ? t(lang, "tapSpread") : t(lang, "tapFull")}
                 </p>
               ) : null}
@@ -349,11 +349,11 @@ function StripOverlay({
         <div className="min-w-0 text-center">
           <h2
             id={titleId}
-            className="truncate text-[0.68rem] font-medium tracking-[0.22em] text-accent uppercase md:text-[0.75rem]"
+            className="truncate text-[0.68rem] font-medium tracking-[0.22em] text-ink uppercase md:text-[0.75rem]"
           >
             {title}
           </h2>
-          <p className="text-xs font-light tabular-nums tracking-[0.16em] text-subtle md:text-sm">
+          <p className="text-xs font-light tabular-nums tracking-[0.16em] text-ink md:text-sm">
             {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
           </p>
         </div>
@@ -361,7 +361,7 @@ function StripOverlay({
           <a
             href={downloadHref}
             download={downloadName}
-            className="px-2 text-[0.68rem] font-medium tracking-[0.18em] text-muted uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.75rem]"
+            className="px-2 text-[0.68rem] font-medium tracking-[0.18em] text-ink uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.75rem]"
           >
             {t(lang, "download")}
           </a>
@@ -374,8 +374,7 @@ function StripOverlay({
         ref={scroller}
         dir="ltr"
         onScroll={onScroll}
-        className="h-[calc(100dvh-8.25rem)] overflow-x-auto overflow-y-hidden overscroll-x-contain"
-        style={{ direction: "ltr" }}
+        className="h-[calc(100dvh-8.25rem)] overflow-x-auto overflow-y-hidden overscroll-x-contain dir-ltr"
       >
         <img
           src={src}
@@ -387,8 +386,7 @@ function StripOverlay({
             const el = scroller.current;
             if (el) el.scrollLeft = 0;
           }}
-          className="block h-full max-w-none select-none"
-          style={{ maxWidth: "none", width: "auto", height: "100%" }}
+          className="img-strip block h-full max-w-none select-none"
         />
       </div>
 
@@ -418,6 +416,7 @@ function StripOverlay({
 function VideoOverlay({
   src,
   poster,
+  label,
   href,
   title,
   lang,
@@ -425,6 +424,7 @@ function VideoOverlay({
 }: {
   src: string;
   poster?: string;
+  label?: string;
   href?: string;
   title: string;
   lang: Lang;
@@ -497,6 +497,7 @@ function VideoOverlay({
           ref={videoRef}
           src={src}
           poster={poster}
+          aria-label={label}
           controls
           playsInline
           autoPlay

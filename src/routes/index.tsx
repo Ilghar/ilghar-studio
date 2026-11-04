@@ -1,17 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LinkInBio } from "@/components/link-in-bio";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   component: Home,
-  head: () => ({
-    meta: [
-      {
-        name: "description",
-        content:
-          "Ilghar Dadgostari — queer-feminist curator, designer and sculptor based in Berlin. Links to studio, BLADE Festival, LinkedIn, and more.",
-      },
-    ],
-  }),
+  head: () => pageHead("en"),
 });
 
 function Home() {
