@@ -7,6 +7,15 @@ export const copy = {
     de: "Kurator*in · Designer*in · Bildhauer*in",
   },
   location: { en: "Berlin", de: "Berlin" },
+  // PROVISIONAL (brief-site-home-v3.md): the "AI designer" title is not yet confirmed by Hāèl.
+  metaTitle: {
+    en: "Ilghar Dadgostari: AI designer, Berlin | ilghar.studio",
+    de: "Ilghar Dadgostari: AI Designer*in, Berlin | ilghar.studio",
+  },
+  metaDescription: {
+    en: "Ilghar Dadgostari, a Berlin-based AI designer, checks generated design against facts a typographer and an architect can measure, before anyone argues about taste.",
+    de: "Ilghar Dadgostari, AI Designer*in in Berlin, prüft generiertes Design an Fakten, die Typograf*innen und Architekt*innen messen können, bevor über Geschmack gestritten wird.",
+  },
   bio: {
     en: "Queer-feminist curator, designer and sculptor. Practice at the intersections of art, culture and social justice — shaping spaces for intercultural dialogue and a more pluriversal world.",
     de: "Queer-feministische Kurator*in, Designer*in und Bildhauer*in. Praxis an den Verflechtungen von Kunst, Kultur und sozialer Gerechtigkeit — Räume für interkulturellen Dialog und eine pluriversale Gesellschaft.",

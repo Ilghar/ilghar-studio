@@ -6,15 +6,12 @@ export const OG_IMAGE = `${SITE_URL}/og.jpg`;
 
 export const pageUrl = (lang: Lang) => (lang === "de" ? `${SITE_URL}/de/` : `${SITE_URL}/`);
 
-const descriptions: Record<Lang, string> = {
-  en: `${profile.name}: ${copy.bio.en}`,
-  de: `${profile.name}: ${copy.bio.de}`,
-};
+const descriptions: Record<Lang, string> = copy.metaDescription;
 
 /** Per-page head for the EN (/) and DE (/de/) versions of the landing page. */
 export function pageHead(lang: Lang) {
   const url = pageUrl(lang);
-  const title = `${profile.name} · ${copy.roles[lang]}`;
+  const title = copy.metaTitle[lang];
   return {
     meta: [
       { title },
