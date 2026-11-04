@@ -109,7 +109,7 @@ function Identity({ lang }: { lang: Lang }) {
       <p className="mt-6 text-[0.68rem] font-medium tracking-[0.32em] text-ink uppercase md:text-[0.75rem]">
         {profile.handle}
       </p>
-      <h1 className="mt-2 font-display text-[1.75rem] font-semibold tracking-[0.01em] text-ink sm:text-[1.95rem] md:text-[2.25rem]">
+      <h1 className="mt-2 font-display text-[1.75rem] font-normal tracking-[0.01em] text-ink sm:text-[1.95rem] md:text-[2.25rem]">
         {profile.name}
       </h1>
       <p className="mt-1 text-[0.9rem] font-light tracking-wide text-ink md:text-[1.02rem]">
