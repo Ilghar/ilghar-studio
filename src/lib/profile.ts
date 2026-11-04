@@ -1,6 +1,6 @@
 import type { CopyKey } from "./i18n";
 
-const V = "16";
+const V = "17";
 
 export const profile = {
   name: "Ilghar Dadgostari",
