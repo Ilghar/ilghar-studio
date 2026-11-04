@@ -46,10 +46,18 @@ export const copy = {
   prev: { en: "Previous", de: "Zurück" },
   next: { en: "Next", de: "Weiter" },
   close: { en: "Close", de: "Schließen" },
-  download: { en: "File", de: "Datei" },
+  download: { en: "Download", de: "Herunterladen" },
   openExternal: { en: "Open", de: "Öffnen" },
   tapSpread: { en: "Tap left or right", de: "Links oder rechts tippen" },
   tapFull: { en: "Tap to see both pages", de: "Tippen für beide Seiten" },
+  language: { en: "Language", de: "Sprache" },
+  socialLinks: { en: "Social links", de: "Soziale Netzwerke" },
+  errorTitle: { en: "Something went wrong", de: "Etwas ist schiefgelaufen" },
+  errorBody: {
+    en: "An unexpected error occurred. Try reloading the page.",
+    de: "Ein unerwarteter Fehler ist aufgetreten. Bitte lade die Seite neu.",
+  },
+  germanLevel: { en: "German (C2)", de: "Deutsch (C2)" },
   visitFestival: { en: "Festival site", de: "Festival-Seite" },
 } as const;
 
@@ -59,15 +67,8 @@ export function t(lang: Lang, key: CopyKey): string {
   return copy[key][lang];
 }
 
-export function readLang(): Lang {
-  try {
-    const stored = localStorage.getItem("ilghar-lang");
-    if (stored === "de" || stored === "en") return stored;
-  } catch {
-    /* private mode */
-  }
-  if (typeof navigator !== "undefined") {
-    return navigator.language.toLowerCase().startsWith("de") ? "de" : "en";
-  }
-  return "en";
-}
+export const langFromPath = (pathname: string): Lang =>
+  /^\/de(\/|$)/.test(pathname) ? "de" : "en";
+
+/** URL of the matching page in the other language. EN lives at /, DE at /de/. */
+export const langPath = (lang: Lang) => (lang === "de" ? "/de/" : "/");

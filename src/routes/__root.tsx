@@ -5,10 +5,11 @@ import {
   Scripts,
   useRouterState,
 } from "@tanstack/react-router";
+import { langFromPath } from "@/lib/i18n";
 import { jsonLd } from "@/lib/seo";
 import appCss from "../styles.css?url";
 
-const BOOT = `(function(){try{document.documentElement.setAttribute("dir","ltr");var t=localStorage.getItem("ilghar-theme");var d=t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",d);document.documentElement.style.colorScheme=d?"dark":"light";var l=/^\\/de(\\/|$)/.test(location.pathname)?"de":localStorage.getItem("ilghar-lang");if(l!=="de"&&l!=="en"){l=(navigator.language||"").toLowerCase().startsWith("de")?"de":"en";}document.documentElement.lang=l;}catch(e){}})();`;
+const BOOT = `(function(){try{document.documentElement.setAttribute("dir","ltr");var t=localStorage.getItem("ilghar-theme");var d=t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",d);document.documentElement.style.colorScheme=d?"dark":"light";document.documentElement.lang=/^\\/de(\\/|$)/.test(location.pathname)?"de":"en";}catch(e){}})();`;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -32,7 +33,7 @@ export const Route = createRootRoute({
 
 function RootDocument() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const lang = /^\/de(\/|$)/.test(pathname) ? "de" : "en";
+  const lang = langFromPath(pathname);
   return (
     <html lang={lang} dir="ltr" suppressHydrationWarning>
       <head>

@@ -8,5 +8,5 @@ export const Route = createFileRoute("/de/")({
 });
 
 function HomeDe() {
-  return <LinkInBio initialLang="de" />;
+  return <LinkInBio lang="de" />;
 }

@@ -53,6 +53,13 @@ export function jsonLd(lang: Lang) {
         inLanguage: ["en", "de"],
       },
       {
+        "@type": "WebPage",
+        "@id": `${pageUrl(lang)}#webpage`,
+        url: pageUrl(lang),
+        inLanguage: lang,
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+      },
+      {
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
         name: profile.name,
@@ -61,6 +68,7 @@ export function jsonLd(lang: Lang) {
         image: `${SITE_URL}/avatar.jpg`,
         jobTitle: copy.roles[lang].split(" · "),
         description: copy.bio[lang],
+        knowsLanguage: [{ "@type": "Language", name: "German", alternateName: "de", description: "C2" }],
         address: { "@type": "PostalAddress", addressLocality: copy.location[lang] },
         sameAs: socialLinks.map((s) => s.href),
       },

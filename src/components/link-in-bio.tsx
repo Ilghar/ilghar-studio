@@ -14,8 +14,8 @@ import { LangToggle } from "@/components/lang-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Viewer } from "@/components/viewer";
 
-export function LinkInBio({ initialLang }: { initialLang?: Lang } = {}) {
-  const { lang, set } = useLang(initialLang);
+export function LinkInBio({ lang }: { lang: Lang }) {
+  useLang(lang);
   const [open, setOpen] = useState<Collection | null>(null);
 
   const visible = useMemo(
@@ -34,7 +34,7 @@ export function LinkInBio({ initialLang }: { initialLang?: Lang } = {}) {
         </div>
 
         <div className="px-5 pb-20 md:px-8">
-          <Identity lang={lang} onLang={set} />
+          <Identity lang={lang} />
 
           {featured ? (
             <div className="mt-10">
@@ -96,13 +96,7 @@ function Cover() {
   );
 }
 
-function Identity({
-  lang,
-  onLang,
-}: {
-  lang: ReturnType<typeof useLang>["lang"];
-  onLang: (lang: ReturnType<typeof useLang>["lang"]) => void;
-}) {
+function Identity({ lang }: { lang: Lang }) {
   return (
     <header className="relative z-10 -mt-12 flex flex-col items-center text-center">
       <img
@@ -129,7 +123,7 @@ function Identity({
         {t(lang, "bio")}
       </p>
       <div className="mt-6 flex w-full items-center justify-between">
-        <LangToggle lang={lang} onChange={onLang} />
+        <LangToggle lang={lang} />
         <ThemeToggle
           lightLabel={t(lang, "themeLight")}
           darkLabel={t(lang, "themeDark")}
@@ -139,7 +133,7 @@ function Identity({
   );
 }
 
-function Footer({ lang }: { lang: ReturnType<typeof useLang>["lang"] }) {
+function Footer({ lang }: { lang: Lang }) {
   const [copied, setCopied] = useState(false);
 
   async function copyEmail() {
@@ -154,7 +148,7 @@ function Footer({ lang }: { lang: ReturnType<typeof useLang>["lang"] }) {
 
   return (
     <footer className="mt-12 flex flex-col items-center gap-5 text-center">
-      <nav aria-label="Elsewhere" className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+      <nav aria-label={t(lang, "socialLinks")} className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
         {socialLinks.map((social) => (
           <a
             key={social.id}

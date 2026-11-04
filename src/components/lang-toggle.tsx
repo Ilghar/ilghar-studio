@@ -1,15 +1,9 @@
-import type { Lang } from "@/lib/i18n";
+import { type Lang, langPath, t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export function LangToggle({
-  lang,
-  onChange,
-}: {
-  lang: Lang;
-  onChange: (lang: Lang) => void;
-}) {
+export function LangToggle({ lang }: { lang: Lang }) {
   return (
-    <div role="group" aria-label="Language" className="-ml-1 flex items-center gap-2.5">
+    <div role="group" aria-label={t(lang, "language")} className="-ml-1 flex items-center gap-2.5">
       {(["en", "de"] as const).map((code, i) => {
         const active = lang === code;
         return (
@@ -19,10 +13,11 @@ export function LangToggle({
                 ·
               </span>
             ) : null}
-            <button
-              type="button"
-              onClick={() => onChange(code)}
-              aria-pressed={active}
+            <a
+              href={langPath(code)}
+              hrefLang={code}
+              lang={code}
+              aria-current={active ? "page" : undefined}
               className={cn(
                 "px-1 text-[0.7rem] font-medium tracking-[0.22em] uppercase transition-colors duration-200",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
@@ -30,7 +25,7 @@ export function LangToggle({
               )}
             >
               {code}
-            </button>
+            </a>
           </span>
         );
       })}
