@@ -212,3 +212,10 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Persian runs: Vazirmatn, no tracking (spacing breaks joins). See hael-design-system/typography.md. */
+[lang="fa"] {
+  font-family: "Vazirmatn", "Noto Naskh Arabic", sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+}
