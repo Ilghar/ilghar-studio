@@ -1,6 +1,6 @@
 import type { CopyKey } from "./i18n";
 
-const V = "17";
+const V = "18";
 
 export const profile = {
   name: "Ilghar Dadgostari",
@@ -38,6 +38,9 @@ export type Collection = {
   cover: string;
   /** Full-resolution original, offered to high-DPI screens via srcset. */
   coverHi?: string;
+  /** Dark-theme cover (optional picture source). */
+  coverDark?: string;
+  coverDarkHi?: string;
   /** Alt text for the card image. */
   coverAlt?: string;
   title: CopyKey;
@@ -149,9 +152,11 @@ export const collections: Collection[] = [
   },
   {
     id: "abschluss",
-    cover: `/viewers/cards/abschluss.webp?v=${V}`,
-    coverHi: `/viewers/cards/abschluss.jpg?v=${V}`,
-    coverAlt: '"Abschluss-Zeugnisse" over a symmetrical white faceted geometric form on deep blue.',
+    cover: `/viewers/cards/abschluss-placeholder.webp?v=${V}`,
+    coverHi: `/viewers/cards/abschluss-placeholder.webp?v=${V}`,
+    coverDark: `/viewers/cards/abschluss-placeholder-dark.webp?v=${V}`,
+    coverDarkHi: `/viewers/cards/abschluss-placeholder-dark.webp?v=${V}`,
+    coverAlt: "Diplomas — palette placeholder until a new cover is chosen.",
     title: "diplomas",
     kicker: "diplomasHint",
     pages: numbered("/viewers/abschluss", 7, "Diplomas", "Abschlusszeugnisse"),
@@ -161,9 +166,11 @@ export const collections: Collection[] = [
   },
   {
     id: "fach",
-    cover: `/viewers/cards/fach.webp?v=${V}`,
-    coverHi: `/viewers/cards/fach.jpg?v=${V}`,
-    coverAlt: '"Sprach- & Fach-Zeugnisse" over a symmetrical blue faceted geometric form on white.',
+    cover: `/viewers/cards/fach-placeholder.webp?v=${V}`,
+    coverHi: `/viewers/cards/fach-placeholder.webp?v=${V}`,
+    coverDark: `/viewers/cards/fach-placeholder-dark.webp?v=${V}`,
+    coverDarkHi: `/viewers/cards/fach-placeholder-dark.webp?v=${V}`,
+    coverAlt: "Language and professional certificates — palette placeholder until a new cover is chosen.",
     title: "langCerts",
     kicker: "langCertsHint",
     pages: numbered("/viewers/fach", 4, "Language & professional certificates", "Sprach- & Fachzeugnisse"),
@@ -175,7 +182,7 @@ export const collections: Collection[] = [
     id: "studio",
     cover: `/viewers/studio/cover.webp?v=${V}`,
     coverHi: `/viewers/studio/cover.png?v=${V}`,
-    coverAlt: 'Lilac wireframe of the SÁBÁT pavilion: a geodesic base with a pyramid peak on each triangle, with ilghar.studio across it.',
+    coverAlt: 'Lilac wireframe of the SÁBÁT pavilion: a pavilion base with a pyramid peak on each triangle, with ilghar.studio across it.',
     title: "studio",
     kicker: "studioHint",
     href: "https://ilghar.studio",
@@ -183,9 +190,11 @@ export const collections: Collection[] = [
   },
   {
     id: "blade",
-    cover: `/viewers/cards/blade.webp?v=${V}`,
-    coverHi: `/viewers/cards/blade.jpg?v=${V}`,
-    coverAlt: "BLADE Festival logo over glossy violet and green 3D ribbons.",
+    cover: `/viewers/cards/blade-placeholder.webp?v=${V}`,
+    coverHi: `/viewers/cards/blade-placeholder.webp?v=${V}`,
+    coverDark: `/viewers/cards/blade-placeholder-dark.webp?v=${V}`,
+    coverDarkHi: `/viewers/cards/blade-placeholder-dark.webp?v=${V}`,
+    coverAlt: "BLADE Festival — palette placeholder until a new cover is chosen.",
     title: "blade",
     kicker: "bladeHint",
     video: "/media/blade.mp4",

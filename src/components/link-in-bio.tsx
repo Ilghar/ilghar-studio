@@ -57,6 +57,8 @@ export function LinkInBio({ lang }: { lang: Lang }) {
                 key={item.id}
                 cover={item.cover}
                 coverHi={item.coverHi}
+                coverDark={item.coverDark}
+                coverDarkHi={item.coverDarkHi}
                 coverAlt={item.coverAlt}
                 title={t(lang, item.title)}
                 kicker={t(lang, item.kicker)}
