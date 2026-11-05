@@ -8,8 +8,8 @@
     "build": "vite build && node scripts/postbuild.mjs",
     "preview": "node scripts/serve-static.mjs dist/client 8081",
     "typecheck": "tsc --noEmit",
-    "test": "node --test scripts/",
-    "test:ci": "node --test scripts/",
+    "test": "node --test scripts/*.test.mjs",
+    "test:ci": "node --test scripts/*.test.mjs",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
