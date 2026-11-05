@@ -109,9 +109,13 @@ function Identity({ lang }: { lang: Lang }) {
       <p className="mt-6 text-[0.68rem] font-medium tracking-[0.32em] text-ink uppercase md:text-[0.75rem]">
         {profile.handle}
       </p>
-      <h1 className="mt-2 font-display text-[1.75rem] font-semibold tracking-[0.01em] text-ink sm:text-[1.95rem] md:text-[2.25rem]">
-        {profile.name}
+      <h1 className="mt-2 font-display text-[1.75rem] font-normal tracking-[0.14em] uppercase text-ink sm:text-[1.95rem] md:text-[2.25rem]">
+        <span className="text-[#fcb4c4]">{profile.name.slice(0, 1)}</span>
+        {profile.name.slice(1)}
       </h1>
+      <p className="mt-2 font-display text-[0.95rem] font-medium tracking-[0.18em] uppercase text-[color:var(--mauve-label,#775a76)]">
+        {t(lang, "roles").split("·")[0].trim()}
+      </p>
       <p className="mt-1 text-[0.9rem] font-light tracking-wide text-ink md:text-[1.02rem]">
         {t(lang, "location")}
         <span className="mx-2 text-subtle/70" aria-hidden="true">

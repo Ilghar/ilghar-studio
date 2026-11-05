@@ -4,29 +4,29 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --canvas: #f3f1f6;
-  --surface: #fffcfe;
-  --ink: #4a3a5c;
-  --muted: #7a688c;
-  --subtle: #a394ae;
-  --accent: #c97a98;
-  --accent-fg: #fffafc;
-  --line: #e4dde8;
-  --ring: #c97a98;
+  --canvas: #f9fafb;
+  --surface: #f9fafb;
+  --ink: #473448;
+  --muted: #7d5a7c;
+  --subtle: #a6a1a7;
+  --accent: #856a8e;
+  --accent-fg: #f9fafb;
+  --line: #a6a1a7;
+  --ring: #856a8e;
   --shadow-frame:
     inset 0 1px 0 rgba(255, 255, 255, 0.98),
-    inset 0 -1px 0 rgba(74, 58, 92, 0.05),
-    0 2px 3px rgba(74, 58, 92, 0.06),
-    0 10px 18px rgba(74, 58, 92, 0.1),
-    0 28px 44px -8px rgba(74, 58, 92, 0.22);
+    inset 0 -1px 0 rgba(71, 52, 72, 0.05),
+    0 2px 3px rgba(71, 52, 72, 0.06),
+    0 10px 18px rgba(71, 52, 72, 0.1),
+    0 28px 44px -8px rgba(71, 52, 72, 0.22);
   --shadow-frame-hover:
     inset 0 1px 0 rgba(255, 255, 255, 1),
-    0 6px 10px rgba(74, 58, 92, 0.08),
-    0 20px 32px rgba(74, 58, 92, 0.14),
-    0 40px 56px -12px rgba(201, 122, 152, 0.28);
+    0 6px 10px rgba(71, 52, 72, 0.08),
+    0 20px 32px rgba(71, 52, 72, 0.14),
+    0 40px 56px -12px rgba(133, 106, 142, 0.28);
   --shadow-plate:
     0 1px 0 rgba(255, 255, 255, 0.7),
-    0 6px 18px rgba(74, 58, 92, 0.1);
+    0 6px 18px rgba(71, 52, 72, 0.1);
 
   --motion-quick: 160ms;
   --motion-fast: 280ms;
@@ -35,15 +35,15 @@
 }
 
 .dark {
-  --canvas: #4a434c;
-  --surface: #5a535c;
-  --ink: #f4eef3;
-  --muted: #cbbdce;
-  --subtle: #cbbdce;
-  --accent: #e8a8bc;
-  --accent-fg: #4a434c;
-  --line: #a394ae;
-  --ring: #e8a8bc;
+  --canvas: #2a272d;
+  --surface: #2a272d;
+  --ink: #d4d2d2;
+  --muted: #a6a1a7;
+  --subtle: #a6a1a7;
+  --accent: #fcb4c4;
+  --accent-fg: #2a272d;
+  --line: #a6a1a7;
+  --ring: #fcb4c4;
   --shadow-frame:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 2px 4px rgba(0, 0, 0, 0.25),
@@ -53,7 +53,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.14),
     0 8px 16px rgba(0, 0, 0, 0.3),
     0 24px 40px -8px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(232, 168, 188, 0.18);
+    0 0 0 1px rgba(252, 180, 196, 0.18);
   --shadow-plate:
     0 1px 0 rgba(255, 255, 255, 0.08),
     0 8px 20px rgba(0, 0, 0, 0.28);
@@ -61,7 +61,7 @@
 
 @theme {
   --font-sans: "Jost", "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-display: "Nunito Sans", "Jost", "Avenir Next", sans-serif;
+  --font-display: "Jost", "Avenir Next", sans-serif;
 
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
