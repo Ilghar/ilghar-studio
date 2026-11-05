@@ -210,3 +210,21 @@
   letter-spacing: 0;
   text-transform: none;
 }
+
+
+/* Home Live Function: one mauve frame; iframe height tracks the P01 embed. */
+.home-live-frame {
+  border-radius: 0;
+  border-width: 1px;
+  border-style: solid;
+}
+.home-live-iframe {
+  display: block;
+  width: 100%;
+  height: 52rem; /* content-following stand-in for the P01 walk-through */
+  border: 0;
+  background: transparent;
+}
+@media (min-width: 768px) {
+  .home-live-iframe { height: 44rem; }
+}
