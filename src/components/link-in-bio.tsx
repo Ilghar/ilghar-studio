@@ -87,8 +87,7 @@ export function LinkInBio({ lang }: { lang: Lang }) {
               <iframe
                 title="P01 abstention routing harness"
                 src="/demos/p01/index.html"
-                className="block w-full border-0"
-                style={{ minHeight: 520, height: 640 }}
+                className="home-live-iframe block w-full border-0"
                 loading="lazy"
               />
             </div>
