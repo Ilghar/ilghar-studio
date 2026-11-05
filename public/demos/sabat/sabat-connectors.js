@@ -25,7 +25,7 @@ function drawing(p){
         if(s.ri){const b0=s.rev?s.a:s.a.map((x,i)=>x+s.d[i]*(s.L-s.depth)),bl=s.rev?s.depth:s.depth;o.push({k:"p",pts:hull(cylPts(b0,s.d,bl,s.ri).map(pr)),s,bore:1})}}}return o};
   const all=views.map(v=>{const a=shapes(v);return a.filter(z=>z.s.t==="stub").concat(a.filter(z=>z.s.t!=="stub"))}),bx=(sh,stub)=>{let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;sh.filter(z=>stub||z.s.t!=="stub").forEach(z=>{(z.k==="c"?[[z.c[0]-z.r,z.c[1]-z.r],[z.c[0]+z.r,z.c[1]+z.r]]:z.pts).forEach(([x,y])=>{x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y)})});return {x0,x1,y0,y1}},ext=all.map(sh=>bx(sh)),exs=all.map(sh=>bx(sh,1));
   const sc=Math.min(...ext.map(e=>Math.min((W-2*pad-90)/(e.x1-e.x0||1),(VH-110)/(e.y1-e.y0||1))));
-  let o=`<svg viewBox="0 0 ${W} ${VH*3}" role="img" aria-label="${p.name}: front, side and top views, dimensions in mm" font-family="Jost,system-ui,sans-serif">`;
+  let o=`<svg viewBox="0 0 ${W} ${VH*3}" role="img" aria-label="${p.name}: front, side and top views, dimensions in mm" font-family="Jost">`;
   views.forEach((v,vi)=>{const e=ext[vi],cx=pad+ (W-2*pad-60)/2,cy=vi*VH+VH/2+8,ox=cx-sc*(e.x0+e.x1)/2,oy=cy-sc*(e.y0+e.y1)/2,T=([x,y])=>[ox+sc*x,oy+sc*y],pr=VIEWS[v];
     o+=`<text x="16" y="${vi*VH+26}" font-size="12" letter-spacing="2.4" fill="var(--label)">${v.toUpperCase()}</text>`;
     if(vi)o+=`<line x1="16" x2="${W-16}" y1="${vi*VH}" y2="${vi*VH}" stroke="var(--line)" stroke-width=".6" stroke-dasharray="1 3"/>`;
@@ -42,7 +42,7 @@ function drawing(p){
     for(const an of p.ann.filter(x=>x.v===v)){const o0=T(pr(an.o)),R=an.r||40,q1=pr(an.v1),q2=pr(an.v2),a1=Math.atan2(q1[1],q1[0]),a2=Math.atan2(q2[1],q2[0]);
       let d=a2-a1;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;const P1=[o0[0]+R*Math.cos(a1),o0[1]+R*Math.sin(a1)],P2=[o0[0]+R*Math.cos(a1+d),o0[1]+R*Math.sin(a1+d)],am=a1+d/2;
       o+=`<line x1="${o0[0]}" y1="${o0[1]}" x2="${o0[0]+(R+8)*Math.cos(a1)}" y2="${o0[1]+(R+8)*Math.sin(a1)}" stroke="var(--label)" stroke-width=".5" stroke-dasharray="2 2"/><line x1="${o0[0]}" y1="${o0[1]}" x2="${o0[0]+(R+8)*Math.cos(a1+d)}" y2="${o0[1]+(R+8)*Math.sin(a1+d)}" stroke="var(--label)" stroke-width=".5" stroke-dasharray="2 2"/>`;
-      o+=`<path d="M${P1[0].toFixed(1)},${P1[1].toFixed(1)} A${R},${R} 0 0 ${d>0?1:0} ${P2[0].toFixed(1)},${P2[1].toFixed(1)}" fill="none" stroke="#fcb4c4" stroke-width="1.6"/><text x="${(o0[0]+(R+24)*Math.cos(am)).toFixed(1)}" y="${(o0[1]+(R+20)*Math.sin(am)+4).toFixed(1)}" font-size="12" fill="var(--title)" text-anchor="middle">${an.label}</text>`}
+      o+=`<path d="M${P1[0].toFixed(1)},${P1[1].toFixed(1)} A${R},${R} 0 0 ${d>0?1:0} ${P2[0].toFixed(1)},${P2[1].toFixed(1)}" fill="none" stroke="#856a8e" stroke-width="1.6"/><text x="${(o0[0]+(R+24)*Math.cos(am)).toFixed(1)}" y="${(o0[1]+(R+20)*Math.sin(am)+4).toFixed(1)}" font-size="12" fill="var(--title)" text-anchor="middle">${an.label}</text>`}
     p.notes.filter(n=>n.v===v).forEach((n,k)=>{const s=T(pr(n.p)),tx=W-20,ty=vi*VH+56+k*20;o+=`<polyline points="${s[0]},${s[1]} ${tx-150},${ty-4} ${tx-6},${ty-4}" fill="none" stroke="var(--line)" stroke-width=".6"/><circle cx="${s[0]}" cy="${s[1]}" r="1.8" fill="var(--label)"/><text x="${tx}" y="${ty-8}" font-size="11.5" fill="var(--ink)" text-anchor="end">${n.t}</text>`});
   });
   o+=`<defs><marker id="ar" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1.5 L7,4 L0,6.5" fill="none" stroke="var(--label)" stroke-width="1"/></marker></defs>`;
