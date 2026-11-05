@@ -5,13 +5,13 @@
 
 :root {
   --canvas: #f9fafb;
-  --surface: #f5f7f9;
+  --surface: #f9fafb;
   --ink: #5a515c;
   --muted: #7d5a7c;
   --subtle: #948e95;
   --accent: #775a76;
   --accent-fg: #f9fafb;
-  --line: #b8b4b9;
+  --line: #a6a1a7;
   --ring: #7d5a7c;
   --accent-dot: #fcb4c4;
   --title: #856a8e;
@@ -39,16 +39,16 @@
 
 .dark {
   --canvas: #2a272d;
-  --surface: #302d34;
+  --surface: #2a272d;
   --ink: #d4d2d2;
   --muted: #a6a1a7;
-  --subtle: #8f8595;
-  --accent: #cf9aae;
+  --subtle: #948e95;
+  --accent: #fcb4c4;
   --accent-fg: #2a272d;
-  --line: #57535c;
-  --ring: #cf9aae;
-  --accent-dot: #cf9aae;
-  --title: #cf9aae;
+  --line: #5a515c;
+  --ring: #fcb4c4;
+  --accent-dot: #fcb4c4;
+  --title: #fcb4c4;
   --label: #a6a1a7;
   --shadow-frame:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),

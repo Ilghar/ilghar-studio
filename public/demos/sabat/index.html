@@ -31,7 +31,7 @@ img,svg,canvas,iframe,video{max-width:100%!important;height:auto}
 <style>
 :root{--name:#fcb4c4;--sec:#7d5a7c;--em:#856a8e;--label:#775a76;--key:#473448}
 :root{--canvas:#f9fafb;--surface:#f9fafb;--ink:#5a515c;--title:#473448;--muted:#7d5a7c;--subtle:#a6a1a7;--accent:#473448;--deco:#fcb4c4;--accent-fg:#f9fafb;--line:#856a8e;--ring:#473448;--track:#7d5a7c;--note-s:#5a515c;--note-p:#7d5a7c;color-scheme:light}
-[data-theme=dark]{--canvas:#2a272d;--surface:#302d34;--ink:#d4d2d2;--title:#d4d2d2;--muted:#a6a1a7;--subtle:#8f8595;--accent:#cf9aae;--deco:#cf9aae;--accent-fg:#2a272d;--line:#8f8595;--ring:#cf9aae;--track:#8f8595;--note-s:#a6a1a7;--note-p:#a6a1a7;--name:#cf9aae;--sec:#cf9aae;--em:#a6a1a7;--label:#a6a1a7;--key:#cf9aae;color-scheme:dark}
+[data-theme=dark]{--canvas:#2a272d;--surface:#2a272d;--ink:#d4d2d2;--title:#d4d2d2;--muted:#a6a1a7;--subtle:#948e95;--accent:#fcb4c4;--deco:#fcb4c4;--accent-fg:#2a272d;--line:#948e95;--ring:#fcb4c4;--track:#948e95;--note-s:#a6a1a7;--note-p:#a6a1a7;--name:#fcb4c4;--sec:#fcb4c4;--em:#a6a1a7;--label:#a6a1a7;--key:#fcb4c4;color-scheme:dark}
 *{box-sizing:border-box}
 :root{--font-title:Jost,system-ui,sans-serif;--font-body:Jost,system-ui,sans-serif}
 body{margin:0;background:var(--canvas);color:var(--ink);font:400 16px/1.65 var(--font-body)}
@@ -141,11 +141,20 @@ img,svg,canvas,iframe,video{max-width:100%!important;height:auto}
 </head>
 <body>
 <main>
-<figure class="hero-card" style="margin:0 0 1.5rem">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="hero-dark.svg">
-  <img src="hero-light.svg" width="960" height="360" alt="SÁBÁT, Parametric Shelter Explorer: a live model of the pavilion's frame, struts and connectors, beside a spiked plan outline. ilghar.studio." style="width:100%;height:auto;border-radius:14px;display:block">
-</picture>
+<figure class="hero" style="max-width:960px;margin:0 auto">
+  <div class="frame r83" style="aspect-ratio:8/3;border:1px solid var(--line,#7d5a7c);border-radius:0;overflow:hidden;background:var(--paper,#f9fafb)">
+    <figure class="hero" style="max-width:960px;margin:0 auto 24px">
+  <div class="frame r83" style="aspect-ratio:8/3;border:1px solid var(--line,#7d5a7c);border-radius:0;overflow:hidden;background:var(--paper,#f9fafb)">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="hero-dark.svg">
+      <img src="hero-light.svg" width="1280" height="480" alt="SÁBÁT, Parametric Shelter Explorer: a live pavilion model of frame, struts and connectors, beside a front-view line drawing of the triangulated frame with peaked panels. ilghar.studio." style="width:100%;height:auto;display:block;border-radius:0">
+    </picture>
+  </div>
+  <figcaption style="margin-top:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--label,#775a76)">SÁBÁT hero</figcaption>
+</figure>
+
+  </div>
+  <figcaption style="margin-top:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--label,#775a76)">SÁBÁT hero</figcaption>
 </figure>
 
 <header class="top"><span class="brand" aria-label="ilghar.studio, Sábát">ilghar.studio <span aria-hidden="true">|</span> SÁBÁT</span><button id="theme" type="button" aria-pressed="false">dark</button></header>

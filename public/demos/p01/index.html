@@ -17,7 +17,7 @@ img,svg,canvas,iframe{max-width:100%;height:auto}
 :root{--name:#fcb4c4;--em:#856a8e;--label:#775a76;--hairc:#7d5a7c;--sub:#5a515c;--sepc:#7d5a7c;--onplum:#f9fafb;--grid:#a6a1a7;color-scheme:light}
 :root{--paper:#f9fafb;--ink:#5a515c;--plum:#473448;--mauve:#856a8e;--mauve2:#7d5a7c;--grey:#948e95;--grey2:#a6a1a7;--pink:#fcb4c4;
 --font:Jost,system-ui,sans-serif;--hair:.32pt solid var(--hairc)}
-html[data-theme=dark]{--paper:#2a272d;--ink:#d4d2d2;--plum:#cf9aae;--mauve:#8f8595;--mauve2:#cf9aae;--sub:#a6a1a7;--sepc:#8f8595;--onplum:#2a272d;--grid:#8f8595;--pink:#cf9aae;--name:#cf9aae;--em:#a6a1a7;--label:#a6a1a7;--hairc:#8f8595;color-scheme:dark}
+html[data-theme=dark]{--paper:#2a272d;--ink:#d4d2d2;--plum:#fcb4c4;--mauve:#948e95;--mauve2:#fcb4c4;--sub:#a6a1a7;--sepc:#948e95;--onplum:#2a272d;--grid:#948e95;--pink:#fcb4c4;--name:#fcb4c4;--em:#a6a1a7;--label:#a6a1a7;--hairc:#948e95;color-scheme:dark}
 *{box-sizing:border-box}
 html{background:var(--paper)}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--font)}
@@ -119,6 +119,16 @@ figure,svg,img,canvas,.callout{border-radius:12px}.bar,.bar i{border-radius:3px}
 </head>
 <body>
 <main>
+<figure class="hero" style="max-width:960px;margin:0 auto 24px">
+  <div class="frame r83" style="aspect-ratio:8/3;border:1px solid var(--line,#7d5a7c);border-radius:0;overflow:hidden;background:var(--paper,#f9fafb)">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="hero-dark.svg">
+      <img src="hero-light.svg" width="1280" height="480" alt="P01, Abstention Routing Harness: answers when a wrong answer costs less than asking, and otherwise sends the item to a person. ilghar.studio." style="width:100%;height:auto;display:block;border-radius:0">
+    </picture>
+  </div>
+  <figcaption style="margin-top:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--label,#775a76)">P01 hero</figcaption>
+</figure>
+
 <p class="hdr"><span>Abstention and routing harness</span><span class="sep" aria-hidden="true">|</span><span>Interactive walk-through</span><span class="sep" aria-hidden="true">|</span><span>ilghar.studio</span><button id="theme" type="button" aria-pressed="false" style="margin-left:auto">dark</button></p>
 <h1>When should a router step back?</h1>
 <p class="lede">Twelve requests come in. Readers suggest a desk and say how sure they are. The harness either answers or hands the request to a person, and writes down why. Start with the case it gets wrong.</p>

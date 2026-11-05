@@ -25,12 +25,12 @@ function drawing(p){
         if(s.ri){const b0=s.rev?s.a:s.a.map((x,i)=>x+s.d[i]*(s.L-s.depth)),bl=s.rev?s.depth:s.depth;o.push({k:"p",pts:hull(cylPts(b0,s.d,bl,s.ri).map(pr)),s,bore:1})}}}return o};
   const all=views.map(v=>{const a=shapes(v);return a.filter(z=>z.s.t==="stub").concat(a.filter(z=>z.s.t!=="stub"))}),bx=(sh,stub)=>{let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;sh.filter(z=>stub||z.s.t!=="stub").forEach(z=>{(z.k==="c"?[[z.c[0]-z.r,z.c[1]-z.r],[z.c[0]+z.r,z.c[1]+z.r]]:z.pts).forEach(([x,y])=>{x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y)})});return {x0,x1,y0,y1}},ext=all.map(sh=>bx(sh)),exs=all.map(sh=>bx(sh,1));
   const sc=Math.min(...ext.map(e=>Math.min((W-2*pad-90)/(e.x1-e.x0||1),(VH-110)/(e.y1-e.y0||1))));
-  let o=`<svg viewBox="0 0 ${W} ${VH*3}" role="img" aria-label="${p.name}: front, side and top views, dimensions in mm" font-family="Jost,'Nunito Sans',system-ui,sans-serif">`;
+  let o=`<svg viewBox="0 0 ${W} ${VH*3}" role="img" aria-label="${p.name}: front, side and top views, dimensions in mm" font-family="Jost,system-ui,sans-serif">`;
   views.forEach((v,vi)=>{const e=ext[vi],cx=pad+ (W-2*pad-60)/2,cy=vi*VH+VH/2+8,ox=cx-sc*(e.x0+e.x1)/2,oy=cy-sc*(e.y0+e.y1)/2,T=([x,y])=>[ox+sc*x,oy+sc*y],pr=VIEWS[v];
     o+=`<text x="16" y="${vi*VH+26}" font-size="12" letter-spacing="2.4" fill="var(--label)">${v.toUpperCase()}</text>`;
     if(vi)o+=`<line x1="16" x2="${W-16}" y1="${vi*VH}" y2="${vi*VH}" stroke="var(--line)" stroke-width=".6" stroke-dasharray="1 3"/>`;
     o+=`<line x1="${T([0,0])[0]-14}" y1="${T([0,0])[1]}" x2="${T([0,0])[0]+14}" y2="${T([0,0])[1]}" stroke="var(--line)" stroke-width=".5" stroke-dasharray="6 2 1 2"/><line x1="${T([0,0])[0]}" y1="${T([0,0])[1]-14}" x2="${T([0,0])[0]}" y2="${T([0,0])[1]+14}" stroke="var(--line)" stroke-width=".5" stroke-dasharray="6 2 1 2"/>`;
-    for(const z of all[vi]){const st=z.s.t==="stub",fill=z.bore?"none":st?"#5b4032":z.s.col,fo=st?.55:.22,sw=z.bore?.8:st?.6:1.1,da=z.bore?' stroke-dasharray="3 2"':"",stroke=st?"#5b4032":"var(--ink)";
+    for(const z of all[vi]){const st=z.s.t==="stub",fill=z.bore?"none":st?"#473448":z.s.col,fo=st?.55:.22,sw=z.bore?.8:st?.6:1.1,da=z.bore?' stroke-dasharray="3 2"':"",stroke=st?"#473448":"var(--ink)";
       if(z.k==="c"){const [x,y]=T(z.c);o+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(z.r*sc).toFixed(1)}" fill="${fill}" fill-opacity="${fo}" stroke="${stroke}" stroke-width="${sw}"/>`}
       else o+=`<polygon points="${z.pts.map(T).map(q=>q.map(n=>n.toFixed(1)).join(",")).join(" ")}" fill="${fill}" fill-opacity="${z.bore?0:fo}" stroke="${stroke}" stroke-width="${sw}" stroke-linejoin="round"${da}/>`}
     // overall extents
@@ -58,7 +58,7 @@ const rim=new THREE.DirectionalLight(0xfcb4c4,1.2);rim.position.set(-1.4,.6,-1.2
 let grp=null;const mats={};
 const mat=(c,o)=>{const k=c+(o||"");return mats[k]||(mats[k]=new THREE.MeshStandardMaterial({color:c,roughness:o==="in"?.9:.55,metalness:0,side:o==="in"?THREE.BackSide:THREE.FrontSide}))};
 function place(m,a,d){m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),new THREE.Vector3(...d).normalize());const A=new THREE.Vector3(...a),D=new THREE.Vector3(...d).normalize();m.position.copy(A);return m}
-function tubeMesh(s){const g=new THREE.Group(),L=s.L,col=s.t==="stub"?"#5b4032":s.col;
+function tubeMesh(s){const g=new THREE.Group(),L=s.L,col=s.t==="stub"?"#473448":s.col;
   const ro=s.t==="stub"?s.r:s.ro;const ri=s.ri||0,dep=s.depth||0,rev=!!s.rev;
   const seg=48;
   // outer wall
