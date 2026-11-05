@@ -2,7 +2,7 @@
   <a href="https://ilghar.studio">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/hero/hero-dark.svg">
-      <img src="docs/hero/hero-light.svg" alt="ilghar.studio landing" width="100%">
+      <img src="docs/hero/hero-light.svg" alt="ilghar.studio — Creative Technologist and Spatial Designer." width="100%">
     </picture>
   </a>
 </p>
