@@ -6,15 +6,12 @@ export const OG_IMAGE = `${SITE_URL}/og.jpg`;
 
 export const pageUrl = (lang: Lang) => (lang === "de" ? `${SITE_URL}/de/` : `${SITE_URL}/`);
 
-const descriptions: Record<Lang, string> = {
-  en: `${profile.name}: ${copy.bio.en}`,
-  de: `${profile.name}: ${copy.bio.de}`,
-};
+const descriptions: Record<Lang, string> = copy.metaDescription;
 
 /** Per-page head for the EN (/) and DE (/de/) versions of the landing page. */
 export function pageHead(lang: Lang) {
   const url = pageUrl(lang);
-  const title = `${profile.name} · ${copy.roles[lang]}`;
+  const title = copy.metaTitle[lang];
   return {
     meta: [
       { title },
@@ -53,6 +50,13 @@ export function jsonLd(lang: Lang) {
         inLanguage: ["en", "de"],
       },
       {
+        "@type": "WebPage",
+        "@id": `${pageUrl(lang)}#webpage`,
+        url: pageUrl(lang),
+        inLanguage: lang,
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+      },
+      {
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
         name: profile.name,
@@ -61,6 +65,7 @@ export function jsonLd(lang: Lang) {
         image: `${SITE_URL}/avatar.jpg`,
         jobTitle: copy.roles[lang].split(" · "),
         description: copy.bio[lang],
+        knowsLanguage: [{ "@type": "Language", name: "German", alternateName: "de", description: "C2" }],
         address: { "@type": "PostalAddress", addressLocality: copy.location[lang] },
         sameAs: socialLinks.map((s) => s.href),
       },

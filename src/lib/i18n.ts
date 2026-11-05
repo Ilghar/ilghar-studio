@@ -3,13 +3,22 @@ export type Lang = "en" | "de";
 export const copy = {
   handle: { en: "ilghar.studio", de: "ilghar.studio" },
   roles: {
-    en: "Curator · Designer · Sculptor",
-    de: "Kurator*in · Designer*in · Bildhauer*in",
+    en: "Creative Technologist & Spatial Designer",
+    de: "Kreativtechnologe & Raumgestalter",
   },
   location: { en: "Berlin", de: "Berlin" },
+  // Professional titles confirmed by Hāèl (EN + DE).
+  metaTitle: {
+    en: "Ilghar Dadgostari: Creative Technologist & Spatial Designer, Berlin | ilghar.studio",
+    de: "Ilghar Dadgostari: Kreativtechnologe & Raumgestalter, Berlin | ilghar.studio",
+  },
+  metaDescription: {
+    en: "Ilghar Dadgostari, a Berlin-based Creative Technologist & Spatial Designer, checks generated design against facts a typographer and an architect can measure, before anyone argues about taste.",
+    de: "Ilghar Dadgostari, Kreativtechnologe & Raumgestalter in Berlin, prüft generiertes Design an Fakten, die Typograf*innen und Architekt*innen messen können, bevor über Geschmack gestritten wird.",
+  },
   bio: {
-    en: "Queer-feminist curator, designer and sculptor. Practice at the intersections of art, culture and social justice — shaping spaces for intercultural dialogue and a more pluriversal world.",
-    de: "Queer-feministische Kurator*in, Designer*in und Bildhauer*in. Praxis an den Verflechtungen von Kunst, Kultur und sozialer Gerechtigkeit — Räume für interkulturellen Dialog und eine pluriversale Gesellschaft.",
+    en: "Queer-feminist Creative Technologist & Spatial Designer. Practice at the intersections of art, culture and social justice — shaping spaces for intercultural dialogue and a more pluriversal world.",
+    de: "Queer-feministischer Kreativtechnologe & Raumgestalter. Praxis an den Verflechtungen von Kunst, Kultur und sozialer Gerechtigkeit — Räume für interkulturellen Dialog und eine pluriversale Gesellschaft.",
   },
   notesTitle: { en: "Studio notes", de: "Studio-Notizen" },
   notesKicker: {
@@ -46,10 +55,18 @@ export const copy = {
   prev: { en: "Previous", de: "Zurück" },
   next: { en: "Next", de: "Weiter" },
   close: { en: "Close", de: "Schließen" },
-  download: { en: "File", de: "Datei" },
+  download: { en: "Download", de: "Herunterladen" },
   openExternal: { en: "Open", de: "Öffnen" },
   tapSpread: { en: "Tap left or right", de: "Links oder rechts tippen" },
   tapFull: { en: "Tap to see both pages", de: "Tippen für beide Seiten" },
+  language: { en: "Language", de: "Sprache" },
+  socialLinks: { en: "Social links", de: "Soziale Netzwerke" },
+  errorTitle: { en: "Something went wrong", de: "Etwas ist schiefgelaufen" },
+  errorBody: {
+    en: "An unexpected error occurred. Try reloading the page.",
+    de: "Ein unerwarteter Fehler ist aufgetreten. Bitte lade die Seite neu.",
+  },
+  germanLevel: { en: "German (C2)", de: "Deutsch (C2)" },
   visitFestival: { en: "Festival site", de: "Festival-Seite" },
 } as const;
 
@@ -59,15 +76,8 @@ export function t(lang: Lang, key: CopyKey): string {
   return copy[key][lang];
 }
 
-export function readLang(): Lang {
-  try {
-    const stored = localStorage.getItem("ilghar-lang");
-    if (stored === "de" || stored === "en") return stored;
-  } catch {
-    /* private mode */
-  }
-  if (typeof navigator !== "undefined") {
-    return navigator.language.toLowerCase().startsWith("de") ? "de" : "en";
-  }
-  return "en";
-}
+export const langFromPath = (pathname: string): Lang =>
+  /^\/de(\/|$)/.test(pathname) ? "de" : "en";
+
+/** URL of the matching page in the other language. EN lives at /, DE at /de/. */
+export const langPath = (lang: Lang) => (lang === "de" ? "/de/" : "/");

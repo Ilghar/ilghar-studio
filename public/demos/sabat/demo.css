@@ -1,0 +1,11 @@
+/* sabat demo layout — linked (CSP style-src 'self' blocks inline <style>) */
+html, body { width: 100%; max-width: 100%; overflow-x: hidden; margin: 0; }
+main { width: 100%; max-width: 960px; margin: 0 auto; padding: 24px 16px 56px; box-sizing: border-box; overflow-x: hidden; }
+img, svg, canvas, iframe, video, picture, figure { max-width: 100%; height: auto; display: block; }
+.hero-card, .hero, .main3d, .app, .panel, .intro, .conn, .views, .counts { max-width: 100%; box-sizing: border-box; }
+.hero-card img, .hero img, picture img { width: 100%; max-width: 100%; height: auto; border-radius:0; }
+canvas#iso, canvas#cx3d { width: 100% !important; max-width: 100% !important; height: auto !important; }
+.app { display: grid; gap: 16px; }
+@media (min-width: 860px) {
+  .app { grid-template-columns: 1.2fr 0.8fr; }
+}

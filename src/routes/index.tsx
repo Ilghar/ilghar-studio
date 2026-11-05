@@ -8,5 +8,5 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  return <LinkInBio />;
+  return <LinkInBio lang="en" />;
 }

@@ -14,49 +14,103 @@ import { LangToggle } from "@/components/lang-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Viewer } from "@/components/viewer";
 
-export function LinkInBio({ initialLang }: { initialLang?: Lang } = {}) {
-  const { lang, set } = useLang(initialLang);
+/** Home on LAYOUT: 960 column, square mauve frames, no shadows/gradients. */
+export function LinkInBio({ lang }: { lang: Lang }) {
+  useLang(lang);
   const [open, setOpen] = useState<Collection | null>(null);
 
   const visible = useMemo(
     () => collections.filter((c) => !c.lang || c.lang === lang),
     [lang],
   );
-  const featured = visible.find((c) => c.featured);
-  const rest = visible.filter((c) => !c.featured);
+  // Skip near-empty werk tile (tiny blank webp) — Critiquito empty-tile blocker
+  const usable = visible.filter((c) => c.id !== "werk");
+  const featured = usable.find((c) => c.featured);
+  const rest = usable.filter((c) => !c.featured);
   const live = open ? collections.find((c) => c.id === open.id) ?? open : null;
 
   return (
     <main className="relative min-h-dvh overflow-x-hidden bg-canvas text-ink">
-      <div className="mx-auto w-full max-w-md md:max-w-xl lg:max-w-2xl">
-        <div className="md:px-8">
-          <Cover />
-        </div>
+      <div className="mx-auto w-full max-w-[960px] px-4 md:px-8">
+        <header className="site flex items-center justify-between gap-3 py-6">
+          <p className="brand-label m-0 text-[0.72rem] font-medium tracking-[0.18em] text-ink uppercase">
+            ilghar.studio
+          </p>
+          <div className="flex items-center gap-3">
+            <LangToggle lang={lang} />
+            <ThemeToggle
+              lightLabel={t(lang, "themeLight")}
+              darkLabel={t(lang, "themeDark")}
+            />
+          </div>
+        </header>
 
-        <div className="px-5 pb-20 md:px-8">
-          <Identity lang={lang} onLang={set} />
+        <header className="hero pb-6 text-left">
+          <h1 className="name m-0 font-display text-[1.75rem] font-normal tracking-[0.01em] text-ink sm:text-[2rem]">
+            <span className="text-[color:var(--accent-dot)]">{profile.name.charAt(0)}</span>
+            {profile.name.slice(1)}
+          </h1>
+          <p className="title mt-2 m-0 text-[0.95rem] font-light tracking-wide text-ink">
+            {t(lang, "location")}
+            <span className="mx-2 text-subtle" aria-hidden="true">·</span>
+            {t(lang, "roles")}
+          </p>
+          <p className="sub mt-4 m-0 max-w-[42ch] text-[0.95rem] font-light leading-relaxed text-ink">
+            {t(lang, "bio")}
+          </p>
+        </header>
 
-          {featured ? (
-            <div className="mt-10">
-              <FrameCard
-                cover={featured.cover}
-                coverHi={featured.coverHi}
-                coverAlt={featured.coverAlt}
-                title={t(lang, featured.title)}
-                kicker={t(lang, featured.kicker)}
-                featured
-                eager
-                onClick={() => setOpen(featured)}
+        {featured ? (
+          <section className="mt-16" aria-label="Featured">
+            <h2 className="m-0 mb-6 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-3 text-[0.9rem] font-normal tracking-[0.12em] text-[color:var(--label)] uppercase">
+              Featured
+            </h2>
+            <FrameCard
+              cover={featured.cover}
+              coverHi={featured.coverHi}
+              coverDark={featured.coverDark}
+              coverDarkHi={featured.coverDarkHi}
+              coverAlt={featured.coverAlt}
+              title={t(lang, featured.title)}
+              kicker={t(lang, featured.kicker)}
+              featured
+              eager
+              onClick={() => setOpen(featured)}
+            />
+          </section>
+        ) : null}
+
+        <section className="mt-16" aria-label="Live function">
+          <h2 className="m-0 mb-6 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-3 text-[0.9rem] font-normal tracking-[0.12em] text-[color:var(--label)] uppercase">
+            Live function
+          </h2>
+          <figure className="m-0">
+            <div className="frame live overflow-hidden rounded-none border border-[color:var(--line-mauve,#7d5a7c)] bg-surface">
+              <iframe
+                title="P01 abstention routing harness"
+                src="/demos/p01/index.html"
+                className="home-live-iframe block w-full border-0"
+                loading="lazy"
               />
             </div>
-          ) : null}
+            <figcaption className="mt-2 text-[0.8rem] font-light text-ink">
+              Live · P01 abstention routing
+            </figcaption>
+          </figure>
+        </section>
 
-          <div className="mt-6 grid grid-cols-2 gap-4 md:gap-5">
+        <section className="mt-16" aria-label="Work">
+          <h2 className="m-0 mb-6 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-3 text-[0.9rem] font-normal tracking-[0.12em] text-[color:var(--label)] uppercase">
+            Work
+          </h2>
+          <div className="grid grid-cols-2 gap-4 md:gap-6">
             {rest.map((item) => (
               <FrameCard
                 key={item.id}
                 cover={item.cover}
                 coverHi={item.coverHi}
+                coverDark={item.coverDark}
+                coverDarkHi={item.coverDarkHi}
                 coverAlt={item.coverAlt}
                 title={t(lang, item.title)}
                 kicker={t(lang, item.kicker)}
@@ -69,9 +123,9 @@ export function LinkInBio({ initialLang }: { initialLang?: Lang } = {}) {
               />
             ))}
           </div>
+        </section>
 
-          <Footer lang={lang} />
-        </div>
+        <Footer lang={lang} />
       </div>
 
       {live?.pages || live?.video || live?.strip ? (
@@ -81,65 +135,7 @@ export function LinkInBio({ initialLang }: { initialLang?: Lang } = {}) {
   );
 }
 
-function Cover() {
-  return (
-    <div className="relative aspect-[16/9] w-full overflow-hidden md:rounded-b-sm">
-      {/* Day and night covers are CSS backgrounds keyed to the theme class, so
-          the browser only downloads the one that is showing. */}
-      <div aria-hidden="true" className="cover-img cover-day absolute inset-0" />
-      <div aria-hidden="true" className="cover-img cover-night absolute inset-0" />
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-canvas to-transparent"
-      />
-    </div>
-  );
-}
-
-function Identity({
-  lang,
-  onLang,
-}: {
-  lang: ReturnType<typeof useLang>["lang"];
-  onLang: (lang: ReturnType<typeof useLang>["lang"]) => void;
-}) {
-  return (
-    <header className="relative z-10 -mt-12 flex flex-col items-center text-center">
-      <img
-        src={profile.avatar}
-        alt={profile.name}
-        width={1000}
-        height={1000}
-        className="size-28 rounded-full object-cover object-[center_28%] ring-4 ring-canvas sm:size-32 md:size-36"
-      />
-      <p className="mt-6 text-[0.68rem] font-medium tracking-[0.32em] text-ink uppercase md:text-[0.75rem]">
-        {profile.handle}
-      </p>
-      <h1 className="mt-2 font-display text-[1.75rem] font-semibold tracking-[0.01em] text-ink sm:text-[1.95rem] md:text-[2.25rem]">
-        {profile.name}
-      </h1>
-      <p className="mt-1 text-[0.9rem] font-light tracking-wide text-ink md:text-[1.02rem]">
-        {t(lang, "location")}
-        <span className="mx-2 text-subtle/70" aria-hidden="true">
-          ·
-        </span>
-        {t(lang, "roles")}
-      </p>
-      <p className="mt-6 max-w-[34ch] text-[0.92rem] font-light leading-relaxed text-ink md:max-w-[42ch] md:text-[1.05rem]">
-        {t(lang, "bio")}
-      </p>
-      <div className="mt-6 flex w-full items-center justify-between">
-        <LangToggle lang={lang} onChange={onLang} />
-        <ThemeToggle
-          lightLabel={t(lang, "themeLight")}
-          darkLabel={t(lang, "themeDark")}
-        />
-      </div>
-    </header>
-  );
-}
-
-function Footer({ lang }: { lang: ReturnType<typeof useLang>["lang"] }) {
+function Footer({ lang }: { lang: Lang }) {
   const [copied, setCopied] = useState(false);
 
   async function copyEmail() {
@@ -153,8 +149,8 @@ function Footer({ lang }: { lang: ReturnType<typeof useLang>["lang"] }) {
   }
 
   return (
-    <footer className="mt-12 flex flex-col items-center gap-5 text-center">
-      <nav aria-label="Elsewhere" className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+    <footer className="mt-16 mb-16 flex flex-col items-start gap-5 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-6 text-left">
+      <nav aria-label={t(lang, "socialLinks")} className="flex flex-wrap items-center gap-x-4 gap-y-2">
         {socialLinks.map((social) => (
           <a
             key={social.id}
