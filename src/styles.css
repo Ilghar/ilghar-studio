@@ -61,7 +61,7 @@
 
 @theme {
   --font-sans: "Jost", "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-display: "Jost", "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Jost", "Avenir Next", sans-serif;
 
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
