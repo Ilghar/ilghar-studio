@@ -1,6 +1,6 @@
 import type { CopyKey } from "./i18n";
 
-const V = "18";
+const V = "19";
 
 export const profile = {
   name: "Ilghar Dadgostari",
@@ -182,7 +182,9 @@ export const collections: Collection[] = [
     id: "studio",
     cover: `/viewers/studio/cover.webp?v=${V}`,
     coverHi: `/viewers/studio/cover.png?v=${V}`,
-    coverAlt: 'Lilac wireframe of the SÁBÁT pavilion: a pavilion base with a pyramid peak on each triangle, with ilghar.studio across it.',
+    coverDark: `/viewers/studio/cover-dark.webp?v=${V}`,
+    coverDarkHi: `/viewers/studio/cover-dark.png?v=${V}`,
+    coverAlt: 'SÁBÁT pavilion wireframe in the studio palette — triangulated frame; ilghar.studio across the bottom.',
     title: "studio",
     kicker: "studioHint",
     href: "https://ilghar.studio",
