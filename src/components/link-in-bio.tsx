@@ -23,8 +23,9 @@ export function LinkInBio({ lang }: { lang: Lang }) {
     () => collections.filter((c) => !c.lang || c.lang === lang),
     [lang],
   );
-  // Skip near-empty werk tile (tiny blank webp) — Critiquito empty-tile blocker
-  const usable = visible.filter((c) => c.id !== "werk");
+  // Keep only Work tiles with real covers (drop placeholders / near-empty / self-link).
+  const REAL_WORK = new Set(["cv-de", "cv-en", "portfolio-de", "portfolio-en", "arbeits"]);
+  const usable = visible.filter((c) => c.featured || REAL_WORK.has(c.id));
   const featured = usable.find((c) => c.featured);
   const rest = usable.filter((c) => !c.featured);
   const live = open ? collections.find((c) => c.id === open.id) ?? open : null;
@@ -85,10 +86,11 @@ export function LinkInBio({ lang }: { lang: Lang }) {
             Live function
           </h2>
           <figure className="m-0">
-            <div className="frame live overflow-hidden rounded-none border border-[color:var(--line-mauve,#7d5a7c)] bg-surface">
+            {/* One 1px mauve frame; P01 sits directly inside — no nested card. */}
+            <div className="home-live-frame overflow-hidden rounded-none border border-[color:#7d5a7c] bg-surface dark:border-[color:#856a8e]">
               <iframe
                 title="P01 abstention routing harness"
-                src="/demos/p01/index.html"
+                src="/demos/p01/index.html?embed=1"
                 className="home-live-iframe block w-full border-0"
                 loading="lazy"
               />
