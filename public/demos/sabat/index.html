@@ -138,22 +138,20 @@ main{width:100%!important;max-width:960px!important;box-sizing:border-box!import
 .hero-card,picture,.hero,figure,.app,.main3d,.panel,.intro,.conn{max-width:100%!important;width:100%;box-sizing:border-box}
 img,svg,canvas,iframe,video{max-width:100%!important;height:auto}
 </style>
+<style>
+/* hero art: SVG has its own border — no outer .frame */
+.hero-art{display:block;width:100%;max-width:100%;aspect-ratio:8/3;margin:0;padding:0;border:0!important;outline:0;overflow:hidden;background:transparent;border-radius:0;box-shadow:none;position:relative}
+.hero-art img{position:absolute;inset:0;display:block;width:100%!important;height:100%!important;max-height:none;object-fit:fill;border:0;border-radius:0}
+figure.span12 > .hero-art, figure.hero > .hero-art{width:100%}
+</style>
 </head>
 <body>
 <main>
-<figure class="hero" style="max-width:960px;margin:0 auto">
-  <div class="frame r83" style="aspect-ratio:8/3;border:1px solid var(--line,#7d5a7c);border-radius:0;overflow:hidden;background:var(--paper,#f9fafb)">
-    <figure class="hero" style="max-width:960px;margin:0 auto 24px">
-  <div class="frame r83" style="aspect-ratio:8/3;border:1px solid var(--line,#7d5a7c);border-radius:0;overflow:hidden;background:var(--paper,#f9fafb)">
-    <picture>
+<figure class="hero" style="max-width:960px;margin:0 auto 24px">
+  <picture class="hero-art">
       <source media="(prefers-color-scheme: dark)" srcset="hero-dark.svg">
-      <img src="hero-light.svg" width="1280" height="480" alt="SÁBÁT, Parametric Shelter Explorer: a live pavilion model of frame, struts and connectors, beside a front-view line drawing of the triangulated frame with peaked panels. ilghar.studio." style="width:100%;height:auto;display:block;border-radius:0
+      <img src="hero-light.svg" width="1280" height="480" alt="SÁBÁT, Parametric Shelter Explorer: a live pavilion model of frame, struts and connectors, beside a front-view line drawing of the triangulated frame with peaked panels. ilghar.studio." style="width:100%;height:100%;object-fit:fill;display:block;border-radius:0;">
     </picture>
-  </div>
-  <figcaption style="margin-top:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--label,#775a76)">SÁBÁT hero</figcaption>
-</figure>
-
-  </div>
   <figcaption style="margin-top:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--label,#775a76)">SÁBÁT hero</figcaption>
 </figure>
 
