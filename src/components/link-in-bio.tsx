@@ -110,7 +110,7 @@ function Identity({ lang }: { lang: Lang }) {
         {profile.handle}
       </p>
       <h1 className="mt-2 font-display text-[1.75rem] font-normal tracking-[0.14em] uppercase text-ink sm:text-[1.95rem] md:text-[2.25rem]">
-        <span className="text-[#fcb4c4]">{profile.name.slice(0, 1)}</span>
+        <span className="first text-[#fcb4c4]">{profile.name.slice(0, 1)}</span>
         {profile.name.slice(1)}
       </h1>
       <p className="mt-2 font-display text-[0.95rem] font-medium tracking-[0.18em] uppercase text-[color:var(--mauve-label,#775a76)]">

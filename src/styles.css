@@ -40,10 +40,10 @@
   --ink: #d4d2d2;
   --muted: #a6a1a7;
   --subtle: #a6a1a7;
-  --accent: #fcb4c4;
+  --accent: #856a8e;
   --accent-fg: #2a272d;
   --line: #a6a1a7;
-  --ring: #fcb4c4;
+  --ring: #856a8e;
   --shadow-frame:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 2px 4px rgba(0, 0, 0, 0.25),
@@ -87,7 +87,7 @@
     min-height: 100dvh;
     background: var(--canvas);
     color: var(--ink);
-    font-family: var(--font-sans);
+    font-family:var(--font-sans);
     font-weight: 400;
   }
 
