@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../design/tokens.css">
+<link rel="stylesheet" href="demo.css">
 <style>
 @font-face{font-family:"Jost";font-style:normal;font-weight:300;font-display:swap;src:url("../../fonts/jost-latin-ext-300-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Jost";font-style:normal;font-weight:300;font-display:swap;src:url("../../fonts/jost-latin-300-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -13,6 +14,18 @@
 @font-face{font-family:"Jost";font-style:normal;font-weight:500;font-display:swap;src:url("../../fonts/jost-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Vazirmatn";font-style:normal;font-weight:100 900;font-display:swap;src:url("../../fonts/vazirmatn-fa.woff2") format("woff2");unicode-range:U+0600-06FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF}
 img,svg,canvas,iframe{max-width:100%;height:auto}
+img,svg,canvas,iframe,figure{max-width:100%;height:auto}canvas#iso{width:100%!important;max-width:100%!important;height:auto!important}
+.hero img{width:100%;max-width:100%;height:auto}
+body,main{overflow-x:hidden;max-width:100%}
+.app{max-width:100%}
+picture,.hero-card{display:block;max-width:100%;width:100%;overflow:hidden}
+.hero-card img,picture img{max-width:100%!important;width:100%!important;height:auto!important}
+main{overflow-x:hidden;box-sizing:border-box}
+/* nuclear column */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+main{width:100%!important;max-width:960px!important;box-sizing:border-box!important;overflow-x:hidden}
+.hero-card,picture,.hero,figure,.app,.main3d,.panel,.intro,.conn{max-width:100%!important;width:100%;box-sizing:border-box}
+img,svg,canvas,iframe,video{max-width:100%!important;height:auto}
 </style>
 <title>SÁBÁT · pavilion explorer · ilghar.studio</title>
 <style>
@@ -22,7 +35,7 @@ img,svg,canvas,iframe{max-width:100%;height:auto}
 *{box-sizing:border-box}
 :root{--font-title:Jost,system-ui,sans-serif;--font-body:Jost,system-ui,sans-serif}
 body{margin:0;background:var(--canvas);color:var(--ink);font:400 16px/1.65 var(--font-body)}
-main{max-width:1120px;margin:0 auto;padding:40px 24px 56px}
+main{width:100%;max-width:960px;box-sizing:border-box;margin:0 auto;padding:40px 24px 56px}
 h1,h2,h3{font-family:var(--font-title);font-weight:400;text-transform:uppercase;letter-spacing:.18em;color:var(--title);margin:0}
 h1{font-size:2.3rem;line-height:1.15}
 h2{font-size:.95rem;font-weight:400;margin-bottom:12px;padding-bottom:8px;border-bottom:1px dotted var(--line)}
@@ -86,9 +99,9 @@ em{font-style:italic;color:var(--em)}
 /* v7 / v3.4: site column, glass + soft-shadow controls, drop caps */
 :root{--dc:#fcb4c4;--glass:rgba(249,250,251,.55);--glass-edge:rgba(255,255,255,.75);--sh-d:rgba(71,52,72,.16);--sh-l:rgba(255,255,255,.9);--well:rgba(71,52,72,.10)}
 [data-theme=dark]{--dc:#fcb4c4;--glass:rgba(48,45,52,.55);--glass-edge:rgba(255,255,255,.10);--sh-d:rgba(0,0,0,.38);--sh-l:rgba(255,255,255,.06);--well:rgba(0,0,0,.28)}
-main{max-width:448px;padding-left:16px;padding-right:16px}
-@media (min-width:768px){main{max-width:576px;padding-left:32px;padding-right:32px}}
-@media (min-width:1024px){main{max-width:672px}}
+main{width:100%;max-width:min(100%,960px);box-sizing:border-box;padding-left:16px;padding-right:16px}
+@media (min-width:768px){main{width:100%;max-width:min(100%,960px);box-sizing:border-box;padding-left:32px;padding-right:32px}}
+@media (min-width:1024px){main{max-width:960px}}
 .intro,.app,.counts,.grid{grid-template-columns:minmax(0,1fr)!important}
 .views{grid-template-columns:minmax(0,1fr)!important}
 /* rev 8 (Hāèl, 4 Nov): one column at every width, no illustrations side by side */
@@ -112,6 +125,18 @@ input[type=range]::-moz-range-track{height:8px;border-radius:8px;background:var(
 input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-edge);box-shadow:3px 3px 7px var(--sh-d),inset 0 0 0 5px var(--dc)}
 :focus-visible{outline:2px solid var(--dc)!important;outline-offset:3px}
 #cdraw svg{aspect-ratio:auto;height:auto}#cx3d{aspect-ratio:1/.72;cursor:grab}.conn{margin-bottom:32px}.conn table td.n{white-space:normal}#cparts tr[aria-current] td{color:var(--key)}
+img,svg,canvas,iframe,figure{max-width:100%;height:auto}canvas#iso{width:100%!important;max-width:100%!important;height:auto!important}
+.hero img{width:100%;max-width:100%;height:auto}
+body,main{overflow-x:hidden;max-width:100%}
+.app{max-width:100%}
+picture,.hero-card{display:block;max-width:100%;width:100%;overflow:hidden}
+.hero-card img,picture img{max-width:100%!important;width:100%!important;height:auto!important}
+main{overflow-x:hidden;box-sizing:border-box}
+/* nuclear column */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+main{width:100%!important;max-width:960px!important;box-sizing:border-box!important;overflow-x:hidden}
+.hero-card,picture,.hero,figure,.app,.main3d,.panel,.intro,.conn{max-width:100%!important;width:100%;box-sizing:border-box}
+img,svg,canvas,iframe,video{max-width:100%!important;height:auto}
 </style>
 </head>
 <body>
@@ -119,7 +144,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 <figure class="hero-card" style="margin:0 0 1.5rem">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="hero-dark.svg">
-  <img src="hero-light.svg" width="1280" height="480" alt="SÁBÁT, Parametric Shelter Explorer: a live model of the pavilion's frame, struts and connectors, beside a spiked plan outline. ilghar.studio." style="width:100%;height:auto;border-radius:14px;display:block">
+  <img src="hero-light.svg" width="960" height="360" alt="SÁBÁT, Parametric Shelter Explorer: a live model of the pavilion's frame, struts and connectors, beside a spiked plan outline. ilghar.studio." style="width:100%;height:auto;border-radius:14px;display:block">
 </picture>
 </figure>
 
@@ -127,11 +152,11 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 <h1><span aria-label="projekt Sábát">projekt SÁBÁT</span><span class="fa" lang="fa">ساباط</span></h1>
 <p class="note" style="margin:6px 0 24px">Pavilion explorer. A working model of the pavilion base.</p>
 <section class="app">
-  <figure class="main3d"><canvas id="iso" width="960" height="960" tabindex="0" role="img" aria-label="3D view of the base with illustrative peaks. Drag, or use the arrow keys, to rotate."></canvas>
+  <figure class="main3d"><canvas id="iso" width="640" height="640" tabindex="0" role="img" aria-label="3D view of the base with illustrative peaks. Drag, or use the arrow keys, to rotate."></canvas>
         <figcaption>Drag or use the arrow keys to rotate. Knit drawn as a smooth tension surface.</figcaption></figure>
   <form class="panel" id="ctl" aria-label="Model parameters" onsubmit="return false">
     <h2>parameters</h2>
-    <div class="ctl"><p class="note">2V Hubs kit dome: each large triangle splits into 4. Values marked “built” are the pavilion as made.</p></div>
+    <div class="ctl"><p class="note">2V Hubs kit frame: each large triangle splits into 4. Values marked “built” are the pavilion as made.</p></div>
     <div class="ctl"><label for="dia">Diameter <output id="diaO" for="dia"></output></label><input id="dia" type="range" min="200" max="900" step="1" value="352" list="diaB"><datalist id="diaB"><option value="352"></option></datalist><p class="note">Built: Ø 352 cm at the hub centres (1 m long stick + 88 mm hub allowance). Struts scale with it.</p></div>
     <div class="ctl"><label for="peak">Pyramid peak <output id="peakO" for="peak"></output></label><input id="peak" type="range" min="0" max="250" step="1" value="57" list="peakB"><datalist id="peakB"><option value="57"></option></datalist><p class="note">Built: 57 cm (model value, about ⅔ of 85 cm, per Hāèl).</p></div>
     <div class="ctl"><label for="leg">Leg height <output id="legO" for="leg"></output></label><input id="leg" type="range" min="0" max="200" step="1" value="54" list="legB"><datalist id="legB"><option value="54"></option></datalist><p class="note">Built: 54 cm, giving 230 cm to the crown hub (Hāèl).</p></div>
@@ -160,7 +185,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 </section>
 <section class="conn" aria-labelledby="connH">
   <h2 id="connH">connectors</h2>
-  <p class="note">Each connector is drawn and modelled from the values above. Move the sliders and the angles, bores and lengths recalculate. At the built values every part matches the stage-1 originals. Tags: S product spec or drawing, H Hāèl, C computed from the dome, A assumption.</p>
+  <p class="note">Each connector is drawn and modelled from the values above. Move the sliders and the angles, bores and lengths recalculate. At the built values every part matches the stage-1 originals. Tags: S product spec or drawing, H Hāèl, C computed from the frame, A assumption.</p>
   <div id="cpick" role="group" aria-label="Choose a connector" style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px"><button type="button" data-k="hub5">5-way hub</button><button type="button" data-k="hub6">6-way hub</button><button type="button" data-k="corner">L corner 20A</button><button type="button" data-k="tee">T tee 2A</button><button type="button" data-k="ball">Ball connector</button><button type="button" data-k="peak">Peak connector</button></div>
   <figure><div id="cdraw"></div><figcaption><span id="cname"></span>: technical drawing, front, side and top. Dimensions in mm, angles in degrees. Dashed lines are bores.</figcaption></figure>
   <figure style="margin-top:16px"><canvas id="cx3d" tabindex="0" role="img" aria-label="3D model of the selected connector. Drag to orbit, scroll to zoom."></canvas><figcaption>3D model, live. Drag to orbit, scroll to zoom. <button type="button" id="cstl" style="margin-left:8px">Download STL</button></figcaption></figure>
@@ -168,12 +193,11 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
     <p class="note">Hub and corner angles come from the 2V geometry, so they stay the same at every diameter; only the stick lengths grow. The peak and tee angles follow the peak height against the triangle size. Bores and sizes follow the stick thickness. The STL holds separate shells, not one welded solid.</p></div>
   <div class="panel" style="margin-top:16px"><h2>parts for this version</h2><table id="cparts"><thead><tr><th>Connector</th><th class="n">Count</th></tr></thead><tbody></tbody></table></div>
 </section>
-<figure class="hero"><img src="sabat-pavilion.jpg" width="1200" height="744" loading="eager" alt="The SÁBÁT pavilion on a forest meadow: a pavilion frame on wooden legs, its triangles raised into dark knitted peaks, with grey fabric flaps open at the front and rugs and green cushions laid out inside."><figcaption>SÁBÁT pavilion – front view <span aria-hidden="true">|</span> Ø 370 × H 230 cm <span aria-hidden="true">|</span> Photo: Hāèl, portfolio 2024</figcaption></figure>
+<figure class="hero"><img src="sabat-pavilion.jpg" width="960" height="595" loading="eager" alt="The SÁBÁT pavilion on a forest meadow: a pavilion frame on wooden legs, its triangles raised into dark knitted peaks, with grey fabric flaps open at the front and rugs and green cushions laid out inside."><figcaption>SÁBÁT pavilion – front view <span aria-hidden="true">|</span> Ø 370 × H 230 cm <span aria-hidden="true">|</span> Photo: Hāèl, portfolio 2024</figcaption></figure>
 <section class="intro" aria-label="About the pavilion">
   <div>
     <blockquote>“SÁBÁT”, a structure commonly found in Yazd, Iran, series of interconnected arches or vaulted ceilings, harmonious blend of hospitality, grace, and cultural resonance.<cite>Hāèl, master thesis, 2024</cite></blockquote>
-    <blockquote>Drawing on the technical design of Buckminster Fuller’s domes &amp; the mosaic works of historical Iranian architecture, I observed their overlap in the creation of a modular system.<cite>Hāèl, portfolio 2024</cite></blockquote>
-    <p>The pavilion has a modular dome base. Six white hubs, the crown and five round the side, each sit at the centre of five knitted pyramids, a star of peaks. The grey triangles between the stars are flat tarps. One side star can be left out to open an entrance. The dome stands on short legs. Move the sliders to see how the base changes, and how many struts and connectors each version needs.</p>
+    <p>The pavilion has a modular frame base. Six white hubs, the crown and five round the side, each sit at the centre of five knitted pyramids, a star of peaks. The grey triangles between the stars are flat tarps. One side star can be left out to open an entrance. The pavilion stands on short legs. Move the sliders to see how the base changes, and how many struts and connectors each version needs.</p>
   </div>
   <aside class="facts" aria-label="Built pavilion">
     <h2>the built pavilion</h2>
@@ -187,7 +211,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 </main>
 <script src="sabat-geom.js?v=8"></script>
 <script src="sabat-cover.js?v=9"></script>
-<script src="sabat-view.js?v=10"></script>
+<script src="sabat-view.js?v=11"></script>
 <script type="importmap">{"imports":{"three":"./vendor/three/three.module.js"}}</script>
 <script src="sabat-connectors-geom.js?v=1"></script>
 <script type="module" src="sabat-connectors.js?v=1"></script>
