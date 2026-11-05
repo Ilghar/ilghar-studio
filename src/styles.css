@@ -13,7 +13,7 @@
   --accent-fg: #f9fafb;
   --line: #a6a1a7;
   --ring: #7d5a7c;
-  --accent-dot: #fcb4c4;
+  --accent-dot: #856a8e;
   --title: #856a8e;
   --label: #775a76;
   --shadow-frame:
@@ -43,12 +43,12 @@
   --ink: #d4d2d2;
   --muted: #a6a1a7;
   --subtle: #948e95;
-  --accent: #fcb4c4;
+  --accent: #856a8e;
   --accent-fg: #2a272d;
   --line: #5a515c;
-  --ring: #fcb4c4;
-  --accent-dot: #fcb4c4;
-  --title: #fcb4c4;
+  --ring: #856a8e;
+  --accent-dot: #856a8e;
+  --title: #856a8e;
   --label: #a6a1a7;
   --shadow-frame:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
@@ -93,7 +93,7 @@
     min-height: 100dvh;
     background: var(--canvas);
     color: var(--ink);
-    font-family: var(--font-sans);
+    font-family:var(--font-sans);
     font-weight: 400;
   }
 

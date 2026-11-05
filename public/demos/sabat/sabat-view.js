@@ -8,7 +8,7 @@ const st={open:q.get("open")==="1",star:+(q.get("star")||1),cover:q.get("cover")
 ["dia","peak","leg","stk"].forEach(k=>{if(q.get(k))$(k).value=q.get(k)});
 const KNIT=[90,63,82],TARP=[163,160,155],WOOD="#473448",GAMMA=1.15,NU=6,NT=9;
 // one colour per connector group, from the studio palette (same as the stage 1 GLBs and renders)
-const GRP={hub5:"#473448",hub6:"#775a76",corner:"#856a8e",tee:"#fcb4c4",peak:"#2a272d"};
+const GRP={hub5:"#473448",hub6:"#775a76",corner:"#856a8e",tee:"#856a8e",peak:"#2a272d"};
 const RIM=()=>"#f9fafb";
 const rgb=(c,k)=>`rgb(${c.map(v=>Math.round(Math.min(255,v*k))).join(",")})`;
 const sub=(a,b)=>a.map((v,i)=>v-b[i]),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
