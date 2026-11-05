@@ -18,6 +18,8 @@ export default tseslint.config(
       "artifacts/**",
       "attachments/**",
       "screenshots/**",
+      "docs/**",
+      "public/demos/**",
     ],
   },
   js.configs.recommended,
