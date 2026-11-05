@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 export function FrameCard({
   cover,
   coverHi,
+  coverDark,
+  coverDarkHi,
   coverAlt = "",
   title,
   kicker,
@@ -16,6 +18,8 @@ export function FrameCard({
 }: {
   cover: string;
   coverHi?: string;
+  coverDark?: string;
+  coverDarkHi?: string;
   coverAlt?: string;
   title: string;
   kicker: string;
@@ -26,6 +30,56 @@ export function FrameCard({
   onClick?: () => void;
   href?: string;
 }) {
+  const imgClass = cn(
+    contain
+      ? "h-[88%] w-[88%] object-contain"
+      : "h-full w-full object-cover object-center",
+  );
+  const sizes = featured ? "(min-width: 1024px) 960px, 92vw" : "(min-width: 1024px) 460px, 45vw";
+  const wLight = featured ? 1280 : 640;
+
+  const lightImg = (
+    <img
+      src={coverHi || cover}
+      srcSet={coverHi ? `${cover} ${wLight}w, ${coverHi} 1400w` : undefined}
+      sizes={sizes}
+      alt={coverAlt}
+      width={640}
+      height={480}
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      className={cn(imgClass, coverDark && "dark:hidden")}
+      draggable={false}
+    />
+  );
+
+  const darkImg = coverDark ? (
+    <img
+      src={coverDarkHi || coverDark}
+      srcSet={
+        coverDarkHi
+          ? `${coverDark} ${wLight}w, ${coverDarkHi} 1400w`
+          : undefined
+      }
+      sizes={sizes}
+      alt=""
+      aria-hidden="true"
+      width={640}
+      height={480}
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      className={cn(imgClass, "hidden dark:block")}
+      draggable={false}
+    />
+  ) : null;
+
+  const media = (
+    <>
+      {lightImg}
+      {darkImg}
+    </>
+  );
+
   const inner = (
     <>
       <span
@@ -40,22 +94,7 @@ export function FrameCard({
             contain && "flex items-center justify-center bg-surface",
           )}
         >
-          <img
-            src={coverHi || cover}
-            srcSet={coverHi ? `${cover} ${featured ? 1280 : 640}w, ${coverHi} 1400w` : undefined}
-            sizes={featured ? "(min-width: 1024px) 960px, 92vw" : "(min-width: 1024px) 460px, 45vw"}
-            alt={coverAlt}
-            width={640}
-            height={480}
-            loading={eager ? "eager" : "lazy"}
-            decoding="async"
-            className={cn(
-              contain
-                ? "h-[88%] w-[88%] object-contain"
-                : "h-full w-full object-cover object-center",
-            )}
-            draggable={false}
-          />
+          {media}
           <span className="absolute inset-x-0 bottom-0 flex justify-center px-0">
             <span
               className={cn(

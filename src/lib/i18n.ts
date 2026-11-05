@@ -4,21 +4,21 @@ export const copy = {
   handle: { en: "ilghar.studio", de: "ilghar.studio" },
   roles: {
     en: "Creative Technologist & Spatial Designer",
-    de: "Kurator*in · Designer*in · Bildhauer*in",
+    de: "Kreativtechnologe & Raumgestalter",
   },
   location: { en: "Berlin", de: "Berlin" },
-  // Professional title confirmed by Hāèl (EN). German /de/ title left unchanged pending his choice.
+  // Professional titles confirmed by Hāèl (EN + DE).
   metaTitle: {
     en: "Ilghar Dadgostari: Creative Technologist & Spatial Designer, Berlin | ilghar.studio",
-    de: "Ilghar Dadgostari: AI Designer*in, Berlin | ilghar.studio",
+    de: "Ilghar Dadgostari: Kreativtechnologe & Raumgestalter, Berlin | ilghar.studio",
   },
   metaDescription: {
     en: "Ilghar Dadgostari, a Berlin-based Creative Technologist & Spatial Designer, checks generated design against facts a typographer and an architect can measure, before anyone argues about taste.",
-    de: "Ilghar Dadgostari, AI Designer*in in Berlin, prüft generiertes Design an Fakten, die Typograf*innen und Architekt*innen messen können, bevor über Geschmack gestritten wird.",
+    de: "Ilghar Dadgostari, Kreativtechnologe & Raumgestalter in Berlin, prüft generiertes Design an Fakten, die Typograf*innen und Architekt*innen messen können, bevor über Geschmack gestritten wird.",
   },
   bio: {
     en: "Queer-feminist Creative Technologist & Spatial Designer. Practice at the intersections of art, culture and social justice — shaping spaces for intercultural dialogue and a more pluriversal world.",
-    de: "Queer-feministische Kurator*in, Designer*in und Bildhauer*in. Praxis an den Verflechtungen von Kunst, Kultur und sozialer Gerechtigkeit — Räume für interkulturellen Dialog und eine pluriversale Gesellschaft.",
+    de: "Queer-feministischer Kreativtechnologe & Raumgestalter. Praxis an den Verflechtungen von Kunst, Kultur und sozialer Gerechtigkeit — Räume für interkulturellen Dialog und eine pluriversale Gesellschaft.",
   },
   notesTitle: { en: "Studio notes", de: "Studio-Notizen" },
   notesKicker: {

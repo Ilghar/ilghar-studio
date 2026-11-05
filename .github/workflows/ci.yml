@@ -44,6 +44,6 @@ jobs:
         run: pip install pillow
 
       - name: First-page palette / fonts / blue
-        run: python3 scripts/check_first_page.py
+        run: python3 scripts/check_first_page.py --self-test && python3 scripts/check_first_page.py
       - name: Test
         run: npm run test:ci

@@ -68,6 +68,8 @@ export function LinkInBio({ lang }: { lang: Lang }) {
             <FrameCard
               cover={featured.cover}
               coverHi={featured.coverHi}
+              coverDark={featured.coverDark}
+              coverDarkHi={featured.coverDarkHi}
               coverAlt={featured.coverAlt}
               title={t(lang, featured.title)}
               kicker={t(lang, featured.kicker)}
@@ -107,6 +109,8 @@ export function LinkInBio({ lang }: { lang: Lang }) {
                 key={item.id}
                 cover={item.cover}
                 coverHi={item.coverHi}
+                coverDark={item.coverDark}
+                coverDarkHi={item.coverDarkHi}
                 coverAlt={item.coverAlt}
                 title={t(lang, item.title)}
                 kicker={t(lang, item.kicker)}
