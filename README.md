@@ -15,7 +15,7 @@ Personal landing — bilingual (EN/DE), light/dark, in-app readers for studio no
 By ilghar.studio. [Live site](https://ilghar.studio) · [GitHub Pages preview](https://ilghar.github.io/ilghar-studio/)
 
 ## My role
-[ASK HĀÈL]
+Creative Technologist & Spatial Designer
 
 ## What it shows
 - **PDF palette:** Paper, mauve and pink title initial only — no off-palette leftovers on the landing.
