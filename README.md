@@ -37,3 +37,15 @@ Images live in `public/` (cover, avatar, `viewers/`, `docs/`). After replacing a
 `npm run build` prerenders `/` (English) and `/de/` (German) to static HTML in `dist/client`. There is no server, database or sign-in. `npm run preview` serves that folder on port 8081.
 
 `.github/workflows/pages.yml` builds and publishes `dist/client` to GitHub Pages on every push to `main`. `public/CNAME` holds the custom domain `ilghar.studio`.
+
+## Interactive demos
+
+Static explorers ship with the site (no backend):
+
+| Demo | Path |
+| --- | --- |
+| SÁBÁT pavilion explorer | `/demos/sabat/` |
+| Abstention / routing harness (P01) | `/demos/p01/` |
+
+Self-hosted fonts and the studio PDF palette only. Frames stay within the page column. Home-page links are proposed, not added, so the current look stays unchanged until Hāèl says yes.
+
