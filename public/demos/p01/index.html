@@ -121,6 +121,25 @@ figure,svg,img,canvas,.callout{border-radius:0}.bar,.bar i{border-radius:0}
 .hero-art img{position:absolute;inset:0;display:block;width:100%!important;height:100%!important;max-height:none;object-fit:fill;border:0;border-radius:0}
 figure.span12 > .hero-art, figure.hero > .hero-art{width:100%}
 </style>
+
+<style id="embed-home">
+/* Home Live Function embed: no nested card; height follows content. */
+html.embed,html.embed body{margin:0;padding:0;background:transparent}
+html.embed body{overflow:hidden}
+html.embed .hero,html.embed footer,html.embed section.span12,html.embed .hdr #theme{display:none!important}
+html.embed main{max-width:none;margin:0;padding:12px 16px 16px;box-sizing:border-box}
+html.embed .frame{border:0!important;box-shadow:none!important;background:transparent!important}
+</style>
+<script>
+(function(){
+  try{
+    var q=new URLSearchParams(location.search);
+    if(q.get('embed')==='1' || window.self!==window.top){
+      document.documentElement.classList.add('embed');
+    }
+  }catch(e){ document.documentElement.classList.add('embed'); }
+})();
+</script>
 </head>
 <body>
 <main>
