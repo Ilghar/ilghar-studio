@@ -65,9 +65,11 @@ export type Collection = {
 export const collections: Collection[] = [
   {
     id: "studio-notes",
-    cover: `/viewers/notes/cover.webp?v=${V}`,
-    coverHi: `/viewers/notes/cover.jpg?v=${V}`,
-    coverAlt: "Two people in sun hats beside a large carved white stone head in a snowy landscape.",
+    cover: `/viewers/studio/cover.webp?v=${V}`,
+    coverHi: `/viewers/studio/cover.jpg?v=${V}`,
+    coverDark: `/viewers/studio/cover-dark.webp?v=${V}`,
+    coverDarkHi: `/viewers/studio/cover-dark.jpg?v=${V}`,
+    coverAlt: 'SÁBÁT pavilion wireframe in the studio palette — triangulated frame; ilghar.studio across the bottom.',
     title: "notesTitle",
     kicker: "notesKicker",
     strip: `/n16-cover-left.webp?v=${V}`,

@@ -142,15 +142,13 @@
 }
 
 .frame-raise {
-  box-shadow: var(--shadow-frame);
-  transition:
-    box-shadow var(--motion-fast) var(--ease-out),
-    transform var(--motion-fast) var(--ease-out);
+  box-shadow: none;
+  border-radius: 0;
 }
 .group:hover .frame-raise,
 .group:focus-visible .frame-raise {
-  box-shadow: var(--shadow-frame-hover);
-  transform: translateY(-3px);
+  box-shadow: none;
+  transform: none;
 }
 
 .dir-ltr {
@@ -167,15 +165,8 @@
 
 /* Soft halo in the plate colour keeps label text legible over busy photos
    while the plate itself stays translucent. */
-.caption-halo {
-  text-shadow:
-    0 0 2px var(--canvas),
-    0 0 6px var(--canvas);
-}
-
-.caption-plate {
-  box-shadow: var(--shadow-plate);
-}
+.caption-halo { text-shadow: none; }
+.caption-plate { box-shadow: none; border-radius: 0; }
 
 .viewer-enter {
   animation: viewerIn var(--motion-fast) var(--ease-out);

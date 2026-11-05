@@ -14,6 +14,7 @@ import { LangToggle } from "@/components/lang-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Viewer } from "@/components/viewer";
 
+/** Home on LAYOUT: 960 column, square mauve frames, no shadows/gradients. */
 export function LinkInBio({ lang }: { lang: Lang }) {
   useLang(lang);
   const [open, setOpen] = useState<Collection | null>(null);
@@ -22,36 +23,87 @@ export function LinkInBio({ lang }: { lang: Lang }) {
     () => collections.filter((c) => !c.lang || c.lang === lang),
     [lang],
   );
-  const featured = visible.find((c) => c.featured);
-  const rest = visible.filter((c) => !c.featured);
+  // Skip near-empty werk tile (tiny blank webp) — Critiquito empty-tile blocker
+  const usable = visible.filter((c) => c.id !== "werk");
+  const featured = usable.find((c) => c.featured);
+  const rest = usable.filter((c) => !c.featured);
   const live = open ? collections.find((c) => c.id === open.id) ?? open : null;
 
   return (
     <main className="relative min-h-dvh overflow-x-hidden bg-canvas text-ink">
-      <div className="mx-auto w-full max-w-md md:max-w-xl lg:max-w-2xl">
-        <div className="md:px-8">
-          <Cover />
-        </div>
+      <div className="mx-auto w-full max-w-[960px] px-4 md:px-8">
+        <header className="site flex items-center justify-between gap-3 py-6">
+          <p className="brand-label m-0 text-[0.72rem] font-medium tracking-[0.18em] text-ink uppercase">
+            ilghar.studio
+          </p>
+          <div className="flex items-center gap-3">
+            <LangToggle lang={lang} />
+            <ThemeToggle
+              lightLabel={t(lang, "themeLight")}
+              darkLabel={t(lang, "themeDark")}
+            />
+          </div>
+        </header>
 
-        <div className="px-5 pb-20 md:px-8">
-          <Identity lang={lang} />
+        <header className="hero pb-6 text-left">
+          <h1 className="name m-0 font-display text-[1.75rem] font-normal tracking-[0.01em] text-ink sm:text-[2rem]">
+            <span className="text-[color:var(--accent-dot)]">{profile.name.charAt(0)}</span>
+            {profile.name.slice(1)}
+          </h1>
+          <p className="title mt-2 m-0 text-[0.95rem] font-light tracking-wide text-ink">
+            {t(lang, "location")}
+            <span className="mx-2 text-subtle" aria-hidden="true">·</span>
+            {t(lang, "roles")}
+          </p>
+          <p className="sub mt-4 m-0 max-w-[42ch] text-[0.95rem] font-light leading-relaxed text-ink">
+            {t(lang, "bio")}
+          </p>
+        </header>
 
-          {featured ? (
-            <div className="mt-10">
-              <FrameCard
-                cover={featured.cover}
-                coverHi={featured.coverHi}
-                coverAlt={featured.coverAlt}
-                title={t(lang, featured.title)}
-                kicker={t(lang, featured.kicker)}
-                featured
-                eager
-                onClick={() => setOpen(featured)}
+        {featured ? (
+          <section className="mt-16" aria-label="Featured">
+            <h2 className="m-0 mb-6 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-3 text-[0.9rem] font-normal tracking-[0.12em] text-[color:var(--label)] uppercase">
+              Featured
+            </h2>
+            <FrameCard
+              cover={featured.cover}
+              coverHi={featured.coverHi}
+              coverDark={featured.coverDark}
+              coverDarkHi={featured.coverDarkHi}
+              coverAlt={featured.coverAlt}
+              title={t(lang, featured.title)}
+              kicker={t(lang, featured.kicker)}
+              featured
+              eager
+              onClick={() => setOpen(featured)}
+            />
+          </section>
+        ) : null}
+
+        <section className="mt-16" aria-label="Live function">
+          <h2 className="m-0 mb-6 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-3 text-[0.9rem] font-normal tracking-[0.12em] text-[color:var(--label)] uppercase">
+            Live function
+          </h2>
+          <figure className="m-0">
+            <div className="frame live overflow-hidden rounded-none border border-[color:var(--line-mauve,#7d5a7c)] bg-surface">
+              <iframe
+                title="P01 abstention routing harness"
+                src="/demos/p01/index.html"
+                className="home-live-iframe block w-full border-0"
+                loading="lazy"
               />
             </div>
-          ) : null}
+            <figcaption className="mt-2 text-[0.8rem] font-light text-ink">
+              Live · P01 abstention routing
+            </figcaption>
+          </figure>
+        </section>
 
-          <div className="mt-6 grid grid-cols-2 gap-4 md:gap-5">
+        <section className="mt-16" aria-label="Work">
+          <h2 className="m-0 mb-6 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-3 text-[0.9rem] font-normal tracking-[0.12em] text-[color:var(--label)] uppercase">
+            Work
+          </h2>
+          <div className="grid grid-cols-2 gap-4 md:gap-6">
             {rest.map((item) => (
               <FrameCard
                 key={item.id}
@@ -71,9 +123,9 @@ export function LinkInBio({ lang }: { lang: Lang }) {
               />
             ))}
           </div>
+        </section>
 
-          <Footer lang={lang} />
-        </div>
+        <Footer lang={lang} />
       </div>
 
       {live?.pages || live?.video || live?.strip ? (
@@ -153,8 +205,8 @@ function Footer({ lang }: { lang: Lang }) {
   }
 
   return (
-    <footer className="mt-12 flex flex-col items-center gap-5 text-center">
-      <nav aria-label={t(lang, "socialLinks")} className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+    <footer className="mt-16 mb-16 flex flex-col items-start gap-5 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-6 text-left">
+      <nav aria-label={t(lang, "socialLinks")} className="flex flex-wrap items-center gap-x-4 gap-y-2">
         {socialLinks.map((social) => (
           <a
             key={social.id}
