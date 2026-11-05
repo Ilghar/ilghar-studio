@@ -92,9 +92,8 @@ em,.em{font-style:italic;color:var(--em)}
 /* v7 / v3.4: site column, glass + soft-shadow controls, drop caps */
 :root{--dc:#856a8e;--glass:rgba(249,250,251,.55);--glass-edge:rgba(255,255,255,.75);--sh-d:rgba(71,52,72,.16);--sh-l:rgba(255,255,255,.9);--well:rgba(71,52,72,.10)}
 [data-theme=dark]{--dc:#856a8e;--glass:rgba(48,45,52,.55);--glass-edge:rgba(255,255,255,.10);--sh-d:rgba(0,0,0,.38);--sh-l:rgba(255,255,255,.06);--well:rgba(0,0,0,.28)}
-main{max-width:448px;padding-left:16px;padding-right:16px}
-@media (min-width:768px){main{max-width:576px;padding-left:32px;padding-right:32px}}
-@media (min-width:1024px){main{max-width:672px}}
+main{max-width:960px;margin:0 auto;padding-left:16px;padding-right:16px;box-sizing:border-box}
+@media (min-width:768px){main{max-width:960px;padding-left:32px;padding-right:32px}}
 .intro,.app,.counts,.grid{grid-template-columns:minmax(0,1fr)!important}
 .views{grid-template-columns:minmax(0,1fr)!important}
 @media (min-width:768px){.views{grid-template-columns:1fr 1fr!important;gap:16px}.counts{grid-template-columns:1fr 1fr!important}.counts>:last-child{grid-column:1/-1}}
@@ -155,7 +154,7 @@ figure.span12 > .hero-art, figure.hero > .hero-art{width:100%}
   <input id="t" type="range" min="0" max="20" step="1" value="10" aria-describedby="t-help" aria-valuetext="0.50">
   <div class="scale" aria-hidden="true"><span>0 · trust any agreement</span><span>1 · send all to a person</span></div>
   <div class="kpis" aria-live="polite" id="kpis"></div>
-  <p id="t-help" class="small">Support is the confidence-weighted share of readers naming a desk. Below the threshold, the request goes to a person. A second gate also holds it back if the expected cost of a wrong answer reaches 0.3, the cost of asking a person. Opens at 0.50: three answered, six held back for low support, three for cost, and M11 still slips through.</p>
+  <p id="t-help" class="small">Support is the share of readers naming a desk. Below the threshold — or when a wrong answer would cost as much as asking a person — the request is held. At 0.50: three answered, nine held, M11 still slips.</p>
 </section>
 <section class="panel" aria-labelledby="h-q">
   <h2 class="title" id="h-q">Human review queue</h2>
