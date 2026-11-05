@@ -41,7 +41,7 @@
   --canvas: #2a272d;
   --surface: #302d34;
   --ink: #d4d2d2;
-  --muted: #aa9eb1;
+  --muted: #a6a1a7;
   --subtle: #8f8595;
   --accent: #cf9aae;
   --accent-fg: #2a272d;
@@ -49,7 +49,7 @@
   --ring: #cf9aae;
   --accent-dot: #cf9aae;
   --title: #cf9aae;
-  --label: #aa9eb1;
+  --label: #a6a1a7;
   --shadow-frame:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 2px 4px rgba(0, 0, 0, 0.25),
