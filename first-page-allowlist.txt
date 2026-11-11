@@ -37,10 +37,6 @@ public/viewers/cards/cv.jpg
 public/viewers/cards/cv.webp
 public/viewers/cards/fach.jpg
 public/viewers/cards/fach.webp
-public/viewers/cards/portfolio-en.jpg
-public/viewers/cards/portfolio-en.webp
-public/viewers/cards/portfolio.jpg
-public/viewers/cards/portfolio.webp
 public/viewers/cards/werk.jpg
 public/viewers/cards/werk.webp
 public/viewers/cv/01.jpg

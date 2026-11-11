@@ -16,7 +16,7 @@ export function FrameCard({
   onClick,
   href,
 }: {
-  cover: string;
+  cover?: string;
   coverHi?: string;
   coverDark?: string;
   coverDarkHi?: string;
@@ -38,7 +38,7 @@ export function FrameCard({
   const sizes = featured ? "(min-width: 1024px) 960px, 92vw" : "(min-width: 1024px) 460px, 45vw";
   const wLight = featured ? 1280 : 640;
 
-  const lightImg = (
+  const lightImg = cover ? (
     <img
       src={coverHi || cover}
       srcSet={coverHi ? `${cover} ${wLight}w, ${coverHi} 1400w` : undefined}
@@ -51,9 +51,9 @@ export function FrameCard({
       className={cn(imgClass, coverDark && "dark:hidden")}
       draggable={false}
     />
-  );
+  ) : null;
 
-  const darkImg = coverDark ? (
+  const darkImg = cover && coverDark ? (
     <img
       src={coverDarkHi || coverDark}
       srcSet={

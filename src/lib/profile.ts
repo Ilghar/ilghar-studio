@@ -35,7 +35,7 @@ function numbered(
 export type Collection = {
   id: string;
   lang?: "en" | "de";
-  cover: string;
+  cover?: string;
   /** Full-resolution original, offered to high-DPI screens via srcset. */
   coverHi?: string;
   /** Dark-theme cover (optional picture source). */
@@ -119,9 +119,6 @@ export const collections: Collection[] = [
   {
     id: "portfolio-de",
     lang: "de",
-    cover: `/viewers/cards/portfolio.webp?v=${V}`,
-    coverHi: `/viewers/cards/portfolio.jpg?v=${V}`,
-    coverAlt: '"ilghar dadgostari portfolio" above a dark faceted geometric form on violet.',
     title: "portfolio",
     kicker: "portfolioDeHint",
     pages: numbered("/viewers/portfolio", 7, "Portfolio 2023", "Portfolio 2023"),
@@ -131,9 +128,6 @@ export const collections: Collection[] = [
   {
     id: "portfolio-en",
     lang: "en",
-    cover: `/viewers/cards/portfolio-en.webp?v=${V}`,
-    coverHi: `/viewers/cards/portfolio-en.jpg?v=${V}`,
-    coverAlt: '"portfolio" above a dark faceted geometric form on blue.',
     title: "portfolio",
     kicker: "portfolioEnHint",
     pages: numbered("/viewers/portfolio-en", 9, "Portfolio", "Portfolio"),
