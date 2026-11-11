@@ -20,9 +20,9 @@
 <body>
 <main>
 <figure class="hero">
-  <picture class="hero-art">
-      <source media="(prefers-color-scheme: dark)" srcset="hero-dark.svg">
-      <img src="hero-light.svg" width="1280" height="480" alt="P01, Abstention Routing Harness: a harness schematic with one input and three outlets, beside a tree that splits each item into answer, route to a person, or abstain.">
+  <picture class="hero-art theme-src" data-light="p01_hero_light.svg" data-dark="p01_hero_dark.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="p01_hero_dark.svg">
+      <img src="p01_hero_light.svg" width="1280" height="480" alt="P01, Abstention Routing Harness: a harness schematic with one input and three outlets, beside a tree that splits each item into answer, route to a person, or abstain.">
     </picture>
   <figcaption class="cap-hero">P01 hero</figcaption>
 </figure>
@@ -138,7 +138,7 @@ function render(){
 }
 $("t").addEventListener("input",render);addEventListener("resize",render);
 $("pick").addEventListener("click",function(e){var b=e.target.closest("button");if(b){sel=b.dataset.id;render();var n=document.querySelector('#pick button[data-id="'+sel+'"]');n&&n.focus()}});
-function theme(t){document.documentElement.dataset.theme=t;$("theme").textContent=t==="dark"?"light":"dark";$("theme").setAttribute("aria-pressed",t==="dark");render();}
+function swapPics(d){document.querySelectorAll("picture.theme-src").forEach(function(p){var img=p.querySelector("img");var src=p.querySelector("source");var light=p.getAttribute("data-light");var darks=p.getAttribute("data-dark");if(src)src.media=d?"all":"not all";if(img&&light&&darks)img.src=d?darks:light})}function theme(t){document.documentElement.dataset.theme=t;$("theme").textContent=t==="dark"?"light":"dark";$("theme").setAttribute("aria-pressed",t==="dark");swapPics(t==="dark");render();}
 $("theme").onclick=function(){theme(document.documentElement.dataset.theme==="dark"?"light":"dark")};
 var q=new URLSearchParams(location.search);theme(q.get("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"));
 })();

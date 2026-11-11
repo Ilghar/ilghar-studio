@@ -12,7 +12,9 @@
     try {
       var stored = localStorage.getItem("ilghar-theme");
       if (stored === "dark" || stored === "light") return stored;
-    } catch (e) {}
+    } catch {
+      /* localStorage can throw in a blocked or private context */
+    }
     return window.matchMedia(DARK_MQ).matches ? "dark" : "light";
   }
 

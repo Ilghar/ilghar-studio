@@ -139,9 +139,8 @@ html.embed .hdr{margin:0 0 12px}
 #theme:hover{box-shadow:-2px -2px 6px var(--sh-l),3px 3px 7px var(--sh-d),inset 0 1px 0 var(--glass-edge)}
 #theme:active,#theme[aria-pressed=true]{box-shadow:inset 3px 3px 7px var(--sh-d),inset -3px -3px 7px var(--sh-l)}
 html[data-theme=dark] #theme,[data-theme=dark] #theme{color:#d4d2d2}
-/* Title: pink first letter only; rest plum in light, #856a8e in dark. */
-html[data-theme=dark] h1,html[data-theme=dark] h1 .fa,[data-theme=dark] h1,[data-theme=dark] h1 .fa{color:#856a8e}
-html[data-theme=dark] h1 .dc,[data-theme=dark] h1 .dc{color:#fcb4c4}
 .frame.r1610{aspect-ratio:16/10;border:.32pt solid var(--line,#7d5a7c);border-radius:var(--r-frame,12px);overflow:hidden;background:var(--paper,#f9fafb)}
 .bar i{width:var(--bar,0);display:block;height:100%;background:var(--plum)}
 svg text.chart-note{fill:var(--plum)}
+html[data-theme=dark] h1,html[data-theme=dark] h1 .fa,[data-theme=dark] h1,[data-theme=dark] h1 .fa{color:#856a8e}
+html[data-theme=dark] h1 .dc,[data-theme=dark] h1 .dc{color:#fcb4c4}
