@@ -154,11 +154,9 @@ export const collections: Collection[] = [
   },
   {
     id: "abschluss",
-    cover: `/viewers/cards/abschluss-placeholder.webp?v=${V}`,
-    coverHi: `/viewers/cards/abschluss-placeholder.webp?v=${V}`,
-    coverDark: `/viewers/cards/abschluss-placeholder-dark.webp?v=${V}`,
-    coverDarkHi: `/viewers/cards/abschluss-placeholder-dark.webp?v=${V}`,
-    coverAlt: "Diplomas — palette placeholder until a new cover is chosen.",
+    cover: `/viewers/cards/abschluss.webp?v=${V}`,
+    coverHi: `/viewers/cards/abschluss.jpg?v=${V}`,
+    coverAlt: '"Bildungs-Zeugnisse" over a mauve-grey faceted pavilion form on the studio canvas.',
     title: "diplomas",
     kicker: "diplomasHint",
     pages: numbered("/viewers/abschluss", 7, "Diplomas", "Abschlusszeugnisse"),
@@ -168,11 +166,9 @@ export const collections: Collection[] = [
   },
   {
     id: "fach",
-    cover: `/viewers/cards/fach-placeholder.webp?v=${V}`,
-    coverHi: `/viewers/cards/fach-placeholder.webp?v=${V}`,
-    coverDark: `/viewers/cards/fach-placeholder-dark.webp?v=${V}`,
-    coverDarkHi: `/viewers/cards/fach-placeholder-dark.webp?v=${V}`,
-    coverAlt: "Language and professional certificates — palette placeholder until a new cover is chosen.",
+    cover: `/viewers/cards/fach.webp?v=${V}`,
+    coverHi: `/viewers/cards/fach.jpg?v=${V}`,
+    coverAlt: '"Sprach- & Fach-Zeugnisse" over a pink faceted pavilion form on the studio canvas.',
     title: "langCerts",
     kicker: "langCertsHint",
     pages: numbered("/viewers/fach", 4, "Language & professional certificates", "Sprach- & Fachzeugnisse"),
@@ -194,11 +190,9 @@ export const collections: Collection[] = [
   },
   {
     id: "blade",
-    cover: `/viewers/cards/blade-placeholder.webp?v=${V}`,
-    coverHi: `/viewers/cards/blade-placeholder.webp?v=${V}`,
-    coverDark: `/viewers/cards/blade-placeholder-dark.webp?v=${V}`,
-    coverDarkHi: `/viewers/cards/blade-placeholder-dark.webp?v=${V}`,
-    coverAlt: "BLADE Festival — palette placeholder until a new cover is chosen.",
+    cover: `/viewers/cards/blade.webp?v=${V}`,
+    coverHi: `/viewers/cards/blade.jpg?v=${V}`,
+    coverAlt: "BLADE Festival logo over glossy violet and green 3D ribbons.",
     title: "blade",
     kicker: "bladeHint",
     video: "/media/blade.mp4",
@@ -209,7 +203,87 @@ export const collections: Collection[] = [
 ];
 
 export const socialLinks = [
+  { id: "github", href: "https://github.com/Ilghar", label: "GitHub" },
   { id: "linkedin", href: "https://www.linkedin.com/in/ilqardesign", label: "LinkedIn" },
   { id: "instagram", href: "https://www.instagram.com/cypsele_vayu/", label: "Instagram" },
   { id: "soundcloud", href: "https://soundcloud.com/ilghar-dadgostari", label: "SoundCloud" },
 ] as const;
+
+/** Projects with a live demo on this site and/or GitHub Pages, plus the public repo. */
+export type Project = {
+  id: string;
+  title: CopyKey;
+  kicker: CopyKey;
+  claim: CopyKey;
+  alt?: CopyKey;
+  coverLight?: string;
+  coverLightHi?: string;
+  coverDark?: string;
+  coverDarkHi?: string;
+  demoHref: string;
+  repoHref: string;
+};
+
+const GH = "https://github.com/Ilghar";
+const PAGES = "https://ilghar.github.io";
+
+export const projects: Project[] = [
+  {
+    id: "sabat",
+    title: "sabatTitle",
+    kicker: "sabatKicker",
+    claim: "sabatClaim",
+    alt: "sabatAlt",
+    coverLight: `/viewers/projects/sabat-light.webp?v=${V}`,
+    coverLightHi: `/viewers/projects/sabat-light-hi.webp?v=${V}`,
+    coverDark: `/viewers/projects/sabat-dark.webp?v=${V}`,
+    coverDarkHi: `/viewers/projects/sabat-dark-hi.webp?v=${V}`,
+    demoHref: "/demos/sabat/",
+    repoHref: `${GH}/sabat-parametric-explorer`,
+  },
+  {
+    id: "p01",
+    title: "p01Title",
+    kicker: "p01Kicker",
+    claim: "p01Claim",
+    alt: "p01Alt",
+    coverLight: `/viewers/projects/p01-light.webp?v=${V}`,
+    coverLightHi: `/viewers/projects/p01-light-hi.webp?v=${V}`,
+    coverDark: `/viewers/projects/p01-dark.webp?v=${V}`,
+    coverDarkHi: `/viewers/projects/p01-dark-hi.webp?v=${V}`,
+    demoHref: "/demos/p01/",
+    repoHref: `${GH}/abstention-routing-harness`,
+  },
+  {
+    id: "cultural",
+    title: "culturalTitle",
+    kicker: "culturalKicker",
+    claim: "culturalClaim",
+    demoHref: `${PAGES}/cultural-typographic-ai-evaluation/`,
+    repoHref: `${GH}/cultural-typographic-ai-evaluation`,
+  },
+  {
+    id: "uigrid",
+    title: "uigridTitle",
+    kicker: "uigridKicker",
+    claim: "uigridClaim",
+    demoHref: `${PAGES}/ui-grid-extractor/`,
+    repoHref: `${GH}/ui-grid-extractor`,
+  },
+  {
+    id: "sigtype",
+    title: "sigtypeTitle",
+    kicker: "sigtypeKicker",
+    claim: "sigtypeClaim",
+    demoHref: `${PAGES}/signature-typography/`,
+    repoHref: `${GH}/signature-typography`,
+  },
+  {
+    id: "siganim",
+    title: "siganimTitle",
+    kicker: "siganimKicker",
+    claim: "siganimClaim",
+    demoHref: `${PAGES}/Signature-animation/`,
+    repoHref: `${GH}/Signature-animation`,
+  },
+];

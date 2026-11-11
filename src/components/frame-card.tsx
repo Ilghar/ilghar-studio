@@ -85,7 +85,7 @@ export function FrameCard({
       <span
         className={cn(
           "frame-raise relative block overflow-hidden bg-surface",
-          "rounded-none border border-[color:var(--line-mauve,#7d5a7c)] p-0",
+          "rounded-[12px] border border-[color:var(--line-mauve,#7d5a7c)] p-0",
         )}
       >
         <span

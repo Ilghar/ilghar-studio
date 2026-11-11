@@ -5,11 +5,13 @@ import { type Lang, t } from "@/lib/i18n";
 import {
   collections,
   profile,
+  projects,
   socialLinks,
   type Collection,
 } from "@/lib/profile";
 import { cn } from "@/lib/utils";
 import { FrameCard } from "@/components/frame-card";
+import { ProjectCard } from "@/components/project-card";
 import { LangToggle } from "@/components/lang-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Viewer } from "@/components/viewer";
@@ -23,9 +25,9 @@ export function LinkInBio({ lang }: { lang: Lang }) {
     () => collections.filter((c) => !c.lang || c.lang === lang),
     [lang],
   );
-  // Keep only Work tiles with real covers (drop placeholders / near-empty / self-link).
-  const REAL_WORK = new Set(["cv-de", "cv-en", "portfolio-de", "portfolio-en", "arbeits"]);
-  const usable = visible.filter((c) => c.featured || REAL_WORK.has(c.id));
+  // Drop only the near-empty "werk" tile and the self-link to this site.
+  const HIDDEN = new Set(["werk", "studio"]);
+  const usable = visible.filter((c) => !HIDDEN.has(c.id));
   const featured = usable.find((c) => c.featured);
   const rest = usable.filter((c) => !c.featured);
   const live = open ? collections.find((c) => c.id === open.id) ?? open : null;
@@ -47,8 +49,8 @@ export function LinkInBio({ lang }: { lang: Lang }) {
         </header>
 
         <header className="hero pb-6 text-left">
-          <h1 className="name m-0 font-display text-[1.75rem] font-normal tracking-[0.01em] text-ink sm:text-[2rem]">
-            <span className="text-[color:var(--accent-dot)]">{profile.name.charAt(0)}</span>
+          <h1 className="name m-0 font-display text-[1.75rem] font-normal tracking-[0.01em] text-ink dark:text-[#856a8e] sm:text-[2rem]">
+            <span className="text-[#fcb4c4]">{profile.name.charAt(0)}</span>
             {profile.name.slice(1)}
           </h1>
           <p className="title mt-2 m-0 text-[0.95rem] font-light tracking-wide text-ink">
@@ -87,7 +89,7 @@ export function LinkInBio({ lang }: { lang: Lang }) {
           </h2>
           <figure className="m-0">
             {/* One 1px mauve frame; P01 sits directly inside — no nested card. */}
-            <div className="home-live-frame overflow-hidden rounded-none border border-[color:#7d5a7c] bg-surface dark:border-[color:#856a8e]">
+            <div className="home-live-frame overflow-hidden rounded-[12px] border border-[color:#7d5a7c] bg-surface dark:border-[color:#856a8e]">
               <iframe
                 title="P01 abstention routing harness"
                 src="/demos/p01/index.html?embed=1"
@@ -123,6 +125,17 @@ export function LinkInBio({ lang }: { lang: Lang }) {
                   item.pages || item.video || item.strip ? () => setOpen(item) : undefined
                 }
               />
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-16" aria-labelledby="projects-title">
+          <h2 id="projects-title" className="m-0 mb-6 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-3 text-[0.9rem] font-normal tracking-[0.12em] text-[color:var(--label)] uppercase">
+            {t(lang, "projectsTitle")}
+          </h2>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-6">
+            {projects.map((p) => (
+              <ProjectCard key={p.id} project={p} lang={lang} />
             ))}
           </div>
         </section>

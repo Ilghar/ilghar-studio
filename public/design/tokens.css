@@ -4,7 +4,7 @@
   --mauve-em:#856a8e; --mauve-line:#7d5a7c; --mauve-label:#775a76;
   --grey:#948e95; --grey-soft:#a6a1a7; --pink:#fcb4c4; --card:#2a272d; --on-dark:#d4d2d2;
   --bg:var(--paper); --fg:var(--ink); --head:var(--plum); --label:var(--mauve-label); --line:var(--mauve-line);
-  --font:"Brandon Text",Jost,Jost; --font-fa:Vazirmatn,"Brandon Text",Jost;
+  --font:Jost,sans-serif; --font-fa:Vazirmatn,Jost,sans-serif;
   --col:960px;
   color-scheme:light dark;
 }
@@ -22,7 +22,7 @@ img,svg,video,iframe,canvas,figure{max-width:100%;height:auto}
 .sub{font-size:.85rem;color:var(--fg)} .sub span+span::before{content:" | ";color:var(--line)}
 h2{font-weight:400;font-size:23px;letter-spacing:.12em;text-transform:uppercase;color:var(--label);border-top:1px solid var(--line);padding-top:.8em}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.frame,.card{border:1px solid var(--line);border-radius:0;box-shadow:none;background:var(--bg);width:100%;margin:0}
+.frame,.card{border:1px solid var(--line);border-radius:12px;box-shadow:none;background:var(--bg);width:100%;margin:0}
 .card{padding:16px}
 .frame>img,.frame>canvas,.frame>iframe{display:block;width:100%}
 figcaption{margin-top:8px;font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--label)}
