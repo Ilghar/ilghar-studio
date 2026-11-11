@@ -105,7 +105,7 @@ export function FrameCard({
               <span className="mb-1 flex items-center justify-center gap-1">
                 <span
                   className={cn(
-                    "line-clamp-1 font-medium text-ink uppercase",
+                    "line-clamp-1 font-normal text-ink uppercase",
                     featured
                       ? "text-[0.7rem] tracking-[0.14em] md:text-[0.78rem]"
                       : "text-[0.58rem] tracking-[0.1em] md:text-[0.66rem]",

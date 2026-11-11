@@ -1,21 +1,25 @@
-/* Shared Pages landing shell. Load after tokens.css. Max-width, pink initial, image bounds. */
+/* Shared Pages landing shell. Load after tokens.css. */
 *,*::before,*::after{box-sizing:border-box}
-html{background:var(--canvas);color:var(--ink)}
-body{margin:0;min-height:100dvh;background:var(--canvas);color:var(--ink);font-family:var(--font-sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
+html{background:var(--canvas);color:var(--fg)}
+body{margin:0;min-height:100dvh;background:var(--canvas);color:var(--fg);font-family:var(--font);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased}
 img,svg,video,canvas,iframe{max-width:100%;height:auto;display:block}
-.ilg-wrap,.ilg-main,main{max-width:72rem;margin-inline:auto;padding:clamp(1.25rem,4vw,3rem) clamp(1rem,4vw,2rem);width:100%}
-.ilg-wrap--narrow,main.narrow{max-width:48rem}
+.ilg-wrap,.ilg-main{max-width:var(--col-s);margin-inline:auto;padding:24px 16px 40px;width:100%}
+@media (min-width:768px){.ilg-wrap,.ilg-main{max-width:var(--col-m);padding:40px 32px 56px}}
+@media (min-width:1024px){.ilg-wrap,.ilg-main{max-width:var(--col-l)}}
 .ilg-hero{margin:0 0 1.5rem}
-.ilg-kicker{font-family:var(--font-sans);font-weight:var(--label-weight);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--label);margin:0 0 .5rem}
-.ilg-title,.ilg-hero h1{font-family:Jost;font-weight:var(--title-lat-weight);font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;letter-spacing:-.015em;color:var(--title);margin:.25rem 0 .75rem;text-wrap:balance}
-.ilg-title .initial,.ilg-hero h1 .initial{color:var(--accent-dot)}
-.ilg-title [lang="fa"],.ilg-hero h1 [lang="fa"]{font-family:Jost;font-weight:var(--title-fa-weight);font-size:var(--title-fa-size);letter-spacing:0;text-transform:none}
-.ilg-sub{font-size:clamp(1.05rem,2vw,1.25rem);font-weight:300;color:var(--ink);max-width:40rem;margin:0 0 1rem}
-.ilg-cta{display:inline-flex;align-items:center;gap:.5rem;font-weight:500;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-fg);background:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:.55rem 1.1rem;text-decoration:none}
+.ilg-kicker{font-family:var(--font);font-weight:400;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--label);margin:0 0 .5rem}
+.ilg-title,.ilg-hero h1{font-family:var(--font);font-weight:400;font-size:24px;line-height:1.3;letter-spacing:.14em;text-transform:uppercase;color:var(--name);margin:.25rem 0 .75rem;text-wrap:balance}
+@media (min-width:768px){.ilg-title,.ilg-hero h1{font-size:31px;letter-spacing:.2em}}
+.ilg-title .initial,.ilg-hero h1 .initial,.ilg-title .first,.ilg-hero h1 .first{color:var(--dc)}
+.ilg-title [lang="fa"],.ilg-hero h1 [lang="fa"]{font-family:var(--font-fa);letter-spacing:0;text-transform:none}
+.ilg-sub{font-size:16px;font-weight:400;color:var(--fg);max-width:64ch;margin:0 0 1rem}
+.ilg-cta{display:inline-flex;align-items:center;gap:.5rem;font:inherit;font-weight:400;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--fg);background:var(--glass);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);border:1px solid var(--glass-edge);border-radius:var(--r-frame);padding:6px 12px;box-shadow:-3px -3px 8px var(--sh-l),4px 4px 10px var(--sh-d),inset 0 1px 0 var(--glass-edge);transition:box-shadow .16s}
+.ilg-cta:hover{box-shadow:-2px -2px 6px var(--sh-l),3px 3px 7px var(--sh-d),inset 0 1px 0 var(--glass-edge)}
+.ilg-cta:active,.ilg-cta[aria-pressed=true]{color:var(--name);box-shadow:inset 3px 3px 7px var(--sh-d),inset -3px -3px 7px var(--sh-l)}
 .ilg-cta:focus-visible{outline:2px solid var(--ring);outline-offset:3px}
 .ilg-app{margin:1.25rem 0 2rem;max-width:100%}
 .ilg-app>*{max-width:100%}
-.ilg-frame{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:clamp(.5rem,1.2vw,1rem);overflow:hidden;max-width:100%}
-.ilg-frame img,.ilg-frame svg,.ilg-frame canvas{width:100%;height:auto;border-radius:8px}
-.ilg-credit{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:2rem}
+.ilg-frame{background:var(--surface);border:.32pt solid var(--line);border-radius:var(--r-frame);padding:0;overflow:hidden;max-width:100%;width:100%;margin:0}
+.ilg-frame img,.ilg-frame svg,.ilg-frame canvas{width:100%;height:auto;border-radius:0;display:block}
+.ilg-credit{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--label);margin-top:2rem}
 [lang="fa"]{font-family:var(--font-fa);letter-spacing:0;text-transform:none}

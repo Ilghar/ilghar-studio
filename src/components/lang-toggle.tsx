@@ -19,7 +19,7 @@ export function LangToggle({ lang }: { lang: Lang }) {
               lang={code}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "px-1 text-[0.7rem] font-medium tracking-[0.22em] uppercase transition-colors duration-200",
+                "px-1 text-[0.7rem] font-normal tracking-[0.22em] uppercase transition-colors duration-200",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 active ? "text-accent" : "text-subtle hover:text-ink",
               )}

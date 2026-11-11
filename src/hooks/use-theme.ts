@@ -7,6 +7,8 @@ const STORAGE_KEY = "ilghar-theme";
 function applyTheme(theme: Theme) {
   const root = document.documentElement;
   root.classList.toggle("dark", theme === "dark");
+  root.classList.toggle("light", theme === "light");
+  root.setAttribute("data-theme", theme);
   root.style.colorScheme = theme;
 }
 

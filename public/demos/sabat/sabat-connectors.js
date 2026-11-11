@@ -87,7 +87,8 @@ function render(){const pp=params(),res=SabatGeom.build(pp);data=C.derive(res,pp
   $("cpick").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===cur));
   $("cdraw").innerHTML=drawing(p);$("cname").textContent=p.name;
   $("crows").tBodies[0].innerHTML=p.rows.map(([a,b,t])=>`<tr><td>${a}</td><td class="n">${b}</td><td class="n"><span class="tag">${t}</span></td></tr>`).join("");
-  $("cparts").tBodies[0].innerHTML=ORDER.map(k=>`<tr${k===cur?' aria-current="true"':""}><td><span class="sw${k==="corner"?" sq":""}" style="background:${data[k].col}" aria-hidden="true"></span>${data[k].name}</td><td class="n">${data[k].count}</td></tr>`).join("")+`<tr><td><b>Total connectors</b></td><td class="n"><b>${ORDER.reduce((s,k)=>s+data[k].count,0)}</b></td></tr>`;
+  $("cparts").tBodies[0].innerHTML=ORDER.map(k=>`<tr${k===cur?' aria-current="true"':""}><td><span class="sw${k==="corner"?" sq":""}" data-col="${data[k].col}" aria-hidden="true"></span>${data[k].name}</td><td class="n">${data[k].count}</td></tr>`).join("")+`<tr><td><b>Total connectors</b></td><td class="n"><b>${ORDER.reduce((s,k)=>s+data[k].count,0)}</b></td></tr>`;
+  $("cparts").querySelectorAll("[data-col]").forEach(el=>{el.style.background=el.dataset.col});
   $("cfoot").textContent=`At Ø ${pp.D} cm, peak ${pp.peak} cm, frame stick ${pp.stick} mm, pyramid stick ${pp.stick/2} mm${pp.open?`, entrance open (star ${pp.star})`:""}.`;
   size();model(p)}
 $("cpick").addEventListener("click",e=>{const b=e.target.closest("button");if(b){cur=b.dataset.k;model.done=0;render()}});

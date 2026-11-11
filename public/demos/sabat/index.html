@@ -5,159 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../design/tokens.css">
 <link rel="stylesheet" href="demo.css">
-<style>
-@font-face{font-family:Jost;font-style:normal;font-weight:300;font-display:swap;src:url("../../fonts/jost-latin-ext-300-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:Jost;font-style:normal;font-weight:300;font-display:swap;src:url("../../fonts/jost-latin-300-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:Jost;font-style:normal;font-weight:400;font-display:swap;src:url("../../fonts/jost-latin-ext-400-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:Jost;font-style:normal;font-weight:400;font-display:swap;src:url("../../fonts/jost-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:Jost;font-style:normal;font-weight:500;font-display:swap;src:url("../../fonts/jost-latin-ext-500-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:Jost;font-style:normal;font-weight:500;font-display:swap;src:url("../../fonts/jost-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:Vazirmatn;font-style:normal;font-weight:100 900;font-display:swap;src:url("../../fonts/vazirmatn-fa.woff2") format("woff2");unicode-range:U+0600-06FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF}
-img,svg,canvas,iframe{max-width:100%;height:auto}
-img,svg,canvas,iframe,figure{max-width:100%;height:auto}canvas#iso{width:100%!important;max-width:100%!important;height:auto!important}
-.hero img{width:100%;max-width:100%;height:auto}
-body,main{overflow-x:hidden;max-width:100%}
-.app{max-width:100%}
-picture,.hero-card{display:block;max-width:100%;width:100%;overflow:hidden}
-.hero-card img,picture img{max-width:100%!important;width:100%!important;height:auto!important}
-main{overflow-x:hidden;box-sizing:border-box}
-/* nuclear column */
-html,body{width:100%;max-width:100%;overflow-x:hidden}
-main{width:100%!important;max-width:960px!important;box-sizing:border-box!important;overflow-x:hidden}
-.hero-card,picture,.hero,figure,.app,.main3d,.panel,.intro,.conn{max-width:100%!important;width:100%;box-sizing:border-box}
-img,svg,canvas,iframe,video{max-width:100%!important;height:auto}
-</style>
 <title>SÁBÁT · pavilion explorer · ilghar.studio</title>
-<style>
-:root{--name:#856a8e;--sec:#7d5a7c;--em:#856a8e;--label:#775a76;--key:#473448}
-:root{--canvas:#f9fafb;--surface:#f9fafb;--ink:#5a515c;--title:#473448;--muted:#7d5a7c;--subtle:#a6a1a7;--accent:#473448;--deco:#856a8e;--accent-fg:#f9fafb;--line:#856a8e;--ring:#473448;--track:#7d5a7c;--note-s:#5a515c;--note-p:#7d5a7c;color-scheme:light}
-[data-theme=dark]{--canvas:#2a272d;--surface:#2a272d;--ink:#d4d2d2;--title:#d4d2d2;--muted:#a6a1a7;--subtle:#948e95;--accent:#856a8e;--deco:#856a8e;--accent-fg:#2a272d;--line:#948e95;--ring:#856a8e;--track:#948e95;--note-s:#a6a1a7;--note-p:#a6a1a7;--name:#856a8e;--sec:#856a8e;--em:#a6a1a7;--label:#a6a1a7;--key:#856a8e;color-scheme:dark}
-*{box-sizing:border-box}
-:root{--font-title:Jost,Jost;--font-body:Jost,Jost}
-body{margin:0;background:var(--canvas);color:var(--ink);font:400 16px/1.65 Jost}
-main{width:100%;max-width:960px;box-sizing:border-box;margin:0 auto;padding:40px 24px 56px}
-h1,h2,h3{font-family:var(--font-title);font-weight:400;text-transform:uppercase;letter-spacing:.18em;color:var(--title);margin:0}
-h1{font-size:2.3rem;line-height:1.15}
-h2{font-size:.95rem;font-weight:400;margin-bottom:12px;padding-bottom:8px;border-bottom:1px dotted var(--line)}
-h2::before{content:"| ";color:var(--line)}
-.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:.32pt solid var(--line);padding-bottom:14px;margin-bottom:28px}
-.brand{font-family:var(--font-title);font-size:.95rem;letter-spacing:.06em;color:var(--muted)}
-.fa{font-family:var(--font-title);color:var(--muted);font-size:1.4rem;margin-left:10px}
-.intro{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:32px}
-blockquote{margin:0 0 14px;padding-left:16px;border-left:2px solid var(--deco);font-size:1.02rem}
-cite{display:block;font-style:normal;font-size:.85rem;color:var(--muted);margin-top:4px}
-.facts{background:var(--surface);border:.32pt solid var(--line);border-radius:0;padding:18px 20px;align-self:start}
-.facts dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0}
-.facts dt{color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em}.facts dd{margin:0}
-.app{display:grid;grid-template-columns:300px 1fr;gap:24px}
-.panel{background:var(--surface);border:.32pt solid var(--line);border-radius:0;padding:20px}
-.ctl{margin-bottom:20px}
-.ctl label{display:flex;justify-content:space-between;font-size:.8rem;font-weight:400;text-transform:uppercase;letter-spacing:.12em}
-.ctl output{font-weight:400;font-variant-numeric:tabular-nums}
-.note{font-size:.82rem;color:var(--muted);margin:2px 0 0}
-input[type=range]{width:100%;margin:8px 0 0;accent-color:var(--accent);height:24px;background:transparent;-webkit-appearance:none;appearance:none}
-input[type=range]::-webkit-slider-runnable-track{height:3px;background:var(--track);border-radius:0}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:0;background:var(--accent);border:2px solid var(--ink);margin-top:-7.5px}
-input[type=range]::-moz-range-track{height:3px;background:var(--track)}
-input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:0;background:var(--accent);border:2px solid var(--ink)}
-:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-button{font:inherit;font-size:.9rem;color:var(--ink);background:transparent;border:1px solid var(--muted);border-radius:0;padding:6px 12px;cursor:pointer}
-button:hover{border-color:var(--ink)}
-.views{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-figure{margin:0;background:var(--surface);border:.32pt solid var(--line);border-radius:0;padding:16px}
-figure svg,figure canvas,.hero img{border-radius:0}.hero{overflow:hidden}/* rev 9: every frame rounded, after v7.css (12 px) */
-figcaption{font-size:.85rem;color:var(--muted);margin-top:8px}
-svg,canvas{display:block;width:100%;height:auto;aspect-ratio:1;touch-action:none}
-canvas{cursor:grab}
-.counts{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-table{width:100%;border-collapse:collapse;font-size:.9rem;font-variant-numeric:tabular-nums}
-th,td{text-align:left;padding:5px 0;border-bottom:1px dotted var(--line)}
-th{font-weight:400;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem}td.n{text-align:right}th.n{text-align:right}
-.big{font-family:var(--font-title);font-size:2rem;line-height:1.1}
-.tag{display:inline-block;font-size:.75rem;letter-spacing:.04em;border:1px solid var(--muted);color:var(--muted);border-radius:0;padding:0 6px;margin-left:6px;vertical-align:middle;font-weight:400;text-transform:none}
-.err{color:var(--ink);background:var(--canvas);padding:8px;border-left:2px solid var(--deco);font-size:.88rem}
-footer{margin-top:24px;border-top:.32pt solid var(--line);padding-top:14px;font-size:.85rem;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-@media (max-width:860px){.app>div{order:-1}.intro,.app,.views,.counts{grid-template-columns:1fr}h1{font-size:1.9rem}main{padding:24px 16px 40px}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-.note,figcaption,th,.facts dt,.tag{color:var(--note-s)}.tag{border-color:var(--note-s)}
-cite,.brand,footer,main>.note,.fa{color:var(--note-p)}
-
-/* Hāèl type scale (HAEL_SYSTEM §2, §6): one family, hierarchy by caps, tracking, colour; no bold headings */
-h1{font-size:31px;font-weight:400;letter-spacing:.2em;color:var(--name);line-height:1.3}
-h1 .fa{color:var(--name);font-size:24px}
-h2{font-size:23px;font-weight:400;letter-spacing:.12em;color:var(--sec);text-transform:uppercase}
-.panel h2,.facts h2,.counts h2{font-size:19px}
-b,strong,.key{font-weight:500;color:var(--key)}
-em{font-style:italic;color:var(--em)}
-.note,figcaption,cite,footer,.brand,th,.facts dt,.ctl label{font-size:13px;font-weight:300}
-.ctl label,.facts dt,th{color:var(--label);font-weight:500}
-.hero{margin:0 0 28px;padding:0;border:0;background:none}
-.hero img{display:block;width:100%;height:auto;aspect-ratio:1200/744;max-height:520px;object-fit:cover;object-position:50% 60%}
-.hero figcaption{margin-top:6px}
-.big{font-size:1.6rem;white-space:nowrap}
-@media (max-width:860px){h1{font-size:24px;letter-spacing:.14em}h2{font-size:20px}.panel h2,.facts h2,.counts h2{font-size:18px}}
-/* v7 / v3.4: site column, glass + soft-shadow controls, drop caps */
-:root{--dc:#856a8e;--glass:rgba(249,250,251,.55);--glass-edge:rgba(255,255,255,.75);--sh-d:rgba(71,52,72,.16);--sh-l:rgba(255,255,255,.9);--well:rgba(71,52,72,.10)}
-[data-theme=dark]{--dc:#856a8e;--glass:rgba(48,45,52,.55);--glass-edge:rgba(255,255,255,.10);--sh-d:rgba(0,0,0,.38);--sh-l:rgba(255,255,255,.06);--well:rgba(0,0,0,.28)}
-main{width:100%;max-width:min(100%,960px);box-sizing:border-box;padding-left:16px;padding-right:16px}
-@media (min-width:768px){main{width:100%;max-width:min(100%,960px);box-sizing:border-box;padding-left:32px;padding-right:32px}}
-@media (min-width:1024px){main{max-width:960px}}
-.intro,.app,.counts,.grid{grid-template-columns:minmax(0,1fr)!important}
-.views{grid-template-columns:minmax(0,1fr)!important}
-/* rev 8 (Hāèl, 4 Nov): one column at every width, no illustrations side by side */
-.views,.counts{gap:16px}
-.views{display:grid;gap:16px}
-.sw{display:inline-block;width:11px;height:11px;border-radius:0;margin-right:8px;vertical-align:-1px;box-shadow:0 0 0 1px rgba(249,250,251,.75)}.sw.sq{border-radius:0}.sw.none{background:none;box-shadow:none}
-.app{margin-bottom:32px}.app>.main3d{order:-2}
-.dc{color:var(--dc)}
-:root:not([data-theme=dark]) h1,:root:not([data-theme=dark]) h1 .fa{color:#473448!important}
-:root:not([data-theme=dark]) h1 .dc{color:#856a8e;font-weight:600}
-:root:not([data-theme=dark]) :is(h2,h3,.sec,.label) .dc{color:#775a76}
-/* controls */
-button,.glass{background:var(--glass)!important;-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);border:1px solid var(--glass-edge)!important;border-radius:0;box-shadow:-3px -3px 8px var(--sh-l),4px 4px 10px var(--sh-d),inset 0 1px 0 var(--glass-edge);color:var(--ink);transition:box-shadow .16s}
-button:hover{box-shadow:-2px -2px 6px var(--sh-l),3px 3px 7px var(--sh-d),inset 0 1px 0 var(--glass-edge)}
-button:active,button[aria-pressed=true]{box-shadow:inset 3px 3px 7px var(--sh-d),inset -3px -3px 7px var(--sh-l)!important}
-#pick button[aria-pressed=true]{color:var(--plum,var(--accent))!important;background:var(--glass)!important}
-input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;height:28px;accent-color:var(--dc)}
-input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:0;background:var(--well)!important;box-shadow:inset 2px 2px 4px var(--sh-d),inset -2px -2px 4px var(--sh-l)}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-7px;border-radius:0;background:var(--glass)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--glass-edge)!important;box-shadow:-2px -2px 5px var(--sh-l),3px 3px 7px var(--sh-d),inset 0 0 0 5px var(--dc)}
-input[type=range]::-moz-range-track{height:8px;border-radius:0;background:var(--well);box-shadow:inset 2px 2px 4px var(--sh-d)}
-input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:0;background:var(--glass);border:1px solid var(--glass-edge);box-shadow:3px 3px 7px var(--sh-d),inset 0 0 0 5px var(--dc)}
-:focus-visible{outline:2px solid var(--dc)!important;outline-offset:3px}
-#cdraw svg{aspect-ratio:auto;height:auto}#cx3d{aspect-ratio:1/.72;cursor:grab}.conn{margin-bottom:32px}.conn table td.n{white-space:normal}#cparts tr[aria-current] td{color:var(--key)}
-img,svg,canvas,iframe,figure{max-width:100%;height:auto}canvas#iso{width:100%!important;max-width:100%!important;height:auto!important}
-.hero img{width:100%;max-width:100%;height:auto}
-body,main{overflow-x:hidden;max-width:100%}
-.app{max-width:100%}
-picture,.hero-card{display:block;max-width:100%;width:100%;overflow:hidden}
-.hero-card img,picture img{max-width:100%!important;width:100%!important;height:auto!important}
-main{overflow-x:hidden;box-sizing:border-box}
-/* nuclear column */
-html,body{width:100%;max-width:100%;overflow-x:hidden}
-main{width:100%!important;max-width:960px!important;box-sizing:border-box!important;overflow-x:hidden}
-.hero-card,picture,.hero,figure,.app,.main3d,.panel,.intro,.conn{max-width:100%!important;width:100%;box-sizing:border-box}
-img,svg,canvas,iframe,video{max-width:100%!important;height:auto}
-</style>
-<style>
-/* hero art: SVG has its own border — no outer .frame */
-.hero-art{display:block;width:100%;max-width:100%;aspect-ratio:8/3;margin:0;padding:0;border:0!important;outline:0;overflow:hidden;background:transparent;border-radius:0;box-shadow:none;position:relative}
-.hero-art img{position:absolute;inset:0;display:block;width:100%!important;height:100%!important;max-height:none;object-fit:fill;border:0;border-radius:0}
-figure.span12 > .hero-art, figure.hero > .hero-art{width:100%}
-</style>
 </head>
 <body>
 <main>
-<figure class="hero" style="max-width:960px;margin:0 auto 24px">
+<figure class="hero">
   <picture class="hero-art">
       <source media="(prefers-color-scheme: dark)" srcset="hero-dark.svg">
-      <img src="hero-light.svg" width="1280" height="480" alt="SÁBÁT, Parametric Shelter Explorer. A live pavilion model: frame, struts and connectors. Front-view line drawing of the triangulated pavilion frame. ilghar.studio." style="width:100%;height:100%;object-fit:fill;display:block;border-radius:0;">
+      <img src="hero-light.svg" width="1280" height="480" alt="SÁBÁT, Parametric Shelter Explorer. A live pavilion model: frame, struts and connectors. Front-view line drawing of the triangulated pavilion frame. ilghar.studio.">
     </picture>
-  <figcaption style="margin-top:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--label,#775a76)">SÁBÁT hero</figcaption>
+  <figcaption class="cap-hero">SÁBÁT hero</figcaption>
 </figure>
 
 <header class="top"><span class="brand" aria-label="ilghar.studio, Sábát">ilghar.studio <span aria-hidden="true">|</span> SÁBÁT</span><button id="theme" type="button" aria-pressed="false">dark</button></header>
 <h1><span aria-label="projekt Sábát">projekt SÁBÁT</span><span class="fa" lang="fa">ساباط</span></h1>
-<p class="note" style="margin:6px 0 24px">Pavilion explorer. A working model of the pavilion base.</p>
+<p class="note" class="note-hero">Pavilion explorer. A working model of the pavilion base.</p>
 <section class="app">
   <figure class="main3d"><canvas id="iso" width="640" height="640" tabindex="0" role="img" aria-label="3D view of the base with illustrative peaks. Drag, or use the arrow keys, to rotate."></canvas>
         <figcaption>Drag or use the arrow keys to rotate. Knit drawn as a smooth tension surface.</figcaption></figure>
@@ -168,10 +30,10 @@ figure.span12 > .hero-art, figure.hero > .hero-art{width:100%}
     <div class="ctl"><label for="peak">Pyramid peak <output id="peakO" for="peak"></output></label><input id="peak" type="range" min="0" max="250" step="1" value="57" list="peakB"><datalist id="peakB"><option value="57"></option></datalist><p class="note">Built: 57 cm (model value, about ⅔ of 85 cm, per Hāèl).</p></div>
     <div class="ctl"><label for="leg">Leg height <output id="legO" for="leg"></output></label><input id="leg" type="range" min="0" max="200" step="1" value="54" list="legB"><datalist id="legB"><option value="54"></option></datalist><p class="note">Built: 54 cm, giving 230 cm to the crown hub (Hāèl).</p></div>
     <div class="ctl"><label for="stk">Stick thickness <output id="stkO" for="stk"></output></label><input id="stk" type="range" min="10" max="60" step="1" value="20" list="stkB"><datalist id="stkB"><option value="20"></option></datalist><p class="note">Built: 20 mm. Clamps and pyramid struts (½ thickness) scale with it.</p></div>
-    <div class="ctl"><label>Entrance <output id="entO"></output></label><p style="margin:8px 0 0"><button type="button" id="ent" aria-pressed="false">Entrance open</button></p>
-      <div id="pick" role="group" aria-label="Side star removed for the entrance" style="display:none;flex-wrap:wrap;gap:8px;margin-top:10px"><button type="button" data-s="1" aria-pressed="true">1</button><button type="button" data-s="2" aria-pressed="false">2</button><button type="button" data-s="3" aria-pressed="false">3</button><button type="button" data-s="4" aria-pressed="false">4</button><button type="button" data-s="5" aria-pressed="false">5</button></div>
+    <div class="ctl"><label>Entrance <output id="entO"></output></label><p class="ctl-btn"><button type="button" id="ent" aria-pressed="false">Entrance open</button></p>
+      <div id="pick" role="group" aria-label="Side star removed for the entrance"><button type="button" data-s="1" aria-pressed="true">1</button><button type="button" data-s="2" aria-pressed="false">2</button><button type="button" data-s="3" aria-pressed="false">3</button><button type="button" data-s="4" aria-pressed="false">4</button><button type="button" data-s="5" aria-pressed="false">5</button></div>
       <p class="note">Built: closed, all 6 stars (30 pyramids). Open removes one side star (numbered on the plan).</p></div>
-    <div class="ctl"><label>Covers <output id="covO"></output></label><p style="margin:8px 0 0"><button type="button" id="cov" aria-pressed="false">Covers on</button></p><p class="note">Off shows the bare struts and connectors, then on puts the knitted covers and tarps back.</p></div>
+    <div class="ctl"><label>Covers <output id="covO"></output></label><p class="ctl-btn"><button type="button" id="cov" aria-pressed="false">Covers on</button></p><p class="note">Off shows the bare struts and connectors, then on puts the knitted covers and tarps back.</p></div>
     <button type="button" id="reset">Reset to the built size</button>
     <p id="err" class="err" role="alert" hidden></p>
   </form>
@@ -193,12 +55,12 @@ figure.span12 > .hero-art, figure.hero > .hero-art{width:100%}
 <section class="conn" aria-labelledby="connH">
   <h2 id="connH">connectors</h2>
   <p class="note">Move the sliders; angles, bores and lengths recalculate. At the built values every part matches stage-1. Tags: S spec, H Hāèl, C computed, A assumption.</p>
-  <div id="cpick" role="group" aria-label="Choose a connector" style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px"><button type="button" data-k="hub5">5-way hub</button><button type="button" data-k="hub6">6-way hub</button><button type="button" data-k="corner">L corner 20A</button><button type="button" data-k="tee">T tee 2A</button><button type="button" data-k="ball">Ball connector</button><button type="button" data-k="peak">Peak connector</button></div>
+  <div id="cpick" role="group" aria-label="Choose a connector"><button type="button" data-k="hub5">5-way hub</button><button type="button" data-k="hub6">6-way hub</button><button type="button" data-k="corner">L corner 20A</button><button type="button" data-k="tee">T tee 2A</button><button type="button" data-k="ball">Ball connector</button><button type="button" data-k="peak">Peak connector</button></div>
   <figure><div id="cdraw"></div><figcaption><span id="cname"></span>: technical drawing, front, side and top. Dimensions in mm, angles in degrees. Dashed lines are bores.</figcaption></figure>
-  <figure style="margin-top:16px"><canvas id="cx3d" tabindex="0" role="img" aria-label="3D model of the selected connector. Drag to orbit, scroll to zoom."></canvas><figcaption>3D model, live. Drag to orbit, scroll to zoom. <button type="button" id="cstl" style="margin-left:8px">Download STL</button></figcaption></figure>
-  <div class="panel" style="margin-top:16px"><h2>computed values</h2><table id="crows"><thead><tr><th>Value</th><th class="n">Now</th><th class="n">Source</th></tr></thead><tbody></tbody></table><p class="note" id="cfoot"></p>
+  <figure class="fig-3d"><canvas id="cx3d" tabindex="0" role="img" aria-label="3D model of the selected connector. Drag to orbit, scroll to zoom."></canvas><figcaption>3D model, live. Drag to orbit, scroll to zoom. <button type="button" id="cstl">Download STL</button></figcaption></figure>
+  <div class="panel panel-follow"><h2>computed values</h2><table id="crows"><thead><tr><th>Value</th><th class="n">Now</th><th class="n">Source</th></tr></thead><tbody></tbody></table><p class="note" id="cfoot"></p>
     <p class="note">Hub and corner angles stay fixed from the 2V geometry; only stick lengths grow. Peak and tee follow height vs triangle size. The STL keeps separate shells.</p></div>
-  <div class="panel" style="margin-top:16px"><h2>parts for this version</h2><table id="cparts"><thead><tr><th>Connector</th><th class="n">Count</th></tr></thead><tbody></tbody></table></div>
+  <div class="panel panel-follow"><h2>parts for this version</h2><table id="cparts"><thead><tr><th>Connector</th><th class="n">Count</th></tr></thead><tbody></tbody></table></div>
 </section>
 <figure class="hero"><img src="sabat-pavilion.jpg" width="960" height="595" loading="eager" alt="The SÁBÁT pavilion on a forest meadow: a pavilion frame on wooden legs, its triangles raised into dark knitted peaks, with grey fabric flaps open at the front and rugs and green cushions laid out inside."><figcaption>SÁBÁT pavilion – front view <span aria-hidden="true">|</span> Ø 370 × H 230 cm <span aria-hidden="true">|</span> Photo: Hāèl, portfolio 2024</figcaption></figure>
 <section class="intro" aria-label="About the pavilion">
@@ -209,7 +71,7 @@ figure.span12 > .hero-art, figure.hero > .hero-art{width:100%}
   <aside class="facts" aria-label="Built pavilion">
     <h2>the built pavilion</h2>
     <dl><dt>Size</dt><dd>Ø 370 × H 230 cm</dd><dt>Context</dt><dd>Master thesis, workshop space at BLADE Festival</dd><dt>Cover</dt><dd>Knitted textiles from Texcycle yarn</dd><dt>Source</dt><dd>Portfolio 2024</dd></dl>
-    <p class="note" style="margin-top:12px">Everything below the sliders is computed by the model. Model values are not measurements of the built pavilion.</p>
+    <p class="note">Everything below the sliders is computed by the model. Model values are not measurements of the built pavilion.</p>
   </aside>
 </section>
 
