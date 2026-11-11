@@ -4,7 +4,8 @@ public/cover-day.jpg
 public/cover-night.jpg
 public/cover-wide.jpg
 public/cover.jpg
-public/demos/sabat/sabat-pavilion.jpg
+# Photo allowlist (DESIGNER): no dark source required; still run the blue check
+palette public/demos/sabat/sabat-pavilion.jpg
 public/demos/sabat/sabat_dome_covers_dark.webp
 public/demos/sabat/sabat_dome_covers_light.webp
 public/media/blade-poster.jpg
