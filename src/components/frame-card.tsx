@@ -44,6 +44,8 @@ export function FrameCard({
   const sizes = featured ? "(min-width: 1024px) 960px, 92vw" : "(min-width: 1024px) 460px, 45vw";
   const wLight = featured ? 1280 : 640;
 
+  const titleOnly = !cover && !loopMp4 && !loopWebm;
+
   const lightImg = cover ? (
     <img
       src={coverHi || cover}
@@ -100,9 +102,15 @@ export function FrameCard({
             "relative block aspect-[4/3] overflow-hidden rounded-none",
             contain && "flex items-center justify-center bg-surface",
             photo && "photo-plain",
+            titleOnly && "title-only-frame",
           )}
         >
           {media}
+          {titleOnly ? (
+            <span className="title-only-label" aria-hidden="true">
+              {title}
+            </span>
+          ) : null}
           {loopMp4 || loopWebm ? (
             <video
               className="tile-loop"

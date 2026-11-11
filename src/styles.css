@@ -153,6 +153,33 @@
 .photo-plain img {
   filter: none;
 }
+
+/* Title-only tiles: centre the collection name in the empty 4/3 frame.
+   Jost 400, uppercase, .2em tracking, mauve in both themes. Size scales
+   with the tile so CERTIFICATES fits a 2-col 390px row at .2em. */
+.title-only-frame {
+  container-type: inline-size;
+}
+.title-only-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  pointer-events: none;
+  padding: 12px 8px 56px;
+  padding-left: calc(8px + .2em);
+  font-family: var(--font);
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(9px, calc((100cqi - 16px) / 14.5), 18px);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
+  color: var(--mauve-em);
+}
 .tile-loop {
   position: absolute;
   inset: 0;
