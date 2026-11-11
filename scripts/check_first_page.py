@@ -26,6 +26,10 @@ are not checked for this colour.
 
 Photo boards named disagreement or fact-vs-taste are palette-allowlisted
 (off-palette colours are ignored) but still run the blue check.
+
+Content images need a light and a dark file, served through <picture> with
+a prefers-color-scheme dark source (and swapped by the theme toggle).
+A content <img> with no dark source FAILs. Favicons and app icons are skipped.
 """
 from __future__ import annotations
 
@@ -474,8 +478,16 @@ def _px(val: str) -> str | None:
     return m.group(0) if m else None
 
 
+def _css_width(val: str) -> str | None:
+    """Token or declared width: px, or 100% for the phone column."""
+    val = val.strip().lower()
+    if val in {"100%", "100.00%"} or val.startswith("100%"):
+        return "100%"
+    return _px(val)
+
+
 def check_column(css: str) -> list[str]:
-    """Require v2 column widths 720 / 760px (full-width phones; or --col-s/m/l)."""
+    """Require v2 column: 100% (16px side pad) / 720px (24px pad from 768) / 760px from 1024."""
     issues: list[str] = []
     vs = _var_map(css)
     def resolved(val: str) -> str:
@@ -489,13 +501,17 @@ def check_column(css: str) -> list[str]:
                 return resolved(fallback)
         return val
 
+    def as_width(raw: str) -> str | None:
+        return _css_width(resolved(_clean_decl(raw)))
+
     widths: set[str] = set()
+    pads: set[str] = set()
     if vs.get("col-s") and vs.get("col-m") and vs.get("col-l"):
         for key in ("col-s", "col-m", "col-l"):
-            r = _px(resolved(vs[key]))
+            r = as_width(vs[key])
             if r:
                 widths.add(r)
-    # main { max-width: ... } including media queries
+    # main { max-width: ... } including media queries; also side padding
     for sel, body in css_rules(css):
         parts = [p.strip() for p in sel.split(",") if p.strip()]
         if not any(re.search(r"(^|[^a-z-])main$", _subject(p), re.I) or _subject(p) in {"main"} for p in parts):
@@ -503,20 +519,46 @@ def check_column(css: str) -> list[str]:
             if not any(re.search(r"(^|,)\s*main\s*$", p, re.I) for p in parts):
                 continue
         m = re.search(r"max-width\s*:\s*([^;}\n]+)", body, re.I)
-        if not m:
-            continue
-        r = _px(resolved(_clean_decl(m.group(1))))
-        if r:
-            widths.add(r)
+        if m:
+            r = as_width(m.group(1))
+            if r:
+                widths.add(r)
+        # shorthand padding: top right bottom left, or top/bottom + sides
+        pm = re.search(r"(?<!-)padding\s*:\s*([^;}\n]+)", body, re.I)
+        if pm:
+            parts_p = _clean_decl(pm.group(1)).split()
+            # 1 value: all sides; 2: block inline; 3: top inline bottom; 4: top right bottom left
+            if len(parts_p) == 1:
+                side = parts_p[0]
+            elif len(parts_p) in (2, 3):
+                side = parts_p[1]
+            else:
+                side = parts_p[1]  # right; left is parts_p[3] — require both later
+            r = _css_width(resolved(_clean_decl(side)))
+            if r:
+                pads.add(r)
+            if len(parts_p) == 4:
+                r2 = _css_width(resolved(_clean_decl(parts_p[3])))
+                if r2:
+                    pads.add(r2)
+        for prop in ("padding-left", "padding-right", "padding-inline", "padding-inline-start", "padding-inline-end"):
+            pm = re.search(rf"{prop}\s*:\s*([^;}}\n]+)", body, re.I)
+            if pm:
+                r = _css_width(resolved(_clean_decl(pm.group(1))))
+                if r:
+                    pads.add(r)
     # --col used as the only column (v1)
     if "col" in vs and "col-s" not in vs:
-        r = _px(resolved(vs["col"]))
+        r = as_width(vs["col"])
         if r:
             widths.add(r)
 
-    need = {"720px", "760px"}
+    need = {"100%", "720px", "760px"}
     if not need.issubset(widths):
-        issues.append(f"column: need 720/760px, found {sorted(widths) or 'none'}")
+        issues.append(f"column: need 100%/720/760px, found {sorted(widths) or 'none'}")
+    # Live SÁBÁT: 16px sides on phones, 24px from 768px. Flag if main padding is present but those two are missing.
+    if pads and not {"16px", "24px"}.issubset(pads):
+        issues.append(f"column padding: need 16px and 24px sides, found {sorted(pads)}")
     return issues
 
 
@@ -860,6 +902,63 @@ def scan_svg(path: Path, rel: str, palette_only: bool = False):
     return blue, issues
 
 
+IMG_TAG = re.compile(r"<img\b[^>]*>", re.I | re.S)
+PICTURE_BLOCK = re.compile(r"<picture\b[^>]*>.*?</picture>", re.I | re.S)
+SRC_ATTR = re.compile(r"""(?:src|srcset)\s*=\s*['"]([^'"]+)['"]""", re.I)
+SKIP_IMG = re.compile(
+    r"(favicon|apple-touch-icon|icon-192|icon-512|site\.webmanifest|/icons/)",
+    re.I,
+)
+# DESIGNER photo allowlist: these stay as a single source (no dark variant).
+# They are exempt from the no-dark-source rule only; the blue check still runs.
+PHOTO_NO_DARK = re.compile(
+    r"(?:^|/)(?:disagreement\.svg|fact-vs-taste\.svg|sabat-pavilion\.jpe?g)(?:\?|$)",
+    re.I,
+)
+DARK_SOURCE = re.compile(
+    r"<source\b[^>]*(?:media=['\"][^'\"]*prefers-color-scheme\s*:\s*dark|srcset=['\"][^'\"]*[-_]dark\b|src=['\"][^'\"]*[-_]dark\b)",
+    re.I,
+)
+
+
+def _img_src(tag: str) -> str:
+    m = re.search(r"""src\s*=\s*['"]([^'"]+)['"]""", tag, re.I)
+    return m.group(1) if m else "(no src)"
+
+
+def _skip_content_img(tag: str) -> bool:
+    src = _img_src(tag)
+    if PHOTO_NO_DARK.search(src):
+        return True
+    return bool(SKIP_IMG.search(src) or SKIP_IMG.search(tag))
+
+
+def check_content_images(html: str) -> list[str]:
+    """FAIL content <img> with no dark source in a <picture>."""
+    issues: list[str] = []
+    text = re.sub(r"<!--.*?-->", "", html, flags=re.S)
+    covered: list[tuple[int, int]] = []
+    for pic in PICTURE_BLOCK.finditer(text):
+        block = pic.group(0)
+        covered.append((pic.start(), pic.end()))
+        img = IMG_TAG.search(block)
+        src = _img_src(img.group(0)) if img else "(picture)"
+        if img and _skip_content_img(img.group(0)):
+            continue
+        if not DARK_SOURCE.search(block):
+            issues.append(f"picture has no dark source: {src}")
+    def in_picture(pos: int) -> bool:
+        return any(a <= pos < b for a, b in covered)
+    for m in IMG_TAG.finditer(text):
+        if in_picture(m.start()):
+            continue
+        tag = m.group(0)
+        if _skip_content_img(tag):
+            continue
+        issues.append(f"content img has no dark source: {_img_src(tag)}")
+    return issues
+
+
 def run_broken_samples() -> list[str]:
     """Prove body-text pink and background pink both FAIL; first-letter PASS.
     Also: square frame FAIL, 12px frame PASS, wrong font FAIL, Jost PASS,
@@ -914,8 +1013,9 @@ def run_broken_samples() -> list[str]:
     hit("svg-art-rounded", svg2, False, check_radius)
 
     # Column / type positive and negative
-    v2col = ":root{--col-s:100%;--col-m:720px;--col-l:760px} main{max-width:var(--col-s)} @media (min-width:768px){main{max-width:var(--col-m)}} @media (min-width:1024px){main{max-width:var(--col-l)}}"
+    v2col = ":root{--col-s:100%;--col-m:720px;--col-l:760px} main{max-width:var(--col-s);padding:24px 16px 40px} @media (min-width:768px){main{max-width:var(--col-m);padding:40px 24px 56px}} @media (min-width:1024px){main{max-width:var(--col-l)}}"
     hit("column-v2", v2col, False, check_column)
+    hit("column-old-448", ":root{--col-s:448px;--col-m:576px;--col-l:672px} main{max-width:var(--col-s)}", True, check_column)
     hit("column-v1", ":root{--col:960px} main{max-width:var(--col)}", True, check_column)
     v2type = "h1,.name{font-size:24px} @media (min-width:768px){h1,.name{font-size:31px}} h2{font-size:23px} .label,figcaption{font-size:13px}"
     hit("type-v2", v2type, False, check_type)
@@ -986,6 +1086,48 @@ def run_broken_samples() -> list[str]:
         False,
         check_pink_headings,
     )
+    hit(
+        "img-no-dark",
+        '<img src="hero-light.svg" alt="hero">',
+        True,
+        check_content_images,
+    )
+    hit(
+        "img-photo-pavilion",
+        '<img src="sabat-pavilion.jpg" alt="pavilion">',
+        False,
+        check_content_images,
+    )
+    hit(
+        "img-photo-disagreement",
+        '<img src="../assets/disagreement.svg" alt="board">',
+        False,
+        check_content_images,
+    )
+    hit(
+        "img-photo-fact-vs-taste",
+        '<img src="assets/fact-vs-taste.svg" alt="trays">',
+        False,
+        check_content_images,
+    )
+    hit(
+        "img-picture-dark",
+        '<picture><source media="(prefers-color-scheme: dark)" srcset="hero-dark.svg"><img src="hero-light.svg" alt="hero"></picture>',
+        False,
+        check_content_images,
+    )
+    hit(
+        "img-picture-light-only",
+        '<picture><source media="(prefers-color-scheme: light)" srcset="hero-light.svg"><img src="hero-light.svg" alt="hero"></picture>',
+        True,
+        check_content_images,
+    )
+    hit(
+        "img-favicon-skip",
+        '<img src="/favicon.svg" alt="">',
+        False,
+        check_content_images,
+    )
     return fails
 
 
@@ -1034,6 +1176,9 @@ def main() -> int:
                     if suf in {".css", ".html"}:
                         for iss in check_pink_headings(text):
                             failures.append(f"PINK_HEADING {rel}: {iss}")
+                    if suf == ".html":
+                        for iss in check_content_images(text):
+                            failures.append(f"IMAGE {rel}: {iss}")
 
         if suf not in IMG_EXT:
             continue
