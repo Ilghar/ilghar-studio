@@ -140,6 +140,19 @@
   to { opacity: 1; }
 }
 
+
+/* Single-source paper/photos (CV, Arbeits, Bildungs): untouched image
+   on a 12px card. Dark mode uses the card colour as surroundings; no filter. */
+.photo-plain {
+  background: var(--surface);
+}
+.dark .photo-plain,
+[data-theme="dark"] .photo-plain {
+  background: #2a272d;
+}
+.photo-plain img {
+  filter: none;
+}
 .tile-loop {
   position: absolute;
   inset: 0;

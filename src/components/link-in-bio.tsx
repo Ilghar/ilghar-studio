@@ -133,6 +133,7 @@ export function LinkInBio({ lang }: { lang: Lang }) {
                 title={t(lang, item.title)}
                 kicker={t(lang, item.kicker)}
                 contain={item.contain}
+                photo={item.photo}
                 loopWebm={item.loopWebm}
                 loopMp4={item.loopMp4}
                 external={Boolean(item.href) && !item.video}

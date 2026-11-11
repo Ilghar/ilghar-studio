@@ -194,12 +194,13 @@ def is_blue_rgb(r: int, g: int, b: int) -> bool:
     return 190 <= hue <= 250 and sat > 0.25 and val > 0.12
 
 
-def load_allowlist() -> tuple[set[str], set[str]]:
-    """Return (full_skip, palette_only) path sets."""
+def load_allowlist() -> tuple[set[str], set[str], set[str]]:
+    """Return (full_skip, palette_only, photo_no_dark) path sets."""
     full: set[str] = set()
     palette: set[str] = set()
+    photo: set[str] = set()
     if not ALLOWLIST.exists():
-        return full, palette
+        return full, palette, photo
     for raw in ALLOWLIST.read_text().splitlines():
         stripped = raw.split("#", 1)
         note = stripped[1].strip().lower() if len(stripped) > 1 else ""
@@ -212,13 +213,22 @@ def load_allowlist() -> tuple[set[str], set[str]]:
             kind, line = "palette", line.split(" ", 1)[1].strip()
         elif line.lower().startswith("palette "):
             kind, line = "palette", line.split(" ", 1)[1].strip()
+        elif line.lower().startswith("photo "):
+            kind, line = "photo", line.split(" ", 1)[1].strip()
         if "palette-only" in note or note.startswith("palette"):
             kind = "palette"
+        if note.startswith("photo") or "no-dark" in note or "no dark" in note:
+            kind = "photo"
         path = line.replace("\\", "/")
         if not path:
             continue
-        (palette if kind == "palette" else full).add(path)
-    return full, palette
+        if kind == "palette":
+            palette.add(path)
+        elif kind == "photo":
+            photo.add(path)
+        else:
+            full.add(path)
+    return full, palette, photo
 
 
 def _match_allow(path: Path, allow: set[str]) -> bool:
@@ -912,9 +922,20 @@ SKIP_IMG = re.compile(
 # DESIGNER photo allowlist: these stay as a single source (no dark variant).
 # They are exempt from the no-dark-source rule only; the blue check still runs.
 PHOTO_NO_DARK = re.compile(
-    r"(?:^|/)(?:disagreement\.svg|fact-vs-taste\.svg|sabat-pavilion\.jpe?g)(?:\?|$)",
+    r"(?:^|/)(?:disagreement\.svg|fact-vs-taste\.svg|sabat-pavilion\.jpe?g|"
+    r"cards/cv\.(?:jpe?g|webp)|cards/arbeits\.(?:jpe?g|webp)|cards/abschluss\.(?:jpe?g|webp)"
+    r")(?:\?|$)",
     re.I,
 )
+
+def _load_photo_paths() -> set[str]:
+    try:
+        _full, _palette, photo = load_allowlist()
+    except Exception:
+        photo = set()
+    return photo
+
+PHOTO_PATHS = _load_photo_paths()
 DARK_SOURCE = re.compile(
     r"<source\b[^>]*(?:media=['\"][^'\"]*prefers-color-scheme\s*:\s*dark|srcset=['\"][^'\"]*[-_]dark\b|src=['\"][^'\"]*[-_]dark\b)",
     re.I,
@@ -926,9 +947,19 @@ def _img_src(tag: str) -> str:
     return m.group(1) if m else "(no src)"
 
 
+def _is_photo_no_dark(src: str) -> bool:
+    if PHOTO_NO_DARK.search(src):
+        return True
+    for path in PHOTO_PATHS:
+        name = path.rsplit("/", 1)[-1]
+        if name and name in src:
+            return True
+    return False
+
+
 def _skip_content_img(tag: str) -> bool:
     src = _img_src(tag)
-    if PHOTO_NO_DARK.search(src):
+    if _is_photo_no_dark(src):
         return True
     return bool(SKIP_IMG.search(src) or SKIP_IMG.search(tag))
 
@@ -1099,6 +1130,24 @@ def run_broken_samples() -> list[str]:
         check_content_images,
     )
     hit(
+        "img-photo-cv",
+        '<img src="/viewers/cards/cv.webp?v=19" alt="cv">',
+        False,
+        check_content_images,
+    )
+    hit(
+        "img-photo-arbeits",
+        '<img src="/viewers/cards/arbeits.jpg" alt="employment">',
+        False,
+        check_content_images,
+    )
+    hit(
+        "img-photo-abschluss",
+        '<img src="cards/abschluss.webp" alt="diplomas">',
+        False,
+        check_content_images,
+    )
+    hit(
         "img-photo-disagreement",
         '<img src="../assets/disagreement.svg" alt="board">',
         False,
@@ -1144,7 +1193,7 @@ def main() -> int:
         print(f"self-test failures={len(fails)}")
         return 1 if fails else 0
 
-    full, palette = load_allowlist()
+    full, palette, photo = load_allowlist()
     failures: list[str] = []
     for p in iter_files():
         rel = p.relative_to(ROOT).as_posix()
@@ -1232,7 +1281,7 @@ def main() -> int:
     failures = uniq
 
     print(f"allowed_hex={sorted(ALLOWED_HEX)}")
-    print(f"allowlist={len(full)} palette_only={len(palette)} failures={len(failures)}")
+    print(f"allowlist={len(full)} palette_only={len(palette)} photo={len(photo)} failures={len(failures)}")
     for f in failures:
         print(f)
     if args.report:

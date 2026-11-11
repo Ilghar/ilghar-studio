@@ -13,6 +13,7 @@ export function FrameCard({
   eager = false,
   external = false,
   contain = false,
+  photo = false,
   loopWebm,
   loopMp4,
   onClick,
@@ -29,6 +30,7 @@ export function FrameCard({
   eager?: boolean;
   external?: boolean;
   contain?: boolean;
+  photo?: boolean;
   loopWebm?: string;
   loopMp4?: string;
   onClick?: () => void;
@@ -90,12 +92,14 @@ export function FrameCard({
         className={cn(
           "frame-raise relative block overflow-hidden bg-surface",
           "rounded-[12px] border border-[color:var(--line-mauve,#7d5a7c)] p-0",
+          photo && "photo-plain",
         )}
       >
         <span
           className={cn(
             "relative block aspect-[4/3] overflow-hidden rounded-none",
             contain && "flex items-center justify-center bg-surface",
+            photo && "photo-plain",
           )}
         >
           {media}

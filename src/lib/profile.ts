@@ -53,6 +53,8 @@ export type Collection = {
   seamless?: boolean;
   spread?: boolean;
   contain?: boolean;
+  /** Single-source paper/photo on a dark card; no dark variant, no filter. */
+  photo?: boolean;
   video?: string;
   /** Still frame shown before the video plays. Falls back to `cover`. */
   poster?: string;
@@ -87,6 +89,8 @@ export const collections: Collection[] = [
     cover: `/viewers/cards/cv.webp?v=${V}`,
     coverHi: `/viewers/cards/cv.jpg?v=${V}`,
     coverAlt: "First page of Ilghar Dadgostari's German CV.",
+    photo: true,
+    contain: true,
     title: "cvDe",
     kicker: "cvDeHint",
     pages: numbered("/viewers/cv", 1, "German CV", "Lebenslauf"),
@@ -100,6 +104,8 @@ export const collections: Collection[] = [
     cover: `/viewers/cards/cv.webp?v=${V}`,
     coverHi: `/viewers/cards/cv.jpg?v=${V}`,
     coverAlt: "First page of Ilghar Dadgostari's English CV.",
+    photo: true,
+    contain: true,
     title: "cvEn",
     kicker: "cvEnHint",
     pages: numbered("/viewers/cv", 1, "English CV", "Englischer Lebenslauf"),
@@ -142,6 +148,8 @@ export const collections: Collection[] = [
     cover: `/viewers/cards/arbeits.webp?v=${V}`,
     coverHi: `/viewers/cards/arbeits.jpg?v=${V}`,
     coverAlt: '"Arbeits-Zeugnisse" over a symmetrical grey faceted geometric form on white.',
+    photo: true,
+    contain: true,
     title: "workCerts",
     kicker: "workCertsHint",
     pages: numbered("/viewers/arbeits", 9, "Employment records", "Arbeitszeugnisse"),
@@ -154,6 +162,8 @@ export const collections: Collection[] = [
     cover: `/viewers/cards/abschluss.webp?v=${V}`,
     coverHi: `/viewers/cards/abschluss.jpg?v=${V}`,
     coverAlt: '"Bildungs-Zeugnisse" over a mauve-grey faceted pavilion form on the studio canvas.',
+    photo: true,
+    contain: true,
     title: "diplomas",
     kicker: "diplomasHint",
     pages: numbered("/viewers/abschluss", 7, "Diplomas", "Abschlusszeugnisse"),
