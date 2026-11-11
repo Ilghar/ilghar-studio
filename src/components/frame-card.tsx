@@ -13,6 +13,8 @@ export function FrameCard({
   eager = false,
   external = false,
   contain = false,
+  loopWebm,
+  loopMp4,
   onClick,
   href,
 }: {
@@ -27,6 +29,8 @@ export function FrameCard({
   eager?: boolean;
   external?: boolean;
   contain?: boolean;
+  loopWebm?: string;
+  loopMp4?: string;
   onClick?: () => void;
   href?: string;
 }) {
@@ -95,7 +99,22 @@ export function FrameCard({
           )}
         >
           {media}
-          <span className="absolute inset-x-0 bottom-0 flex justify-center px-0">
+          {loopMp4 || loopWebm ? (
+            <video
+              className="tile-loop"
+              muted
+              loop
+              playsInline
+              autoPlay
+              preload="metadata"
+              poster={coverHi || cover}
+              aria-hidden="true"
+            >
+              {loopWebm ? <source src={loopWebm} type="video/webm" /> : null}
+              {loopMp4 ? <source src={loopMp4} type="video/mp4" /> : null}
+            </video>
+          ) : null}
+          <span className="absolute inset-x-0 bottom-0 z-10 flex justify-center px-0">
             <span
               className={cn(
                 "caption-plate w-full rounded-none text-center border-t border-[color:var(--line-mauve,#7d5a7c)] bg-canvas",

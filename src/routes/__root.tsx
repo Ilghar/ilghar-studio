@@ -40,6 +40,7 @@ function RootDocument() {
         <HeadContent />
         <script dangerouslySetInnerHTML={{ __html: BOOT }} />
         <script src="/theme-pictures.js" defer />
+        <script src="/tile-motion.js" defer />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(lang) }} />
       </head>
       <body className="antialiased">
