@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { type Lang, t } from "@/lib/i18n";
 import type { Project } from "@/lib/profile";
+import { ThemePicture } from "@/components/theme-picture";
 
 const link = "cta";
 
@@ -18,24 +19,17 @@ export function ProjectCard({ project, lang }: { project: Project; lang: Lang })
           className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <span className="frame r43 relative block overflow-hidden">
-            {[
-              [project.coverLight, project.coverLightHi, project.coverDark ? "dark:hidden" : ""],
-              ...(project.coverDark ? [[project.coverDark, project.coverDarkHi, "hidden dark:block"]] : []),
-            ].map(([src, hi, vis]) => (
-              <img
-                key={src}
-                src={src}
-                srcSet={hi ? `${src} 640w, ${hi} 1280w` : undefined}
-                sizes={sizes}
-                alt={project.alt ? t(lang, project.alt) : ""}
-                width={640}
-                height={480}
-                loading="lazy"
-                decoding="async"
-                draggable={false}
-                className={`${vis} h-full w-full object-cover object-top`}
-              />
-            ))}
+            <ThemePicture
+              light={project.coverLight}
+              lightHi={project.coverLightHi}
+              dark={project.coverDark}
+              darkHi={project.coverDarkHi}
+              alt={project.alt ? t(lang, project.alt) : ""}
+              width={640}
+              height={640}
+              sizes={sizes}
+              imgClassName="h-full w-full object-cover object-top"
+            />
           </span>
         </a>
       ) : null}

@@ -86,17 +86,20 @@
   transition: opacity var(--motion-slow) var(--ease-out);
 }
 
-/* Only the active theme's cover matches a rule with a background, so only that
-   file is fetched. Bump ?v= with V in profile.ts. */
-.cover-img {
-  background-position: center;
-  background-size: cover;
+.hero-cover {
+  margin: 0 0 1.5rem;
+  overflow: hidden;
+  border: 0.32pt solid var(--line);
+  border-radius: var(--r-frame);
+  background: var(--surface);
 }
-:root:not(.dark) .cover-day {
-  background-image: url("/cover-day.jpg?v=16");
-}
-.dark .cover-night {
-  background-image: url("/cover-night.jpg?v=16");
+.hero-cover-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
 }
 
 .viewer-strip {

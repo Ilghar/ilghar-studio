@@ -9,7 +9,7 @@ import { langFromPath } from "@/lib/i18n";
 import { jsonLd } from "@/lib/seo";
 import appCss from "../styles.css?url";
 
-const BOOT = `(function(){try{document.documentElement.setAttribute("dir","ltr");var t=localStorage.getItem("ilghar-theme");var d=t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",d);document.documentElement.style.colorScheme=d?"dark":"light";document.documentElement.lang=/^\\/de(\\/|$)/.test(location.pathname)?"de":"en";}catch(e){}})();`;
+const BOOT = `(function(){try{document.documentElement.setAttribute("dir","ltr");var t=localStorage.getItem("ilghar-theme");var d=t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",d);document.documentElement.classList.toggle("light",!d);document.documentElement.setAttribute("data-theme",d?"dark":"light");document.documentElement.style.colorScheme=d?"dark":"light";document.documentElement.lang=/^\\/de(\\/|$)/.test(location.pathname)?"de":"en";}catch(e){}})();`;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -39,6 +39,7 @@ function RootDocument() {
       <head>
         <HeadContent />
         <script dangerouslySetInnerHTML={{ __html: BOOT }} />
+        <script src="/theme-pictures.js" defer />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(lang) }} />
       </head>
       <body className="antialiased">

@@ -52,6 +52,10 @@ export const copy = {
   based: { en: "Berlin", de: "Berlin" },
   themeLight: { en: "Day", de: "Tag" },
   themeDark: { en: "Night", de: "Nacht" },
+  studioCoverAlt: {
+    en: "The studio room: a daybed and Persian carpet facing workbenches and a wall of books.",
+    de: "Der Atelierraum: eine Liege und ein persischer Teppich vor Werkbänken und einer Bücherwand.",
+  },
   prev: { en: "Previous", de: "Zurück" },
   next: { en: "Next", de: "Weiter" },
   close: { en: "Close", de: "Schließen" },

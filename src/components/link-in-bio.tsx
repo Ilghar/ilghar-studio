@@ -14,9 +14,10 @@ import { FrameCard } from "@/components/frame-card";
 import { ProjectCard } from "@/components/project-card";
 import { LangToggle } from "@/components/lang-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemePicture } from "@/components/theme-picture";
 import { Viewer } from "@/components/viewer";
 
-/** Home on LAYOUT v2: 448/576/672 column, 12px frames, glass CTAs. */
+/** Home on LAYOUT v2: 100%/720/760 column, 12px frames, glass CTAs. */
 export function LinkInBio({ lang }: { lang: Lang }) {
   useLang(lang);
   const [open, setOpen] = useState<Collection | null>(null);
@@ -47,6 +48,8 @@ export function LinkInBio({ lang }: { lang: Lang }) {
             />
           </div>
         </header>
+
+        <Cover lang={lang} />
 
         <header className="hero pb-6 text-left">
           <h1 className="name">
@@ -161,18 +164,19 @@ export function LinkInBio({ lang }: { lang: Lang }) {
   );
 }
 
-function Cover() {
+function Cover({ lang }: { lang: Lang }) {
   return (
-    <div className="relative aspect-[16/9] w-full overflow-hidden md:rounded-b-sm">
-      {/* Day and night covers are CSS backgrounds keyed to the theme class, so
-          the browser only downloads the one that is showing. */}
-      <div aria-hidden="true" className="cover-img cover-day absolute inset-0" />
-      <div aria-hidden="true" className="cover-img cover-night absolute inset-0" />
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-canvas to-transparent"
+    <figure className="hero-cover">
+      <ThemePicture
+        light="/cover-day.jpg?v=19"
+        dark="/cover-night.jpg?v=19"
+        alt={t(lang, "studioCoverAlt")}
+        width={1600}
+        height={900}
+        eager
+        imgClassName="hero-cover-img"
       />
-    </div>
+    </figure>
   );
 }
 
