@@ -155,11 +155,8 @@
 }
 
 /* Title-only tiles: centre the collection name in the empty 4/3 frame.
-   Jost 400, uppercase, .2em tracking, mauve in both themes. Size scales
-   with the tile so CERTIFICATES fits a 2-col 390px row at .2em. */
-.title-only-frame {
-  container-type: inline-size;
-}
+   Jost 400, no wrap. Below 768px: 13px / .1em; from 768px: 18px / .2em.
+   Light: --mauve-em (#856a8e). Dark: --grey-soft (#a6a1a7), the dark h2 token. */
 .title-only-label {
   position: absolute;
   inset: 0;
@@ -168,17 +165,29 @@
   justify-content: center;
   box-sizing: border-box;
   pointer-events: none;
-  padding: 12px 8px 56px;
-  padding-left: calc(8px + .2em);
+  padding: 12px 12px 56px;
+  padding-left: calc(12px + .1em);
   font-family: var(--font);
   font-weight: 400;
   font-style: normal;
-  font-size: clamp(9px, calc((100cqi - 16px) / 14.5), 18px);
-  letter-spacing: .2em;
+  font-size: 13px;
+  letter-spacing: .1em;
   text-transform: uppercase;
   text-align: center;
   line-height: 1.2;
+  white-space: nowrap;
   color: var(--mauve-em);
+}
+@media (min-width: 768px) {
+  .title-only-label {
+    font-size: 18px;
+    letter-spacing: .2em;
+    padding-left: calc(12px + .2em);
+  }
+}
+.dark .title-only-label,
+[data-theme="dark"] .title-only-label {
+  color: var(--grey-soft);
 }
 .tile-loop {
   position: absolute;
