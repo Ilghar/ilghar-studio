@@ -115,9 +115,6 @@ export const collections: Collection[] = [
   },
   {
     id: "werk",
-    cover: `/viewers/cards/werk.webp?v=${V}`,
-    coverHi: `/viewers/cards/werk.jpg?v=${V}`,
-    coverAlt: '"Werk-Dok" with a pale pink wireframe geometric form on light blue.',
     title: "werk",
     kicker: "werkHint",
     pages: numbered("/viewers/werk", 14, "Work documentation", "Werk-Dokumentation"),
@@ -173,9 +170,6 @@ export const collections: Collection[] = [
   },
   {
     id: "fach",
-    cover: `/viewers/cards/fach.webp?v=${V}`,
-    coverHi: `/viewers/cards/fach.jpg?v=${V}`,
-    coverAlt: '"Sprach- & Fach-Zeugnisse" over a pink faceted pavilion form on the studio canvas.',
     title: "langCerts",
     kicker: "langCertsHint",
     pages: numbered("/viewers/fach", 4, "Language & professional certificates", "Sprach- & Fachzeugnisse"),
