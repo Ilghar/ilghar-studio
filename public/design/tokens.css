@@ -16,7 +16,7 @@
   /* type */
   --font:Jost,sans-serif; --font-fa:Vazirmatn,Jost,sans-serif;
   /* column */
-  --col-s:448px; --col-m:576px; --col-l:672px;
+  --col-s:100%; --col-m:720px; --col-l:760px;
   color-scheme:light dark;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]):not(.light){
@@ -34,7 +34,7 @@
 body{margin:0;background:var(--canvas);color:var(--fg);font:400 16px/1.65 var(--font)}
 b,strong{font-weight:inherit} p{max-width:64ch;margin:0 0 12px}
 main{max-width:var(--col-s);margin:0 auto;padding:24px 16px 40px}
-@media (min-width:768px){main{max-width:var(--col-m);padding:40px 32px 56px}}
+@media (min-width:768px){main{max-width:var(--col-m);padding:40px 24px 56px}}
 @media (min-width:1024px){main{max-width:var(--col-l)}}
 img,svg,video,iframe,canvas,figure{max-width:100%;height:auto}
 

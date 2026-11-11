@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """First-page CI (layout v2 / SÁBÁT standard): CSS frame radius 12px,
-column 448/576/672, type scale 24/31 · 23 · 13, fonts Jost/Vazirmatn only,
+column 100%/720/760, type scale 24/31 · 23 · 13, fonts Jost/Vazirmatn only,
 off-palette #hex in source, blue pixels (and blue hex in SVG).
 
 Frame radius is enforced in CSS on .panel / .frame / .card / .ilg-frame only.
@@ -475,7 +475,7 @@ def _px(val: str) -> str | None:
 
 
 def check_column(css: str) -> list[str]:
-    """Require v2 column widths 448 / 576 / 672px (or --col-s/m/l)."""
+    """Require v2 column widths 720 / 760px (full-width phones; or --col-s/m/l)."""
     issues: list[str] = []
     vs = _var_map(css)
     def resolved(val: str) -> str:
@@ -514,9 +514,9 @@ def check_column(css: str) -> list[str]:
         if r:
             widths.add(r)
 
-    need = {"448px", "576px", "672px"}
+    need = {"720px", "760px"}
     if not need.issubset(widths):
-        issues.append(f"column: need 448/576/672px, found {sorted(widths) or 'none'}")
+        issues.append(f"column: need 720/760px, found {sorted(widths) or 'none'}")
     return issues
 
 
@@ -914,7 +914,7 @@ def run_broken_samples() -> list[str]:
     hit("svg-art-rounded", svg2, False, check_radius)
 
     # Column / type positive and negative
-    v2col = ":root{--col-s:448px;--col-m:576px;--col-l:672px} main{max-width:var(--col-s)} @media (min-width:768px){main{max-width:var(--col-m)}} @media (min-width:1024px){main{max-width:var(--col-l)}}"
+    v2col = ":root{--col-s:100%;--col-m:720px;--col-l:760px} main{max-width:var(--col-s)} @media (min-width:768px){main{max-width:var(--col-m)}} @media (min-width:1024px){main{max-width:var(--col-l)}}"
     hit("column-v2", v2col, False, check_column)
     hit("column-v1", ":root{--col:960px} main{max-width:var(--col)}", True, check_column)
     v2type = "h1,.name{font-size:24px} @media (min-width:768px){h1,.name{font-size:31px}} h2{font-size:23px} .label,figcaption{font-size:13px}"
