@@ -176,8 +176,8 @@ export function FrameCard({
     return (
       <a
         href={href}
-        target="_blank"
-        rel="me noopener noreferrer"
+        target={external ? "_blank" : undefined}
+        rel={external ? "me noopener noreferrer" : undefined}
         className={className}
       >
         {inner}

@@ -23,6 +23,10 @@ test("GitHub Pages files are in public/", () => {
   const sitemap = read("public/sitemap.xml");
   assert.match(sitemap, /<loc>https:\/\/ilghar\.studio\/<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/ilghar\.studio\/de\/<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/ilghar\.studio\/cv\/<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/ilghar\.studio\/portfolio\/<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/ilghar\.studio\/de\/cv\/<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/ilghar\.studio\/de\/portfolio\/<\/loc>/);
 });
 
 test("no hosting-platform leftovers in source or config", () => {
@@ -34,7 +38,7 @@ test("no hosting-platform leftovers in source or config", () => {
 
 test("every local asset path in profile.ts exists", () => {
   const src = read("src/lib/profile.ts").replace(/\$\{V\}/g, "16");
-  const paths = [...src.matchAll(/"(\/[^"?]+\.(?:jpg|png|webp|mp4|pdf))/g)].map((m) => m[1]);
+  const paths = [...src.matchAll(/"(\/[^"?]+\.(?:jpg|png|webp|svg|mp4|pdf))/g)].map((m) => m[1]);
   assert.ok(paths.length > 5);
   for (const p of paths) assert.ok(existsSync(join("public", p)), `missing public${p}`);
 });
@@ -48,7 +52,7 @@ test("both pages declare canonical and hreflang", () => {
 
 test("built pages allow inline scripts only by hash", { skip: !existsSync("dist/client/index.html") }, async () => {
   const { createHash } = await import("node:crypto");
-  for (const f of ["dist/client/index.html", "dist/client/de/index.html", "dist/client/404.html"]) {
+  for (const f of ["dist/client/index.html", "dist/client/de/index.html", "dist/client/cv/index.html", "dist/client/portfolio/index.html", "dist/client/de/cv/index.html", "dist/client/de/portfolio/index.html", "dist/client/404.html"]) {
     const html = read(f);
     const csp = html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/)?.[1];
     assert.ok(csp, `${f} has no CSP meta`);
@@ -69,11 +73,57 @@ test("404 page is noindex and has no canonical", { skip: !existsSync("dist/clien
 });
 
 test("built pages allow no inline styles", { skip: !existsSync("dist/client/index.html") }, () => {
-  for (const f of ["dist/client/index.html", "dist/client/de/index.html", "dist/client/404.html"]) {
+  for (const f of ["dist/client/index.html", "dist/client/de/index.html", "dist/client/cv/index.html", "dist/client/portfolio/index.html", "dist/client/de/cv/index.html", "dist/client/de/portfolio/index.html", "dist/client/404.html"]) {
     const html = read(f);
     const csp = html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/)?.[1];
     const styleSrc = csp.split(";").find((d) => d.trim().startsWith("style-src"));
     assert.doesNotMatch(styleSrc, /unsafe-inline/, f);
     assert.doesNotMatch(html, /\sstyle="/, `${f}: static style attribute would be blocked by CSP`);
   }
+});
+
+const DOC_PAGES = [
+  "dist/client/cv/index.html",
+  "dist/client/portfolio/index.html",
+  "dist/client/de/cv/index.html",
+  "dist/client/de/portfolio/index.html",
+];
+
+test("built document pages exist and keep the original PDFs", { skip: !existsSync("dist/client/index.html") }, () => {
+  for (const f of DOC_PAGES) assert.ok(existsSync(f), f);
+  assert.ok(existsSync("dist/client/docs/cv-en.pdf"));
+  assert.ok(existsSync("dist/client/docs/cv-de.pdf"));
+  assert.ok(existsSync("dist/client/docs/portfolio-en.pdf"));
+  assert.ok(existsSync("dist/client/docs/portfolio-2023.pdf"));
+  assert.ok(existsSync("dist/client/docs/werkdokumentation.pdf"));
+  const enCv = read("dist/client/cv/index.html");
+  const deCv = read("dist/client/de/cv/index.html");
+  const enPf = read("dist/client/portfolio/index.html");
+  const dePf = read("dist/client/de/portfolio/index.html");
+  assert.match(enCv, /href="\/docs\/cv-en\.pdf"/);
+  assert.match(deCv, /href="\/docs\/cv-de\.pdf"/);
+  assert.match(enPf, /href="\/docs\/portfolio-en\.pdf"/);
+  assert.match(dePf, /href="\/docs\/portfolio-2023\.pdf"/);
+});
+
+test("home links to /cv, /portfolio and /demos/sabat/", { skip: !existsSync("dist/client/index.html") }, () => {
+  const en = read("dist/client/index.html");
+  const de = read("dist/client/de/index.html");
+  assert.match(en, /href="\/cv\/"/);
+  assert.match(en, /href="\/portfolio\/"/);
+  assert.match(en, /href="\/demos\/sabat\/"/);
+  assert.match(de, /href="\/de\/cv\/"/);
+  assert.match(de, /href="\/de\/portfolio\/"/);
+  assert.match(de, /href="\/demos\/sabat\/"/);
+  assert.match(en, /class="hero-avatar"/);
+  assert.match(de, /class="hero-avatar"/);
+});
+
+test("SÁBÁT tile uses the theme-src SVG pair", { skip: !existsSync("dist/client/index.html") }, () => {
+  const en = read("dist/client/index.html");
+  assert.match(en, /class="[^"]*theme-src[^"]*"/);
+  assert.match(en, /data-light="\/viewers\/projects\/sabat-cover-light\.svg[^"]*"/);
+  assert.match(en, /data-dark="\/viewers\/projects\/sabat-cover-dark\.svg[^"]*"/);
+  assert.ok(existsSync("dist/client/viewers/projects/sabat-cover-light.svg"));
+  assert.ok(existsSync("dist/client/viewers/projects/sabat-cover-dark.svg"));
 });

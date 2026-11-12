@@ -10,11 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CvIndexRouteImport } from './routes/cv/index'
 import { Route as DeIndexRouteImport } from './routes/de/index'
+import { Route as PortfolioIndexRouteImport } from './routes/portfolio/index'
+import { Route as DeCvIndexRouteImport } from './routes/de/cv/index'
+import { Route as DePortfolioIndexRouteImport } from './routes/de/portfolio/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CvIndexRoute = CvIndexRouteImport.update({
+  id: '/cv/',
+  path: '/cv/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DeIndexRoute = DeIndexRouteImport.update({
@@ -22,31 +31,70 @@ const DeIndexRoute = DeIndexRouteImport.update({
   path: '/de/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
+  id: '/portfolio/',
+  path: '/portfolio/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeCvIndexRoute = DeCvIndexRouteImport.update({
+  id: '/de/cv/',
+  path: '/de/cv/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DePortfolioIndexRoute = DePortfolioIndexRouteImport.update({
+  id: '/de/portfolio/',
+  path: '/de/portfolio/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cv/': typeof CvIndexRoute
   '/de/': typeof DeIndexRoute
+  '/portfolio/': typeof PortfolioIndexRoute
+  '/de/cv/': typeof DeCvIndexRoute
+  '/de/portfolio/': typeof DePortfolioIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cv': typeof CvIndexRoute
   '/de': typeof DeIndexRoute
+  '/portfolio': typeof PortfolioIndexRoute
+  '/de/cv': typeof DeCvIndexRoute
+  '/de/portfolio': typeof DePortfolioIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cv/': typeof CvIndexRoute
   '/de/': typeof DeIndexRoute
+  '/portfolio/': typeof PortfolioIndexRoute
+  '/de/cv/': typeof DeCvIndexRoute
+  '/de/portfolio/': typeof DePortfolioIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/de/'
+  fullPaths:
+    '/' | '/cv/' | '/de/' | '/portfolio/' | '/de/cv/' | '/de/portfolio/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/de'
-  id: '__root__' | '/' | '/de/'
+  to: '/' | '/cv' | '/de' | '/portfolio' | '/de/cv' | '/de/portfolio'
+  id:
+    | '__root__'
+    | '/'
+    | '/cv/'
+    | '/de/'
+    | '/portfolio/'
+    | '/de/cv/'
+    | '/de/portfolio/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CvIndexRoute: typeof CvIndexRoute
   DeIndexRoute: typeof DeIndexRoute
+  PortfolioIndexRoute: typeof PortfolioIndexRoute
+  DeCvIndexRoute: typeof DeCvIndexRoute
+  DePortfolioIndexRoute: typeof DePortfolioIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +106,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cv/': {
+      id: '/cv/'
+      path: '/cv'
+      fullPath: '/cv/'
+      preLoaderRoute: typeof CvIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/de/': {
       id: '/de/'
       path: '/de'
@@ -65,12 +120,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DeIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portfolio/': {
+      id: '/portfolio/'
+      path: '/portfolio'
+      fullPath: '/portfolio/'
+      preLoaderRoute: typeof PortfolioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/de/cv/': {
+      id: '/de/cv/'
+      path: '/de/cv'
+      fullPath: '/de/cv/'
+      preLoaderRoute: typeof DeCvIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/de/portfolio/': {
+      id: '/de/portfolio/'
+      path: '/de/portfolio'
+      fullPath: '/de/portfolio/'
+      preLoaderRoute: typeof DePortfolioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CvIndexRoute: CvIndexRoute,
   DeIndexRoute: DeIndexRoute,
+  PortfolioIndexRoute: PortfolioIndexRoute,
+  DeCvIndexRoute: DeCvIndexRoute,
+  DePortfolioIndexRoute: DePortfolioIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

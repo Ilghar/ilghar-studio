@@ -38,6 +38,17 @@
       if (!isThemeSource(source)) return;
       source.media = intendedTheme(source) === theme ? "all" : "not all";
     });
+    document.querySelectorAll("picture.theme-src").forEach(function (pic) {
+      var img = pic.querySelector("img");
+      var light = pic.getAttribute("data-light");
+      var dark = pic.getAttribute("data-dark");
+      if (!img || !light || !dark) return;
+      // Leave srcset pictures to the <source media> path above so high-DPI
+      // sets stay intact. Plain src-only pictures (the SÁBÁT SVG covers)
+      // get their img.src swapped so currentSrc matches the theme.
+      if (img.getAttribute("srcset")) return;
+      img.src = theme === "dark" ? dark : light;
+    });
   }
 
   function start() {

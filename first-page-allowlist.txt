@@ -105,3 +105,8 @@ public/viewers/werk/11.jpg
 public/viewers/werk/12.jpg
 public/viewers/werk/13.jpg
 public/viewers/werk/14.jpg
+# SÁBÁT project tile covers Hāèl picked (option 2 light / option 5 dark).
+# Light drawing uses a peach construction line (#f2b08a) off the CSS palette;
+# blue check still runs. Dark uses exact #fcb4c4.
+palette public/viewers/projects/sabat-cover-light.svg
+palette public/viewers/projects/sabat-cover-dark.svg

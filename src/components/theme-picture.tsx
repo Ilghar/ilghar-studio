@@ -1,5 +1,9 @@
 /** Light/dark <picture> using a prefers-color-scheme source. An external
- *  script rewrites each source's media when the theme toggle sets data-theme. */
+ *  script rewrites each source's media when the theme toggle sets data-theme.
+ *  Pictures also carry class="theme-src" with data-light/data-dark so the
+ *  same script can set img.src (and tests can read currentSrc). */
+import { cn } from "@/lib/utils";
+
 export function ThemePicture({
   light,
   lightHi,
@@ -33,7 +37,11 @@ export function ThemePicture({
     : undefined;
 
   return (
-    <picture className={className}>
+    <picture
+      className={cn("theme-src", className)}
+      data-light={light}
+      data-dark={dark}
+    >
       {dark && darkSrcSet ? (
         <source
           media="(prefers-color-scheme: dark)"

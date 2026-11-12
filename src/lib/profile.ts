@@ -1,6 +1,6 @@
 import type { CopyKey } from "./i18n";
 
-const V = "19";
+const V = "20";
 
 export const profile = {
   name: "Ilghar Dadgostari",
@@ -47,6 +47,8 @@ export type Collection = {
   kicker: CopyKey;
   pages?: ViewerPage[];
   href?: string;
+  /** In-site document page (e.g. /cv/), opened in this tab. */
+  pageHref?: string;
   downloadHref?: string;
   downloadName?: string;
   featured?: boolean;
@@ -93,6 +95,7 @@ export const collections: Collection[] = [
     contain: true,
     title: "cvDe",
     kicker: "cvDeHint",
+    pageHref: "/de/cv/",
     pages: numbered("/viewers/cv", 1, "German CV", "Lebenslauf"),
     downloadHref: "/docs/cv-de.pdf",
     downloadName: "Dadgostari_Lebenslauf.pdf",
@@ -108,6 +111,7 @@ export const collections: Collection[] = [
     contain: true,
     title: "cvEn",
     kicker: "cvEnHint",
+    pageHref: "/cv/",
     pages: numbered("/viewers/cv", 1, "English CV", "Englischer Lebenslauf"),
     downloadHref: "/docs/cv-en.pdf",
     downloadName: "Dadgostari_CV.pdf",
@@ -127,6 +131,7 @@ export const collections: Collection[] = [
     lang: "de",
     title: "portfolio",
     kicker: "portfolioDeHint",
+    pageHref: "/de/portfolio/",
     pages: numbered("/viewers/portfolio", 7, "Portfolio 2023", "Portfolio 2023"),
     downloadHref: "/docs/portfolio-2023.pdf",
     downloadName: "Dadgostari_Portfolio_2023.pdf",
@@ -136,6 +141,7 @@ export const collections: Collection[] = [
     lang: "en",
     title: "portfolio",
     kicker: "portfolioEnHint",
+    pageHref: "/portfolio/",
     pages: numbered("/viewers/portfolio-en", 9, "Portfolio", "Portfolio"),
     downloadHref: "/docs/portfolio-en.pdf",
     downloadName: "Dadgostari_Portfolio.pdf",
@@ -223,6 +229,8 @@ export type Project = {
   coverLightHi?: string;
   coverDark?: string;
   coverDarkHi?: string;
+  /** How the cover sits in the 4/3 frame. SVG line drawings use contain. */
+  coverFit?: "cover" | "contain";
   demoHref: string;
   repoHref: string;
 };
@@ -237,10 +245,9 @@ export const projects: Project[] = [
     kicker: "sabatKicker",
     claim: "sabatClaim",
     alt: "sabatAlt",
-    coverLight: `/viewers/projects/sabat-light.webp?v=${V}`,
-    coverLightHi: `/viewers/projects/sabat-light-hi.webp?v=${V}`,
-    coverDark: `/viewers/projects/sabat-dark.webp?v=${V}`,
-    coverDarkHi: `/viewers/projects/sabat-dark-hi.webp?v=${V}`,
+    coverLight: `/viewers/projects/sabat-cover-light.svg?v=${V}`,
+    coverDark: `/viewers/projects/sabat-cover-dark.svg?v=${V}`,
+    coverFit: "contain",
     demoHref: "/demos/sabat/",
     repoHref: `${GH}/sabat-parametric-explorer`,
   },

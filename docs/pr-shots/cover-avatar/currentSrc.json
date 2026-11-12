@@ -1,0 +1,466 @@
+[
+  {
+    "shot": "before_en_1280_light",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "",
+        "light": null,
+        "dark": null,
+        "src": "/viewers/projects/sabat-light.webp?v=19",
+        "currentSrc": "http://127.0.0.1:8082/viewers/projects/sabat-light.webp?v=19"
+      }
+    ],
+    "themeSrc": []
+  },
+  {
+    "shot": "before_en_1280_dark",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "",
+        "light": null,
+        "dark": null,
+        "src": "/viewers/projects/sabat-light.webp?v=19",
+        "currentSrc": "http://127.0.0.1:8082/viewers/projects/sabat-dark.webp?v=19"
+      }
+    ],
+    "themeSrc": []
+  },
+  {
+    "shot": "before_en_390_light",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "",
+        "light": null,
+        "dark": null,
+        "src": "/viewers/projects/sabat-light.webp?v=19",
+        "currentSrc": "http://127.0.0.1:8082/viewers/projects/sabat-light.webp?v=19"
+      }
+    ],
+    "themeSrc": []
+  },
+  {
+    "shot": "before_en_390_dark",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "",
+        "light": null,
+        "dark": null,
+        "src": "/viewers/projects/sabat-light.webp?v=19",
+        "currentSrc": "http://127.0.0.1:8082/viewers/projects/sabat-dark.webp?v=19"
+      }
+    ],
+    "themeSrc": []
+  },
+  {
+    "shot": "before_de_1280_light",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "",
+        "light": null,
+        "dark": null,
+        "src": "/viewers/projects/sabat-light.webp?v=19",
+        "currentSrc": "http://127.0.0.1:8082/viewers/projects/sabat-light.webp?v=19"
+      }
+    ],
+    "themeSrc": []
+  },
+  {
+    "shot": "before_de_1280_dark",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "",
+        "light": null,
+        "dark": null,
+        "src": "/viewers/projects/sabat-light.webp?v=19",
+        "currentSrc": "http://127.0.0.1:8082/viewers/projects/sabat-dark.webp?v=19"
+      }
+    ],
+    "themeSrc": []
+  },
+  {
+    "shot": "before_de_390_light",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "",
+        "light": null,
+        "dark": null,
+        "src": "/viewers/projects/sabat-light.webp?v=19",
+        "currentSrc": "http://127.0.0.1:8082/viewers/projects/sabat-light.webp?v=19"
+      }
+    ],
+    "themeSrc": []
+  },
+  {
+    "shot": "before_de_390_dark",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "",
+        "light": null,
+        "dark": null,
+        "src": "/viewers/projects/sabat-light.webp?v=19",
+        "currentSrc": "http://127.0.0.1:8082/viewers/projects/sabat-dark.webp?v=19"
+      }
+    ],
+    "themeSrc": []
+  },
+  {
+    "shot": "after_en_1280_light",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-light.svg?v=20"
+      }
+    ],
+    "themeSrc": [
+      {
+        "index": 0,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/cover-day.jpg?v=19",
+        "dark": "/cover-night.jpg?v=19",
+        "src": "/cover-day.jpg?v=19",
+        "currentSrc": "http://127.0.0.1:8081/cover-day.jpg?v=19"
+      },
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-light.svg?v=20"
+      },
+      {
+        "index": 2,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/p01-light.webp?v=20",
+        "dark": "/viewers/projects/p01-dark.webp?v=20",
+        "src": "/viewers/projects/p01-light.webp?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/p01-light.webp?v=20"
+      }
+    ]
+  },
+  {
+    "shot": "after_en_1280_dark",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-dark.svg?v=20"
+      }
+    ],
+    "themeSrc": [
+      {
+        "index": 0,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/cover-day.jpg?v=19",
+        "dark": "/cover-night.jpg?v=19",
+        "src": "/cover-night.jpg?v=19",
+        "currentSrc": "http://127.0.0.1:8081/cover-night.jpg?v=19"
+      },
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-dark.svg?v=20"
+      },
+      {
+        "index": 2,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/p01-light.webp?v=20",
+        "dark": "/viewers/projects/p01-dark.webp?v=20",
+        "src": "/viewers/projects/p01-light.webp?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/p01-dark.webp?v=20"
+      }
+    ]
+  },
+  {
+    "shot": "after_en_390_light",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-light.svg?v=20"
+      }
+    ],
+    "themeSrc": [
+      {
+        "index": 0,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/cover-day.jpg?v=19",
+        "dark": "/cover-night.jpg?v=19",
+        "src": "/cover-day.jpg?v=19",
+        "currentSrc": "http://127.0.0.1:8081/cover-day.jpg?v=19"
+      },
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-light.svg?v=20"
+      },
+      {
+        "index": 2,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/p01-light.webp?v=20",
+        "dark": "/viewers/projects/p01-dark.webp?v=20",
+        "src": "/viewers/projects/p01-light.webp?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/p01-light.webp?v=20"
+      }
+    ]
+  },
+  {
+    "shot": "after_en_390_dark",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-dark.svg?v=20"
+      }
+    ],
+    "themeSrc": [
+      {
+        "index": 0,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/cover-day.jpg?v=19",
+        "dark": "/cover-night.jpg?v=19",
+        "src": "/cover-night.jpg?v=19",
+        "currentSrc": "http://127.0.0.1:8081/cover-night.jpg?v=19"
+      },
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-dark.svg?v=20"
+      },
+      {
+        "index": 2,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/p01-light.webp?v=20",
+        "dark": "/viewers/projects/p01-dark.webp?v=20",
+        "src": "/viewers/projects/p01-light.webp?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/p01-dark.webp?v=20"
+      }
+    ]
+  },
+  {
+    "shot": "after_de_1280_light",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-light.svg?v=20"
+      }
+    ],
+    "themeSrc": [
+      {
+        "index": 0,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/cover-day.jpg?v=19",
+        "dark": "/cover-night.jpg?v=19",
+        "src": "/cover-day.jpg?v=19",
+        "currentSrc": "http://127.0.0.1:8081/cover-day.jpg?v=19"
+      },
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-light.svg?v=20"
+      },
+      {
+        "index": 2,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/p01-light.webp?v=20",
+        "dark": "/viewers/projects/p01-dark.webp?v=20",
+        "src": "/viewers/projects/p01-light.webp?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/p01-light.webp?v=20"
+      }
+    ]
+  },
+  {
+    "shot": "after_de_1280_dark",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-dark.svg?v=20"
+      }
+    ],
+    "themeSrc": [
+      {
+        "index": 0,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/cover-day.jpg?v=19",
+        "dark": "/cover-night.jpg?v=19",
+        "src": "/cover-night.jpg?v=19",
+        "currentSrc": "http://127.0.0.1:8081/cover-night.jpg?v=19"
+      },
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-dark.svg?v=20"
+      },
+      {
+        "index": 2,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/p01-light.webp?v=20",
+        "dark": "/viewers/projects/p01-dark.webp?v=20",
+        "src": "/viewers/projects/p01-light.webp?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/p01-dark.webp?v=20"
+      }
+    ]
+  },
+  {
+    "shot": "after_de_390_light",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-light.svg?v=20"
+      }
+    ],
+    "themeSrc": [
+      {
+        "index": 0,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/cover-day.jpg?v=19",
+        "dark": "/cover-night.jpg?v=19",
+        "src": "/cover-day.jpg?v=19",
+        "currentSrc": "http://127.0.0.1:8081/cover-day.jpg?v=19"
+      },
+      {
+        "index": 1,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-light.svg?v=20"
+      },
+      {
+        "index": 2,
+        "theme": "light",
+        "className": "theme-src",
+        "light": "/viewers/projects/p01-light.webp?v=20",
+        "dark": "/viewers/projects/p01-dark.webp?v=20",
+        "src": "/viewers/projects/p01-light.webp?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/p01-light.webp?v=20"
+      }
+    ]
+  },
+  {
+    "shot": "after_de_390_dark",
+    "sabat": [
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-dark.svg?v=20"
+      }
+    ],
+    "themeSrc": [
+      {
+        "index": 0,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/cover-day.jpg?v=19",
+        "dark": "/cover-night.jpg?v=19",
+        "src": "/cover-night.jpg?v=19",
+        "currentSrc": "http://127.0.0.1:8081/cover-night.jpg?v=19"
+      },
+      {
+        "index": 1,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/sabat-cover-light.svg?v=20",
+        "dark": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "src": "/viewers/projects/sabat-cover-dark.svg?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/sabat-cover-dark.svg?v=20"
+      },
+      {
+        "index": 2,
+        "theme": "dark",
+        "className": "theme-src",
+        "light": "/viewers/projects/p01-light.webp?v=20",
+        "dark": "/viewers/projects/p01-dark.webp?v=20",
+        "src": "/viewers/projects/p01-light.webp?v=20",
+        "currentSrc": "http://127.0.0.1:8081/viewers/projects/p01-dark.webp?v=20"
+      }
+    ]
+  }
+]

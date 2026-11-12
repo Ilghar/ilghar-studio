@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { type Lang, t } from "@/lib/i18n";
 import type { Project } from "@/lib/profile";
 import { ThemePicture } from "@/components/theme-picture";
+import { cn } from "@/lib/utils";
 
 const link = "cta";
 
@@ -28,7 +29,12 @@ export function ProjectCard({ project, lang }: { project: Project; lang: Lang })
               width={640}
               height={640}
               sizes={sizes}
-              imgClassName="h-full w-full object-cover object-top"
+              imgClassName={cn(
+                "h-full w-full",
+                project.coverFit === "contain"
+                  ? "object-contain object-center"
+                  : "object-cover object-top",
+              )}
             />
           </span>
         </a>

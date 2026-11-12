@@ -117,6 +117,7 @@ export const copy = {
     en: "Motion studies for the signature mark.",
     de: "Bewegungsstudien für das Signaturzeichen.",
   },
+  backHome: { en: "Home", de: "Start" },
   openDemo: { en: "Open demo", de: "Demo öffnen" },
   viewRepo: { en: "GitHub repo", de: "GitHub-Repo" },
 } as const;
@@ -130,5 +131,10 @@ export function t(lang: Lang, key: CopyKey): string {
 export const langFromPath = (pathname: string): Lang =>
   /^\/de(\/|$)/.test(pathname) ? "de" : "en";
 
-/** URL of the matching page in the other language. EN lives at /, DE at /de/. */
-export const langPath = (lang: Lang) => (lang === "de" ? "/de/" : "/");
+/** URL of the matching page in the other language. EN lives at /, DE at /de/.
+ *  Pass a page slug (e.g. "cv") for /cv/ and /de/cv/. */
+export const langPath = (lang: Lang, page = "") => {
+  const slug = page.replace(/^\/+|\/+$/g, "");
+  if (!slug) return lang === "de" ? "/de/" : "/";
+  return lang === "de" ? `/de/${slug}/` : `/${slug}/`;
+};
