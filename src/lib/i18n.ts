@@ -90,14 +90,22 @@ export const copy = {
     de: "Führt eine Anfrage durch die Prüfungen des Routers und zeigt, welche Fälle an einen Menschen gehen. Mock-Daten: 12 handgeschriebene Fälle.",
   },
   p01Alt: {
-    en: "P01 walk-through: one example case stepped through the router, with a threshold slider.",
-    de: "P01 Walk-through: ein Beispielfall Schritt für Schritt durch den Router, mit Schwellenwert-Regler.",
+    en: "Routing diagram with a single path branching into three outcomes.",
+    de: "Routing-Diagramm mit einem Pfad, der sich in drei Ergebnisse verzweigt.",
+  },
+  culturalAlt: {
+    en: "Girih tiling pattern with selected geometric cells highlighted.",
+    de: "Girih-Muster mit hervorgehobenen geometrischen Feldern.",
   },
   culturalTitle: { en: "Cultural & typographic evaluation", de: "Kulturelle & typografische Evaluation" },
   culturalKicker: { en: "Evaluation kit", de: "Evaluations-Kit" },
   culturalClaim: {
     en: "Source-aware checks for generated design: script, typography and cultural references measured against cited sources.",
     de: "Quellenbasierte Prüfungen für generiertes Design: Schrift, Typografie und kulturelle Bezüge an zitierten Quellen gemessen.",
+  },
+  uigridAlt: {
+    en: "A wireframe showing rectangular layout regions over a measured grid.",
+    de: "Ein Drahtmodell mit rechteckigen Layout-Bereichen auf einem vermessenen Raster.",
   },
   uigridTitle: { en: "UI grid extractor", de: "UI-Raster-Extraktor" },
   uigridKicker: { en: "Measured grids & tokens", de: "Gemessene Raster & Tokens" },
@@ -110,6 +118,10 @@ export const copy = {
   sigtypeClaim: {
     en: "An accessible, embeddable writing animation of the studio signature.",
     de: "Eine barrierearme, einbettbare Schreibanimation der Studio-Signatur.",
+  },
+  siganimAlt: {
+    en: "An outlined signature preview with a row of animation progress markers.",
+    de: "Eine umrandete Signaturvorschau mit einer Reihe von Fortschrittsmarken.",
   },
   siganimTitle: { en: "Signature animation", de: "Signatur-Animation" },
   siganimKicker: { en: "Motion study", de: "Bewegungsstudie" },
