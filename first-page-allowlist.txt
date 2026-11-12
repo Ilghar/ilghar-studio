@@ -5,8 +5,10 @@ public/cover-night.jpg
 public/cover-wide.jpg
 public/cover.jpg
 # README first-page landing screenshots (room photo, avatar, name) captured
-# from a local build of feat/sabat-cover-avatar. They include the already-
-# allowlisted public/cover-day.jpg, public/cover-night.jpg and public/avatar.jpg.
+# from a throwaway local merge of fix/pink-rule-20261112 (#12) and
+# feat/sabat-cover-avatar (#13). That merge was never pushed. The light
+# first letter is #aa527d. They include the already-allowlisted
+# public/cover-day.jpg, public/cover-night.jpg and public/avatar.jpg.
 # Checker logic unchanged.
 docs/hero/hero-light.webp
 docs/hero/hero-dark.webp
