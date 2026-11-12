@@ -281,14 +281,6 @@ export const projects: Project[] = [
     repoHref: `${GH}/ui-grid-extractor`,
   },
   {
-    id: "sigtype",
-    title: "sigtypeTitle",
-    kicker: "sigtypeKicker",
-    claim: "sigtypeClaim",
-    demoHref: `${PAGES}/signature-typography/`,
-    repoHref: `${GH}/signature-typography`,
-  },
-  {
     id: "siganim",
     title: "siganimTitle",
     kicker: "siganimKicker",

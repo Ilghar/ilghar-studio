@@ -105,12 +105,6 @@ export const copy = {
     en: "Measures the layout grid and design tokens of a screen instead of guessing them.",
     de: "Misst Layout-Raster und Design-Tokens eines Screens, statt sie zu schätzen.",
   },
-  sigtypeTitle: { en: "Signature typography", de: "Signatur-Typografie" },
-  sigtypeKicker: { en: "Writing animation", de: "Schreibanimation" },
-  sigtypeClaim: {
-    en: "An accessible, embeddable writing animation of the studio signature.",
-    de: "Eine barrierearme, einbettbare Schreibanimation der Studio-Signatur.",
-  },
   siganimTitle: { en: "Signature animation", de: "Signatur-Animation" },
   siganimKicker: { en: "Motion study", de: "Bewegungsstudie" },
   siganimClaim: {
