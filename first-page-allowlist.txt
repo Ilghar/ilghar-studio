@@ -4,6 +4,12 @@ public/cover-day.jpg
 public/cover-night.jpg
 public/cover-wide.jpg
 public/cover.jpg
+# README first-page crops of the already-allowlisted landing photographs
+# public/cover-day.jpg and public/cover-night.jpg. Same photos; checker logic unchanged.
+docs/hero/hero-light.webp
+docs/hero/hero-dark.webp
+docs/hero/social-light.webp
+docs/hero/social-dark.webp
 # Photo allowlist (DESIGNER): no dark source required; still run the blue check
 palette public/demos/sabat/sabat-pavilion.jpg
 # Single-source paper thumbnails (DESIGNER): missing-dark-source exemption
