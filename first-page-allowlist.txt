@@ -4,8 +4,10 @@ public/cover-day.jpg
 public/cover-night.jpg
 public/cover-wide.jpg
 public/cover.jpg
-# README first-page crops of the already-allowlisted landing photographs
-# public/cover-day.jpg and public/cover-night.jpg. Same photos; checker logic unchanged.
+# README first-page landing screenshots (room photo, avatar, name) captured
+# from a local build of feat/sabat-cover-avatar. They include the already-
+# allowlisted public/cover-day.jpg, public/cover-night.jpg and public/avatar.jpg.
+# Checker logic unchanged.
 docs/hero/hero-light.webp
 docs/hero/hero-dark.webp
 docs/hero/social-light.webp

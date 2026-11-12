@@ -2,7 +2,7 @@
   <a href="https://ilghar.studio">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/hero/hero-dark.webp">
-      <img src="docs/hero/hero-light.webp" width="100%" alt="The live ilghar.studio landing: a photograph of the Berlin studio, with a sofa, a red carpet, bookshelves and workbenches.">
+      <img src="docs/hero/hero-light.webp" width="100%" alt="The ilghar.studio landing: the Berlin studio room, the avatar portrait, and the name Ilghar Dadgostari.">
     </picture>
   </a>
 </p>
