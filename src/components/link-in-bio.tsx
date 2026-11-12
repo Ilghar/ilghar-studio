@@ -5,16 +5,19 @@ import { type Lang, t } from "@/lib/i18n";
 import {
   collections,
   profile,
+  projects,
   socialLinks,
   type Collection,
 } from "@/lib/profile";
 import { cn } from "@/lib/utils";
 import { FrameCard } from "@/components/frame-card";
+import { ProjectCard } from "@/components/project-card";
 import { LangToggle } from "@/components/lang-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemePicture } from "@/components/theme-picture";
 import { Viewer } from "@/components/viewer";
 
-/** Home on LAYOUT: 960 column, square mauve frames, no shadows/gradients. */
+/** Home on LAYOUT v2: 100%/720/760 column, 12px frames, glass CTAs. */
 export function LinkInBio({ lang }: { lang: Lang }) {
   useLang(lang);
   const [open, setOpen] = useState<Collection | null>(null);
@@ -23,18 +26,18 @@ export function LinkInBio({ lang }: { lang: Lang }) {
     () => collections.filter((c) => !c.lang || c.lang === lang),
     [lang],
   );
-  // Keep only Work tiles with real covers (drop placeholders / near-empty / self-link).
-  const REAL_WORK = new Set(["cv-de", "cv-en", "portfolio-de", "portfolio-en", "arbeits"]);
-  const usable = visible.filter((c) => c.featured || REAL_WORK.has(c.id));
+  // Drop only the near-empty "werk" tile and the self-link to this site.
+  const HIDDEN = new Set(["werk", "studio"]);
+  const usable = visible.filter((c) => !HIDDEN.has(c.id));
   const featured = usable.find((c) => c.featured);
   const rest = usable.filter((c) => !c.featured);
   const live = open ? collections.find((c) => c.id === open.id) ?? open : null;
 
   return (
-    <main className="relative min-h-dvh overflow-x-hidden bg-canvas text-ink">
-      <div className="mx-auto w-full max-w-[960px] px-4 md:px-8">
+    <main className="relative min-h-dvh overflow-x-hidden">
+      <div>
         <header className="site flex items-center justify-between gap-3 py-6">
-          <p className="brand-label m-0 text-[0.72rem] font-medium tracking-[0.18em] text-ink uppercase">
+          <p className="brand-label m-0 text-[0.72rem] font-normal tracking-[0.18em] text-ink uppercase">
             ilghar.studio
           </p>
           <div className="flex items-center gap-3">
@@ -46,24 +49,26 @@ export function LinkInBio({ lang }: { lang: Lang }) {
           </div>
         </header>
 
+        <Cover lang={lang} />
+
         <header className="hero pb-6 text-left">
-          <h1 className="name m-0 font-display text-[1.75rem] font-normal tracking-[0.01em] text-ink sm:text-[2rem]">
-            <span className="text-[color:var(--accent-dot)]">{profile.name.charAt(0)}</span>
+          <h1 className="name">
+            <span className="first">{profile.name.charAt(0)}</span>
             {profile.name.slice(1)}
           </h1>
-          <p className="title mt-2 m-0 text-[0.95rem] font-light tracking-wide text-ink">
+          <p className="title mt-2 m-0 text-[0.95rem] font-normal tracking-wide">
             {t(lang, "location")}
             <span className="mx-2 text-subtle" aria-hidden="true">·</span>
             {t(lang, "roles")}
           </p>
-          <p className="sub mt-4 m-0 max-w-[42ch] text-[0.95rem] font-light leading-relaxed text-ink">
+          <p className="sub mt-4 m-0 max-w-[42ch] text-[0.95rem] font-normal leading-relaxed">
             {t(lang, "bio")}
           </p>
         </header>
 
         {featured ? (
           <section className="mt-16" aria-label="Featured">
-            <h2 className="m-0 mb-6 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-3 text-[0.9rem] font-normal tracking-[0.12em] text-[color:var(--label)] uppercase">
+            <h2>
               Featured
             </h2>
             <FrameCard
@@ -82,17 +87,28 @@ export function LinkInBio({ lang }: { lang: Lang }) {
         ) : null}
 
         <section className="mt-16" aria-label="Live function">
-          <h2 className="m-0 mb-6 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-3 text-[0.9rem] font-normal tracking-[0.12em] text-[color:var(--label)] uppercase">
+          <h2>
             Live function
           </h2>
           <figure className="m-0">
-            {/* One 1px mauve frame; P01 sits directly inside — no nested card. */}
-            <div className="home-live-frame overflow-hidden rounded-none border border-[color:#7d5a7c] bg-surface dark:border-[color:#856a8e]">
+            {/* One 12px frame; P01 sits directly inside — no nested card. */}
+            <div className="home-live-frame">
               <iframe
                 title="P01 abstention routing harness"
                 src="/demos/p01/index.html?embed=1"
-                className="home-live-iframe block w-full border-0"
+                className="home-live-iframe"
                 loading="lazy"
+                onLoad={(e) => {
+                  const frame = e.currentTarget;
+                  const doc = frame.contentDocument;
+                  if (!doc) return;
+                  const size = () => {
+                    const h = doc.documentElement.scrollHeight;
+                    if (h) frame.style.height = `${h}px`;
+                  };
+                  size();
+                  doc.defaultView?.addEventListener("resize", size);
+                }}
               />
             </div>
             <figcaption className="mt-2 text-[0.8rem] font-light text-ink">
@@ -102,7 +118,7 @@ export function LinkInBio({ lang }: { lang: Lang }) {
         </section>
 
         <section className="mt-16" aria-label="Work">
-          <h2 className="m-0 mb-6 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-3 text-[0.9rem] font-normal tracking-[0.12em] text-[color:var(--label)] uppercase">
+          <h2>
             Work
           </h2>
           <div className="grid grid-cols-2 gap-4 md:gap-6">
@@ -117,12 +133,26 @@ export function LinkInBio({ lang }: { lang: Lang }) {
                 title={t(lang, item.title)}
                 kicker={t(lang, item.kicker)}
                 contain={item.contain}
+                photo={item.photo}
+                loopWebm={item.loopWebm}
+                loopMp4={item.loopMp4}
                 external={Boolean(item.href) && !item.video}
                 href={item.pages || item.video || item.strip ? undefined : item.href}
                 onClick={
                   item.pages || item.video || item.strip ? () => setOpen(item) : undefined
                 }
               />
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-16" aria-labelledby="projects-title">
+          <h2 id="projects-title">
+            {t(lang, "projectsTitle")}
+          </h2>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-6">
+            {projects.map((p) => (
+              <ProjectCard key={p.id} project={p} lang={lang} />
             ))}
           </div>
         </section>
@@ -137,18 +167,19 @@ export function LinkInBio({ lang }: { lang: Lang }) {
   );
 }
 
-function Cover() {
+function Cover({ lang }: { lang: Lang }) {
   return (
-    <div className="relative aspect-[16/9] w-full overflow-hidden md:rounded-b-sm">
-      {/* Day and night covers are CSS backgrounds keyed to the theme class, so
-          the browser only downloads the one that is showing. */}
-      <div aria-hidden="true" className="cover-img cover-day absolute inset-0" />
-      <div aria-hidden="true" className="cover-img cover-night absolute inset-0" />
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-canvas to-transparent"
+    <figure className="hero-cover">
+      <ThemePicture
+        light="/cover-day.jpg?v=19"
+        dark="/cover-night.jpg?v=19"
+        alt={t(lang, "studioCoverAlt")}
+        width={1600}
+        height={900}
+        eager
+        imgClassName="hero-cover-img"
       />
-    </div>
+    </figure>
   );
 }
 
@@ -162,14 +193,14 @@ function Identity({ lang }: { lang: Lang }) {
         height={1000}
         className="size-28 rounded-full object-cover object-[center_28%] ring-4 ring-canvas sm:size-32 md:size-36"
       />
-      <p className="mt-6 text-[0.68rem] font-medium tracking-[0.32em] text-ink uppercase md:text-[0.75rem]">
+      <p className="mt-6 text-[0.68rem] font-normal tracking-[0.32em] text-ink uppercase md:text-[0.75rem]">
         {profile.handle}
       </p>
       <h1 className="mt-2 font-display text-[1.75rem] font-normal tracking-[0.14em] uppercase text-ink sm:text-[1.95rem] md:text-[2.25rem]">
-        <span className="first text-[#fcb4c4]">{profile.name.slice(0, 1)}</span>
+        <span className="first">{profile.name.slice(0, 1)}</span>
         {profile.name.slice(1)}
       </h1>
-      <p className="mt-2 font-display text-[0.95rem] font-medium tracking-[0.18em] uppercase text-[color:var(--mauve-label,#775a76)]">
+      <p className="mt-2 font-display text-[0.95rem] font-normal tracking-[0.18em] uppercase text-[color:var(--label)]">
         {t(lang, "roles").split("·")[0].trim()}
       </p>
       <p className="mt-1 text-[0.9rem] font-light tracking-wide text-ink md:text-[1.02rem]">
@@ -207,7 +238,7 @@ function Footer({ lang }: { lang: Lang }) {
   }
 
   return (
-    <footer className="mt-16 mb-16 flex flex-col items-start gap-5 border-t border-[color:var(--line-mauve,#7d5a7c)] pt-6 text-left">
+    <footer className="mt-16 mb-16 flex flex-col items-start gap-5 border-t border-[color:var(--line)] pt-6 text-left">
       <nav aria-label={t(lang, "socialLinks")} className="flex flex-wrap items-center gap-x-4 gap-y-2">
         {socialLinks.map((social) => (
           <a
@@ -215,7 +246,7 @@ function Footer({ lang }: { lang: Lang }) {
             href={social.href}
             target="_blank"
             rel="me noopener noreferrer"
-            className="text-[0.7rem] font-medium tracking-[0.2em] text-ink uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.78rem]"
+            className="text-[0.7rem] font-normal tracking-[0.2em] text-ink uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.78rem]"
           >
             {social.label}
           </a>

@@ -52,6 +52,10 @@ export const copy = {
   based: { en: "Berlin", de: "Berlin" },
   themeLight: { en: "Day", de: "Tag" },
   themeDark: { en: "Night", de: "Nacht" },
+  studioCoverAlt: {
+    en: "The studio room: a daybed and Persian carpet facing workbenches and a wall of books.",
+    de: "Der Atelierraum: eine Liege und ein persischer Teppich vor Werkbänken und einer Bücherwand.",
+  },
   prev: { en: "Previous", de: "Zurück" },
   next: { en: "Next", de: "Weiter" },
   close: { en: "Close", de: "Schließen" },
@@ -68,6 +72,53 @@ export const copy = {
   },
   germanLevel: { en: "German (C2)", de: "Deutsch (C2)" },
   visitFestival: { en: "Festival site", de: "Festival-Seite" },
+  projectsTitle: { en: "Projects", de: "Projekte" },
+  sabatTitle: { en: "SÁBÁT", de: "SÁBÁT" },
+  sabatKicker: { en: "Pavilion explorer", de: "Pavillon-Explorer" },
+  sabatClaim: {
+    en: "A triangulated pavilion frame where a three-armed connector raises a pyramid peak on each triangle. Built on legs with knitted panels, Ø 370 × H 230 cm.",
+    de: "Ein triangulierter Pavillonrahmen, bei dem ein dreiarmiger Verbinder über jedem Dreieck eine Pyramidenspitze anhebt. Gebaut auf Beinen mit gestrickten Paneelen, Ø 370 × H 230 cm.",
+  },
+  sabatAlt: {
+    en: "SÁBÁT pavilion explorer: a 3D model of the pavilion frame with sliders.",
+    de: "SÁBÁT Pavillon-Explorer: ein 3D-Modell des Pavillonrahmens mit Schiebereglern.",
+  },
+  p01Title: { en: "P01", de: "P01" },
+  p01Kicker: { en: "Abstention & routing harness", de: "Abstention- & Routing-Harness" },
+  p01Claim: {
+    en: "Walks one request through the router’s checks and shows which cases go to a person. Mock data: 12 hand-written cases.",
+    de: "Führt eine Anfrage durch die Prüfungen des Routers und zeigt, welche Fälle an einen Menschen gehen. Mock-Daten: 12 handgeschriebene Fälle.",
+  },
+  p01Alt: {
+    en: "P01 walk-through: one example case stepped through the router, with a threshold slider.",
+    de: "P01 Walk-through: ein Beispielfall Schritt für Schritt durch den Router, mit Schwellenwert-Regler.",
+  },
+  culturalTitle: { en: "Cultural & typographic evaluation", de: "Kulturelle & typografische Evaluation" },
+  culturalKicker: { en: "Evaluation kit", de: "Evaluations-Kit" },
+  culturalClaim: {
+    en: "Source-aware checks for generated design: script, typography and cultural references measured against cited sources.",
+    de: "Quellenbasierte Prüfungen für generiertes Design: Schrift, Typografie und kulturelle Bezüge an zitierten Quellen gemessen.",
+  },
+  uigridTitle: { en: "UI grid extractor", de: "UI-Raster-Extraktor" },
+  uigridKicker: { en: "Measured grids & tokens", de: "Gemessene Raster & Tokens" },
+  uigridClaim: {
+    en: "Measures the layout grid and design tokens of a screen instead of guessing them.",
+    de: "Misst Layout-Raster und Design-Tokens eines Screens, statt sie zu schätzen.",
+  },
+  sigtypeTitle: { en: "Signature typography", de: "Signatur-Typografie" },
+  sigtypeKicker: { en: "Writing animation", de: "Schreibanimation" },
+  sigtypeClaim: {
+    en: "An accessible, embeddable writing animation of the studio signature.",
+    de: "Eine barrierearme, einbettbare Schreibanimation der Studio-Signatur.",
+  },
+  siganimTitle: { en: "Signature animation", de: "Signatur-Animation" },
+  siganimKicker: { en: "Motion study", de: "Bewegungsstudie" },
+  siganimClaim: {
+    en: "Motion studies for the signature mark.",
+    de: "Bewegungsstudien für das Signaturzeichen.",
+  },
+  openDemo: { en: "Open demo", de: "Demo öffnen" },
+  viewRepo: { en: "GitHub repo", de: "GitHub-Repo" },
 } as const;
 
 export type CopyKey = keyof typeof copy;

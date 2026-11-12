@@ -6,6 +6,19 @@ public/cover-wide.jpg
 public/cover.jpg
 # Photo allowlist (DESIGNER): no dark source required; still run the blue check
 palette public/demos/sabat/sabat-pavilion.jpg
+# Single-source paper thumbnails (DESIGNER): missing-dark-source exemption
+# only. The image is unchanged; the blue check still runs. No full/palette skip.
+photo public/viewers/cards/cv.jpg
+photo public/viewers/cards/cv.webp
+photo public/viewers/cards/arbeits.jpg
+photo public/viewers/cards/arbeits.webp
+photo public/viewers/cards/abschluss.jpg
+photo public/viewers/cards/abschluss.webp
+# Proto P01 heroes (same palette as hero-{light,dark}.svg). The v2 checker
+# only skips the pink-accent rule for filenames matching hero*.svg, so these
+# p01_hero_*.svg files need a palette allow; the blue check still runs.
+palette public/demos/p01/p01_hero_light.svg
+palette public/demos/p01/p01_hero_dark.svg
 public/demos/sabat/sabat_dome_covers_dark.webp
 public/demos/sabat/sabat_dome_covers_light.webp
 public/media/blade-poster.jpg
@@ -38,10 +51,6 @@ public/viewers/cards/cv.jpg
 public/viewers/cards/cv.webp
 public/viewers/cards/fach.jpg
 public/viewers/cards/fach.webp
-public/viewers/cards/portfolio-en.jpg
-public/viewers/cards/portfolio-en.webp
-public/viewers/cards/portfolio.jpg
-public/viewers/cards/portfolio.webp
 public/viewers/cards/werk.jpg
 public/viewers/cards/werk.webp
 public/viewers/cv/01.jpg

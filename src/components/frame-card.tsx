@@ -13,10 +13,13 @@ export function FrameCard({
   eager = false,
   external = false,
   contain = false,
+  photo = false,
+  loopWebm,
+  loopMp4,
   onClick,
   href,
 }: {
-  cover: string;
+  cover?: string;
   coverHi?: string;
   coverDark?: string;
   coverDarkHi?: string;
@@ -27,6 +30,9 @@ export function FrameCard({
   eager?: boolean;
   external?: boolean;
   contain?: boolean;
+  photo?: boolean;
+  loopWebm?: string;
+  loopMp4?: string;
   onClick?: () => void;
   href?: string;
 }) {
@@ -38,7 +44,9 @@ export function FrameCard({
   const sizes = featured ? "(min-width: 1024px) 960px, 92vw" : "(min-width: 1024px) 460px, 45vw";
   const wLight = featured ? 1280 : 640;
 
-  const lightImg = (
+  const titleOnly = !cover && !loopMp4 && !loopWebm;
+
+  const lightImg = cover ? (
     <img
       src={coverHi || cover}
       srcSet={coverHi ? `${cover} ${wLight}w, ${coverHi} 1400w` : undefined}
@@ -51,9 +59,9 @@ export function FrameCard({
       className={cn(imgClass, coverDark && "dark:hidden")}
       draggable={false}
     />
-  );
+  ) : null;
 
-  const darkImg = coverDark ? (
+  const darkImg = cover && coverDark ? (
     <img
       src={coverDarkHi || coverDark}
       srcSet={
@@ -85,17 +93,40 @@ export function FrameCard({
       <span
         className={cn(
           "frame-raise relative block overflow-hidden bg-surface",
-          "rounded-none border border-[color:var(--line-mauve,#7d5a7c)] p-0",
+          "rounded-[12px] border border-[color:var(--line-mauve,#7d5a7c)] p-0",
+          photo && "photo-plain",
         )}
       >
         <span
           className={cn(
             "relative block aspect-[4/3] overflow-hidden rounded-none",
             contain && "flex items-center justify-center bg-surface",
+            photo && "photo-plain",
+            titleOnly && "title-only-frame",
           )}
         >
           {media}
-          <span className="absolute inset-x-0 bottom-0 flex justify-center px-0">
+          {titleOnly ? (
+            <span className="title-only-label" aria-hidden="true">
+              {title}
+            </span>
+          ) : null}
+          {loopMp4 || loopWebm ? (
+            <video
+              className="tile-loop"
+              muted
+              loop
+              playsInline
+              autoPlay
+              preload="metadata"
+              poster={coverHi || cover}
+              aria-hidden="true"
+            >
+              {loopWebm ? <source src={loopWebm} type="video/webm" /> : null}
+              {loopMp4 ? <source src={loopMp4} type="video/mp4" /> : null}
+            </video>
+          ) : null}
+          <span className="absolute inset-x-0 bottom-0 z-10 flex justify-center px-0">
             <span
               className={cn(
                 "caption-plate w-full rounded-none text-center border-t border-[color:var(--line-mauve,#7d5a7c)] bg-canvas",
@@ -105,7 +136,7 @@ export function FrameCard({
               <span className="mb-1 flex items-center justify-center gap-1">
                 <span
                   className={cn(
-                    "line-clamp-1 font-medium text-ink uppercase",
+                    "line-clamp-1 font-normal text-ink uppercase",
                     featured
                       ? "text-[0.7rem] tracking-[0.14em] md:text-[0.78rem]"
                       : "text-[0.58rem] tracking-[0.1em] md:text-[0.66rem]",

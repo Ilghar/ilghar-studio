@@ -174,7 +174,7 @@ function DocumentOverlay({
         <div className="min-w-0 text-center">
           <h2
             id={titleId}
-            className="truncate text-[0.68rem] font-medium tracking-[0.22em] text-ink uppercase md:text-[0.75rem]"
+            className="truncate text-[0.68rem] font-normal tracking-[0.22em] text-ink uppercase md:text-[0.75rem]"
           >
             {t(lang, collection.title)}
           </h2>
@@ -186,7 +186,7 @@ function DocumentOverlay({
           <a
             href={collection.downloadHref}
             download={collection.downloadName}
-            className="px-2 text-[0.68rem] font-medium tracking-[0.18em] text-ink uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.75rem]"
+            className="px-2 text-[0.68rem] font-normal tracking-[0.18em] text-ink uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.75rem]"
           >
             {t(lang, "download")}
           </a>
@@ -349,7 +349,7 @@ function StripOverlay({
         <div className="min-w-0 text-center">
           <h2
             id={titleId}
-            className="truncate text-[0.68rem] font-medium tracking-[0.22em] text-ink uppercase md:text-[0.75rem]"
+            className="truncate text-[0.68rem] font-normal tracking-[0.22em] text-ink uppercase md:text-[0.75rem]"
           >
             {title}
           </h2>
@@ -361,7 +361,7 @@ function StripOverlay({
           <a
             href={downloadHref}
             download={downloadName}
-            className="px-2 text-[0.68rem] font-medium tracking-[0.18em] text-ink uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.75rem]"
+            className="px-2 text-[0.68rem] font-normal tracking-[0.18em] text-ink uppercase transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-[0.75rem]"
           >
             {t(lang, "download")}
           </a>
@@ -475,7 +475,7 @@ function VideoOverlay({
         </button>
         <h2
           id={titleId}
-          className="truncate text-[0.68rem] font-medium tracking-[0.22em] text-white/80 uppercase"
+          className="truncate text-[0.68rem] font-normal tracking-[0.22em] text-white/80 uppercase"
         >
           {title}
         </h2>
@@ -484,7 +484,7 @@ function VideoOverlay({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-2 text-[0.68rem] font-medium tracking-[0.18em] text-white/70 uppercase transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="px-2 text-[0.68rem] font-normal tracking-[0.18em] text-white/70 uppercase transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             {t(lang, "visitFestival")}
           </a>
