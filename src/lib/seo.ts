@@ -6,6 +6,47 @@ export const OG_IMAGE = `${SITE_URL}/og.jpg`;
 
 export const pageUrl = (lang: Lang) => (lang === "de" ? `${SITE_URL}/de/` : `${SITE_URL}/`);
 
+const docPath = (lang: Lang, kind: "cv" | "portfolio") =>
+  lang === "de" ? `${SITE_URL}/de/${kind}/` : `${SITE_URL}/${kind}/`;
+
+/** Per-page head for the EN and DE CV and Portfolio document pages. */
+export function documentHead(lang: Lang, kind: "cv" | "portfolio") {
+  const url = docPath(lang, kind);
+  const titles = {
+    cv: { en: `CV · ${profile.name}`, de: `Lebenslauf · ${profile.name}` },
+    portfolio: { en: `Portfolio · ${profile.name}`, de: `Portfolio · ${profile.name}` },
+  };
+  const blurbs = {
+    cv: { en: copy.cvEnHint.en, de: copy.cvDeHint.de },
+    portfolio: { en: copy.portfolioEnHint.en, de: copy.portfolioDeHint.de },
+  };
+  const title = titles[kind][lang];
+  const description = `${profile.name}: ${titles[kind][lang]} · ${blurbs[kind][lang]}.`;
+  return {
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: profile.handle },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:url", content: url },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:locale", content: lang === "de" ? "de_DE" : "en_US" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: OG_IMAGE },
+    ],
+    links: [
+      { rel: "canonical", href: url },
+      { rel: "alternate", hrefLang: "en", href: docPath("en", kind) },
+      { rel: "alternate", hrefLang: "de", href: docPath("de", kind) },
+      { rel: "alternate", hrefLang: "x-default", href: docPath("en", kind) },
+    ],
+  };
+}
+
 const descriptions: Record<Lang, string> = copy.metaDescription;
 
 /** Per-page head for the EN (/) and DE (/de/) versions of the landing page. */

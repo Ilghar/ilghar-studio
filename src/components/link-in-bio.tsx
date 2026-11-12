@@ -52,6 +52,13 @@ export function LinkInBio({ lang }: { lang: Lang }) {
         <Cover lang={lang} />
 
         <header className="hero pb-6 text-left">
+          <img
+            src={profile.avatar}
+            alt={profile.name}
+            width={160}
+            height={160}
+            className="hero-avatar"
+          />
           <h1 className="name">
             <span className="first">{profile.name.charAt(0)}</span>
             {profile.name.slice(1)}
@@ -136,10 +143,20 @@ export function LinkInBio({ lang }: { lang: Lang }) {
                 photo={item.photo}
                 loopWebm={item.loopWebm}
                 loopMp4={item.loopMp4}
-                external={Boolean(item.href) && !item.video}
-                href={item.pages || item.video || item.strip ? undefined : item.href}
+                external={Boolean(item.href) && !item.video && !item.pageHref}
+                href={
+                  item.pageHref
+                    ? item.pageHref
+                    : item.pages || item.video || item.strip
+                      ? undefined
+                      : item.href
+                }
                 onClick={
-                  item.pages || item.video || item.strip ? () => setOpen(item) : undefined
+                  item.pageHref
+                    ? undefined
+                    : item.pages || item.video || item.strip
+                      ? () => setOpen(item)
+                      : undefined
                 }
               />
             ))}
@@ -180,47 +197,6 @@ function Cover({ lang }: { lang: Lang }) {
         imgClassName="hero-cover-img"
       />
     </figure>
-  );
-}
-
-function Identity({ lang }: { lang: Lang }) {
-  return (
-    <header className="relative z-10 -mt-12 flex flex-col items-center text-center">
-      <img
-        src={profile.avatar}
-        alt={profile.name}
-        width={1000}
-        height={1000}
-        className="size-28 rounded-full object-cover object-[center_28%] ring-4 ring-canvas sm:size-32 md:size-36"
-      />
-      <p className="mt-6 text-[0.68rem] font-normal tracking-[0.32em] text-ink uppercase md:text-[0.75rem]">
-        {profile.handle}
-      </p>
-      <h1 className="mt-2 font-display text-[1.75rem] font-normal tracking-[0.14em] uppercase text-ink sm:text-[1.95rem] md:text-[2.25rem]">
-        <span className="first">{profile.name.slice(0, 1)}</span>
-        {profile.name.slice(1)}
-      </h1>
-      <p className="mt-2 font-display text-[0.95rem] font-normal tracking-[0.18em] uppercase text-[color:var(--label)]">
-        {t(lang, "roles").split("·")[0].trim()}
-      </p>
-      <p className="mt-1 text-[0.9rem] font-light tracking-wide text-ink md:text-[1.02rem]">
-        {t(lang, "location")}
-        <span className="mx-2 text-subtle/70" aria-hidden="true">
-          ·
-        </span>
-        {t(lang, "roles")}
-      </p>
-      <p className="mt-6 max-w-[34ch] text-[0.92rem] font-light leading-relaxed text-ink md:max-w-[42ch] md:text-[1.05rem]">
-        {t(lang, "bio")}
-      </p>
-      <div className="mt-6 flex w-full items-center justify-between">
-        <LangToggle lang={lang} />
-        <ThemeToggle
-          lightLabel={t(lang, "themeLight")}
-          darkLabel={t(lang, "themeDark")}
-        />
-      </div>
-    </header>
   );
 }
 

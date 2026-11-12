@@ -18,7 +18,7 @@ import { join } from "node:path";
 const OUT = "dist/client";
 const INLINE = /(<script(?![^>]*\ssrc=)[^>]*>)([\s\S]*?)(<\/script>)/g;
 
-for (const page of ["index.html", "de/index.html"]) {
+for (const page of ["index.html", "de/index.html", "cv/index.html", "portfolio/index.html", "de/cv/index.html", "de/portfolio/index.html"]) {
   if (!existsSync(`${OUT}/${page}`)) {
     console.error(`postbuild: missing ${OUT}/${page}; prerender failed`);
     process.exit(1);

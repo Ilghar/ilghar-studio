@@ -1,7 +1,7 @@
 import { type Lang, langPath, t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export function LangToggle({ lang }: { lang: Lang }) {
+export function LangToggle({ lang, page = "" }: { lang: Lang; page?: string }) {
   return (
     <div role="group" aria-label={t(lang, "language")} className="-ml-1 flex items-center gap-2.5">
       {(["en", "de"] as const).map((code, i) => {
@@ -14,7 +14,7 @@ export function LangToggle({ lang }: { lang: Lang }) {
               </span>
             ) : null}
             <a
-              href={langPath(code)}
+              href={langPath(code, page)}
               hrefLang={code}
               lang={code}
               aria-current={active ? "page" : undefined}
