@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="UI Grid | Extractor">
+  <g transform="translate(-802.25 -30.5) scale(1.28)">
+    <rect x="720" y="96" width="440" height="264" rx="0" fill="none" stroke="#7d5a7c" stroke-width="1" />
+    <rect x="720.00" y="96" width="60.00" height="264" rx="0" fill="#a6a1a7" fill-opacity="0.12" />
+    <rect x="720.00" y="96" width="1" height="264" rx="0" fill="#a6a1a7" />
+    <rect x="796.00" y="96" width="60.00" height="264" rx="0" fill="#a6a1a7" fill-opacity="0.12" />
+    <rect x="796.00" y="96" width="1" height="264" rx="0" fill="#a6a1a7" />
+    <rect x="872.00" y="96" width="60.00" height="264" rx="0" fill="#a6a1a7" fill-opacity="0.12" />
+    <rect x="872.00" y="96" width="1" height="264" rx="0" fill="#a6a1a7" />
+    <rect x="948.00" y="96" width="60.00" height="264" rx="0" fill="#a6a1a7" fill-opacity="0.12" />
+    <rect x="948.00" y="96" width="1" height="264" rx="0" fill="#a6a1a7" />
+    <rect x="1024.00" y="96" width="60.00" height="264" rx="0" fill="#a6a1a7" fill-opacity="0.12" />
+    <rect x="1024.00" y="96" width="1" height="264" rx="0" fill="#a6a1a7" />
+    <rect x="1100.00" y="96" width="60.00" height="264" rx="0" fill="#a6a1a7" fill-opacity="0.12" />
+    <rect x="1100.00" y="96" width="1" height="264" rx="0" fill="#a6a1a7" />
+    <rect x="720.00" y="116" width="440.00" height="40" rx="0" fill="none" stroke="#5a515c" stroke-width="1.25" />
+    <rect x="723.00" y="172" width="136.00" height="120" rx="0" fill="none" stroke="#5a515c" stroke-width="1.25" />
+    <rect x="720.00" y="166" width="3.00" height="2" rx="0" fill="#856a8e" />
+    <rect x="722.50" y="162" width="1" height="10" rx="0" fill="#856a8e" />
+    <rect x="870.00" y="172" width="288.00" height="56" rx="0" fill="none" stroke="#5a515c" stroke-width="1.25" />
+    <rect x="870.00" y="166" width="2.00" height="2" rx="0" fill="#856a8e" />
+    <rect x="869.50" y="162" width="1" height="10" rx="0" fill="#856a8e" />
+    <rect x="876.00" y="240" width="288.00" height="52" rx="0" fill="none" stroke="#5a515c" stroke-width="1.25" />
+    <rect x="872.00" y="234" width="4.00" height="2" rx="0" fill="#856a8e" />
+    <rect x="875.50" y="230" width="1" height="10" rx="0" fill="#856a8e" />
+    <rect x="1024.00" y="172" width="136.00" height="120" rx="0" fill="none" stroke="#5a515c" stroke-width="1.25" />
+    <rect x="715.00" y="308" width="212.00" height="36" rx="0" fill="none" stroke="#5a515c" stroke-width="1.25" />
+    <rect x="715.00" y="302" width="5.00" height="2" rx="0" fill="#856a8e" />
+    <rect x="714.50" y="298" width="1" height="10" rx="0" fill="#856a8e" />
+    <rect x="950.00" y="308" width="212.00" height="36" rx="0" fill="none" stroke="#5a515c" stroke-width="1.25" />
+    <rect x="948.00" y="302" width="2.00" height="2" rx="0" fill="#856a8e" />
+    <rect x="949.50" y="298" width="1" height="10" rx="0" fill="#856a8e" />
+    <rect x="720" y="382" width="440" height="1" rx="0" fill="#7d5a7c" />
+    <rect x="719.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+    <rect x="779.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+    <rect x="795.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+    <rect x="855.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+    <rect x="871.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+    <rect x="931.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+    <rect x="947.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+    <rect x="1007.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+    <rect x="1023.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+    <rect x="1083.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+    <rect x="1099.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+    <rect x="1159.50" y="378" width="1" height="9" rx="0" fill="#7d5a7c" />
+  </g>
+</svg>

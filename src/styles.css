@@ -313,3 +313,55 @@ a.cta:active, .cta:active, a.cta[aria-pressed=true], .cta[aria-pressed=true] {
   color: var(--name);
   box-shadow: inset 3px 3px 7px var(--sh-d), inset -3px -3px 7px var(--sh-l);
 }
+
+/* Project covers share one canvas, one artwork area, and one brand position. */
+#projects-title {
+  color: #735979;
+}
+.project-card {
+  --project-cover-radius: 22px;
+  --project-cover-border: #7d6a8b;
+  --project-cover-canvas: var(--surface);
+  --project-cover-label: var(--name);
+  --project-title: var(--name);
+  --project-divider: var(--mauve-line);
+  --project-kicker: var(--mauve-em);
+}
+[data-theme=dark] .project-card, .dark .project-card {
+  --project-cover-canvas: #29272e;
+  --project-cover-label: #db9eb0;
+  --project-title: #543e57;
+  --project-divider: #b07383;
+  --project-kicker: #db9eb0;
+}
+.project-card .project-cover {
+  border: 1px solid var(--project-cover-border);
+  border-radius: var(--project-cover-radius);
+  corner-shape: squircle;
+  background: var(--project-cover-canvas);
+  box-shadow: -4px -4px 10px var(--sh-l), 6px 8px 16px var(--sh-d);
+}
+.project-cover-art {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.project-cover-wordmark {
+  position: absolute;
+  right: 6%;
+  bottom: 6%;
+  color: var(--project-cover-label);
+  font-family: Jost, sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.55rem, 1.2vw, 0.7rem);
+  line-height: 1;
+  letter-spacing: .16em;
+}
+.project-card .project-card-title { color: var(--project-title); }
+.project-card-divider { color: var(--project-divider); }
+.project-card-kicker { color: var(--project-kicker); }
+.project-cover-motion { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .project-cover-motion { display: block; }
+  .project-cover-still { opacity: 0; }
+}

@@ -66,6 +66,9 @@ FALLBACK_HEX = {
     "#2a272d", "#d4d2d2",
 }
 
+# User-approved project-cover and typography roles from the portfolio review.
+APPROVED_PROJECT_COLORS = {"#29272e", "#543e57", "#b07383", "#735979", "#7e7883", "#7d6a8b", "#db9eb0"}
+
 APPROVED_PINKS = {"#fcb4c4", "#b78597", "#da94af", "#745a7a"}
 APPROVED_PINK_RGB = {
     "#fcb4c4": (0xFC, 0xB4, 0xC4),
@@ -408,6 +411,8 @@ def check_source_hex(text: str) -> list[str]:
             continue
         hx = expand(raw)
         if len(hx) != 7:
+            continue
+        if hx in APPROVED_PROJECT_COLORS:
             continue
         if hx in APPROVED_PINKS:
             continue  # owned by check_pink / contrast

@@ -229,8 +229,8 @@ export type Project = {
   coverLightHi?: string;
   coverDark?: string;
   coverDarkHi?: string;
-  /** How the cover sits in the 4/3 frame. SVG line drawings use contain. */
-  coverFit?: "cover" | "contain";
+  motionLight?: string;
+  motionDark?: string;
   demoHref: string;
   repoHref: string;
 };
@@ -245,9 +245,8 @@ export const projects: Project[] = [
     kicker: "sabatKicker",
     claim: "sabatClaim",
     alt: "sabatAlt",
-    coverLight: `/viewers/projects/sabat-cover-light.svg?v=${V}`,
-    coverDark: `/viewers/projects/sabat-cover-dark.svg?v=${V}`,
-    coverFit: "contain",
+    coverLight: `/viewers/projects/sabat-cover-light.png?v=${V}`,
+    coverDark: `/viewers/projects/sabat-cover-dark.png?v=${V}`,
     demoHref: "/demos/sabat/",
     repoHref: `${GH}/sabat-parametric-explorer`,
   },
@@ -257,10 +256,8 @@ export const projects: Project[] = [
     kicker: "p01Kicker",
     claim: "p01Claim",
     alt: "p01Alt",
-    coverLight: `/viewers/projects/p01-light.webp?v=${V}`,
-    coverLightHi: `/viewers/projects/p01-light-hi.webp?v=${V}`,
-    coverDark: `/viewers/projects/p01-dark.webp?v=${V}`,
-    coverDarkHi: `/viewers/projects/p01-dark-hi.webp?v=${V}`,
+    coverLight: `/viewers/projects/p01-illustration-light.svg?v=${V}`,
+    coverDark: `/viewers/projects/p01-illustration-dark.svg?v=${V}`,
     demoHref: "/demos/p01/",
     repoHref: `${GH}/abstention-routing-harness`,
   },
@@ -269,6 +266,9 @@ export const projects: Project[] = [
     title: "culturalTitle",
     kicker: "culturalKicker",
     claim: "culturalClaim",
+    alt: "culturalAlt",
+    coverLight: `/viewers/projects/cultural-illustration-light.png?v=${V}`,
+    coverDark: `/viewers/projects/cultural-illustration-dark.png?v=${V}`,
     demoHref: `${PAGES}/cultural-typographic-ai-evaluation/`,
     repoHref: `${GH}/cultural-typographic-ai-evaluation`,
   },
@@ -277,22 +277,22 @@ export const projects: Project[] = [
     title: "uigridTitle",
     kicker: "uigridKicker",
     claim: "uigridClaim",
+    alt: "uigridAlt",
+    coverLight: `/viewers/projects/uigrid-illustration-light.svg?v=${V}`,
+    coverDark: `/viewers/projects/uigrid-illustration-dark.svg?v=${V}`,
     demoHref: `${PAGES}/ui-grid-extractor/`,
     repoHref: `${GH}/ui-grid-extractor`,
-  },
-  {
-    id: "sigtype",
-    title: "sigtypeTitle",
-    kicker: "sigtypeKicker",
-    claim: "sigtypeClaim",
-    demoHref: `${PAGES}/signature-typography/`,
-    repoHref: `${GH}/signature-typography`,
   },
   {
     id: "siganim",
     title: "siganimTitle",
     kicker: "siganimKicker",
     claim: "siganimClaim",
+    alt: "siganimAlt",
+    motionLight: `/viewers/projects/siganim-motion-light.gif?v=${V}`,
+    motionDark: `/viewers/projects/siganim-motion-dark.gif?v=${V}`,
+    coverLight: `/viewers/projects/siganim-motion-light.png?v=${V}`,
+    coverDark: `/viewers/projects/siganim-motion-dark.png?v=${V}`,
     demoHref: `${PAGES}/Signature-animation/`,
     repoHref: `${GH}/Signature-animation`,
   },

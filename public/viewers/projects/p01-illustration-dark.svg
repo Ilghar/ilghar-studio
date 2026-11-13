@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="P01 | Abstention Routing Harness">
+  <g id="harness" data-gap="49.212" data-input="679.670" data-split="869.771" data-right="1175.226" data-top="80.000" data-bottom="387.710" data-wm-clear="32.000" data-branches="94.545,233.855,373.165" transform="translate(-694 -6) scale(1.18)">
+    <path d="M679.670 233.85H869.771" stroke="#7E7883" stroke-width="2.42" fill="none" />
+    <path d="M869.771 233.85V94.55H1160.681" stroke="#856a8e" stroke-width="2.42" fill="none" />
+    <path d="M869.771 233.85V233.85H1160.681" stroke="#856a8e" stroke-width="2.42" fill="none" />
+    <path d="M869.771 233.85V373.16H1160.681" stroke="#856a8e" stroke-width="2.42" fill="none" />
+    <path d="M1015.226 94.55H1160.681" stroke="#fcb4c4" stroke-width="4.04" fill="none" />
+    <path d="M1015.226 233.85H1160.681" stroke="#fcb4c4" stroke-width="4.04" fill="none" />
+    <path d="M1015.226 373.16H1160.681" stroke="#fcb4c4" stroke-width="4.04" fill="none" />
+    <rect x="858.458" y="222.542" width="22.626" height="22.626" rx="0" fill="#7E7883" />
+    <rect x="1003.913" y="83.232" width="22.626" height="22.626" rx="0" fill="#856a8e" />
+    <rect x="1003.913" y="222.542" width="22.626" height="22.626" rx="0" fill="#856a8e" />
+    <rect x="1003.913" y="361.851" width="22.626" height="22.626" rx="0" fill="#856a8e" />
+    <rect x="1146.135" y="80.000" width="29.091" height="29.091" rx="0" fill="#fcb4c4" />
+    <rect x="1146.135" y="219.310" width="29.091" height="29.091" rx="0" fill="#fcb4c4" />
+    <rect x="1146.135" y="358.619" width="29.091" height="29.091" rx="0" fill="#fcb4c4" />
+  </g>
+</svg>
