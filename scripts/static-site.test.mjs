@@ -119,11 +119,11 @@ test("home links to /cv, /portfolio and /demos/sabat/", { skip: !existsSync("dis
   assert.match(de, /class="hero-avatar"/);
 });
 
-test("SÁBÁT tile uses the theme-src SVG pair", { skip: !existsSync("dist/client/index.html") }, () => {
+test("SÁBÁT tile uses the theme-src cover pair", { skip: !existsSync("dist/client/index.html") }, () => {
   const en = read("dist/client/index.html");
   assert.match(en, /class="[^"]*theme-src[^"]*"/);
-  assert.match(en, /data-light="\/viewers\/projects\/sabat-cover-light\.svg[^"]*"/);
-  assert.match(en, /data-dark="\/viewers\/projects\/sabat-cover-dark\.svg[^"]*"/);
+  assert.match(en, /data-light="\/viewers\/projects\/sabat-cover-light\.png[^"]*"/);
+  assert.match(en, /data-dark="\/viewers\/projects\/sabat-cover-dark\.png[^"]*"/);
   assert.ok(existsSync("dist/client/viewers/projects/sabat-cover-light.svg"));
   assert.ok(existsSync("dist/client/viewers/projects/sabat-cover-dark.svg"));
 });

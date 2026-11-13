@@ -113,15 +113,9 @@ export const copy = {
     en: "Measures the layout grid and design tokens of a screen instead of guessing them.",
     de: "Misst Layout-Raster und Design-Tokens eines Screens, statt sie zu schätzen.",
   },
-  sigtypeTitle: { en: "Signature typography", de: "Signatur-Typografie" },
-  sigtypeKicker: { en: "Writing animation", de: "Schreibanimation" },
-  sigtypeClaim: {
-    en: "An accessible, embeddable writing animation of the studio signature.",
-    de: "Eine barrierearme, einbettbare Schreibanimation der Studio-Signatur.",
-  },
   siganimAlt: {
-    en: "An outlined signature preview with a row of animation progress markers.",
-    de: "Eine umrandete Signaturvorschau mit einer Reihe von Fortschrittsmarken.",
+    en: "The application draws the ilghar.studio signature stroke by stroke.",
+    de: "Die Anwendung zeichnet die Signatur ilghar.studio Strich für Strich.",
   },
   siganimTitle: { en: "Signature animation", de: "Signatur-Animation" },
   siganimKicker: { en: "Motion study", de: "Bewegungsstudie" },
